@@ -1,11 +1,22 @@
 import { useState } from 'react';
 
 interface Props {
-  endpoint: string;
+  endpoint: string | undefined;
 }
 
 export default function ContactForm({ endpoint }: Props) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  if (!endpoint) {
+    return (
+      <p className="text-ink/60 text-sm">
+        Contact form is not configured yet. Email us at{' '}
+        <a href="mailto:hello@mesvantage.com" className="text-accent underline">
+          hello@mesvantage.com
+        </a>
+      </p>
+    );
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
