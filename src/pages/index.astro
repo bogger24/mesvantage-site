@@ -2,95 +2,198 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Manufacturing Intelligence for Regulated Industry">
+<BaseLayout title="The Manufacturing Intelligence Platform for Medical Device CDMOs">
 
   <!-- Hero -->
-  <section class="bg-navy text-white pt-24 pb-0 px-6 overflow-hidden">
-    <div class="max-w-5xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-semibold text-white/80 mb-6 tracking-wide uppercase">
-        Live in production · 250,000 knee systems / year
+  <section class="bg-navy text-white pt-24 pb-20 px-6 overflow-hidden relative">
+    <!-- Subtle grid backdrop -->
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none"
+         style="background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px); background-size: 48px 48px;"></div>
+
+    <div class="max-w-5xl mx-auto text-center relative">
+      <div class="inline-flex items-center gap-2 bg-accent/15 border border-accent/30 rounded-full px-4 py-1.5 text-xs font-semibold text-accent tracking-wide uppercase mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+        Validated · ISO 13485 · 21 CFR Part 11
       </div>
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
-        The MES built inside<br class="hidden md:block" /> a regulated CDMO.
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight">
+        The manufacturing intelligence<br class="hidden md:block" /> platform for medical device CDMOs.
       </h1>
-      <p class="mt-6 text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-        FDA-validated, ISO 13485 certified, and stress-tested at production scale —
-        not a pilot, not a prototype. Ready for your floor today.
+      <p class="mt-7 text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+        Connect your ERP, your quality system, your CMMs and your machines into one validated platform.
+        Built for regulated manufacturing. Live on your floor in 90 days.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/about#contact" class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3 rounded-md transition-colors">
+        <a href="/about#contact" class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-md transition-colors">
           Book a Demo
         </a>
-        <a href="/product" class="border border-white/30 hover:border-white text-white font-semibold px-8 py-3 rounded-md transition-colors">
-          See the Product
+        <a href="#how-it-works" class="border border-white/30 hover:border-white text-white font-semibold px-8 py-3.5 rounded-md transition-colors">
+          See How It Works
         </a>
-      </div>
-    </div>
-
-    <!-- Hero screenshot in browser chrome -->
-    <div class="max-w-5xl mx-auto mt-16">
-      <div class="rounded-t-xl overflow-hidden shadow-2xl border border-white/10">
-        <!-- Browser chrome bar -->
-        <div class="bg-[#1e2a3a] px-4 py-2.5 flex items-center gap-3">
-          <div class="flex gap-1.5">
-            <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
-            <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
-            <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
-          </div>
-          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
-            mes.croommedical.com · Machine Intelligence
-          </div>
-        </div>
-        <img
-          src="/screen-machine-intel.png"
-          alt="MESvantage Machine Intelligence — live production monitoring"
-          class="w-full block"
-          loading="eager"
-        />
       </div>
     </div>
   </section>
 
-  <!-- Social proof bar -->
-  <section class="border-b border-border bg-white">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex flex-wrap items-center justify-center gap-6 text-sm text-ink/60 font-medium">
-      <div class="flex items-center gap-2">
-        <img src="/croom-logo.svg" alt="Croom Medical" class="h-6 opacity-60" />
-        <span class="font-semibold text-navy">Croom Medical</span>
+  <!-- Quantified outcomes band -->
+  <section class="bg-white border-b border-border">
+    <div class="max-w-6xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <div class="text-3xl md:text-4xl font-extrabold text-navy">90<span class="text-accent">d</span></div>
+        <div class="text-xs uppercase tracking-wider text-ink/60 mt-1 font-semibold">Time to Live</div>
       </div>
-      <span class="text-border hidden sm:block">·</span>
-      <span>250,000 knee systems / year</span>
-      <span class="text-border hidden sm:block">·</span>
-      <span>ISO 13485 certified</span>
-      <span class="text-border hidden sm:block">·</span>
-      <span>FDA 21 CFR Part 11 validated</span>
-      <span class="text-border hidden sm:block">·</span>
-      <span>OEM: DePuy · Stryker · Zimmer · Arthrex</span>
+      <div>
+        <div class="text-3xl md:text-4xl font-extrabold text-navy">~70<span class="text-accent">%</span></div>
+        <div class="text-xs uppercase tracking-wider text-ink/60 mt-1 font-semibold">Faster Audit Prep</div>
+      </div>
+      <div>
+        <div class="text-3xl md:text-4xl font-extrabold text-navy">~75<span class="text-accent">%</span></div>
+        <div class="text-xs uppercase tracking-wider text-ink/60 mt-1 font-semibold">FAI Cycle Reduction</div>
+      </div>
+      <div>
+        <div class="text-3xl md:text-4xl font-extrabold text-navy">€0</div>
+        <div class="text-xs uppercase tracking-wider text-ink/60 mt-1 font-semibold">Validation Budget</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture / How it works -->
+  <section id="how-it-works" class="py-24 px-6 bg-surface">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="text-xs font-bold tracking-widest text-accent uppercase">How it works</span>
+        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy">One platform, every system on your floor.</h2>
+        <p class="mt-4 text-ink/60 max-w-2xl mx-auto">
+          MESvantage sits at the centre of your manufacturing stack — ingesting data from ERP, quality, machines and metrology, and turning it into validated records, real-time intelligence, and customer-ready outputs.
+        </p>
+      </div>
+
+      <!-- Architecture diagram (SVG, animated) -->
+      <div class="bg-white border border-border rounded-2xl p-6 md:p-10 shadow-sm">
+        <svg viewBox="0 0 1100 520" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MESvantage architecture diagram">
+          <defs>
+            <linearGradient id="centerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0F2D52" />
+              <stop offset="100%" stop-color="#1A7FBF" />
+            </linearGradient>
+            <linearGradient id="flowIn" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#1A7FBF" stop-opacity="0" />
+              <stop offset="50%" stop-color="#1A7FBF" stop-opacity="0.8" />
+              <stop offset="100%" stop-color="#1A7FBF" stop-opacity="0" />
+            </linearGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+
+          <!-- Column labels -->
+          <text x="160" y="32" text-anchor="middle" fill="#64748B" font-size="11" font-weight="700" letter-spacing="2">YOUR INPUTS</text>
+          <text x="550" y="32" text-anchor="middle" fill="#64748B" font-size="11" font-weight="700" letter-spacing="2">MESVANTAGE PLATFORM</text>
+          <text x="940" y="32" text-anchor="middle" fill="#64748B" font-size="11" font-weight="700" letter-spacing="2">YOUR OUTPUTS</text>
+
+          <!-- LEFT: Input nodes -->
+          {[
+            { y: 70, label: 'ERP', sub: 'M1 · SAP · Plex · Infor · Oracle' },
+            { y: 150, label: 'QMS', sub: 'Qualio · MasterControl · Greenlight' },
+            { y: 230, label: 'Machines', sub: 'OPC-UA · MTConnect · Modbus' },
+            { y: 310, label: 'CMMs', sub: 'Renishaw · Hexagon · Zeiss' },
+            { y: 390, label: 'Documents', sub: 'OneDrive · SharePoint · Google Drive' },
+          ].map(node => (
+            <g>
+              <rect x="20" y={node.y} width="280" height="60" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+              <text x="40" y={node.y + 28} fill="#0F2D52" font-size="15" font-weight="700">{node.label}</text>
+              <text x="40" y={node.y + 47} fill="#64748B" font-size="11">{node.sub}</text>
+              <circle cx="300" cy={node.y + 30} r="4" fill="#1A7FBF"/>
+            </g>
+          ))}
+
+          <!-- CENTER: MESvantage core -->
+          <rect x="380" y="100" width="340" height="320" rx="18" fill="url(#centerGrad)" filter="url(#glow)"/>
+          <text x="550" y="138" text-anchor="middle" fill="white" font-size="20" font-weight="800" letter-spacing="0.5">MESvantage</text>
+          <text x="550" y="158" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-size="11" letter-spacing="1.5">VALIDATED PLATFORM CORE</text>
+
+          {[
+            { y: 192, label: 'Device History Records (DHR)' },
+            { y: 222, label: 'Genealogy & Traceability' },
+            { y: 252, label: 'OEE & Downtime Intelligence' },
+            { y: 282, label: 'FAI · Inspections · NCR · CAPA' },
+            { y: 312, label: 'Scheduling & Standard Times' },
+            { y: 342, label: 'Audit Trail & E-Signatures' },
+            { y: 372, label: 'AI Executive Assistant' },
+          ].map(item => (
+            <g>
+              <rect x="408" y={item.y - 12} width="284" height="22" rx="6" fill="rgba(255,255,255,0.08)"/>
+              <text x="420" y={item.y + 3} fill="white" font-size="12" font-weight="500">{item.label}</text>
+            </g>
+          ))}
+
+          <circle cx="380" cy="260" r="4" fill="#1A7FBF"/>
+          <circle cx="720" cy="260" r="4" fill="#1A7FBF"/>
+
+          <!-- RIGHT: Output nodes -->
+          {[
+            { y: 110, label: 'OEM Customer Portals', sub: 'Lot release · DHR · Quality data' },
+            { y: 190, label: 'Floor & Mobile', sub: 'PWA · Digital Signage · Operator UX' },
+            { y: 270, label: 'Executive Intelligence', sub: 'Power BI · CEO dashboards' },
+            { y: 350, label: 'Regulatory Packets', sub: 'IQ/OQ/PQ · Validation evidence' },
+          ].map(node => (
+            <g>
+              <rect x="800" y={node.y} width="280" height="60" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+              <text x="820" y={node.y + 28} fill="#0F2D52" font-size="15" font-weight="700">{node.label}</text>
+              <text x="820" y={node.y + 47} fill="#64748B" font-size="11">{node.sub}</text>
+              <circle cx="800" cy={node.y + 30} r="4" fill="#1A7FBF"/>
+            </g>
+          ))}
+
+          <!-- Animated flow paths: inputs -> core -->
+          {[100, 180, 260, 340, 420].map((y, i) => (
+            <g>
+              <path d={`M 304 ${y} Q 342 ${y}, 360 260 T 380 260`} stroke="#CBD5E1" stroke-width="1.5" fill="none" opacity="0.4"/>
+              <path d={`M 304 ${y} Q 342 ${y}, 360 260 T 380 260`} stroke="url(#flowIn)" stroke-width="2.5" fill="none" stroke-dasharray="8 200" stroke-dashoffset="0">
+                <animate attributeName="stroke-dashoffset" from="0" to="-208" dur={`${2.4 + i * 0.18}s`} repeatCount="indefinite"/>
+              </path>
+            </g>
+          ))}
+
+          <!-- Animated flow paths: core -> outputs -->
+          {[140, 220, 300, 380].map((y, i) => (
+            <g>
+              <path d={`M 720 260 Q 740 260, 760 ${y} T 800 ${y}`} stroke="#CBD5E1" stroke-width="1.5" fill="none" opacity="0.4"/>
+              <path d={`M 720 260 Q 740 260, 760 ${y} T 800 ${y}`} stroke="url(#flowIn)" stroke-width="2.5" fill="none" stroke-dasharray="8 200" stroke-dashoffset="0">
+                <animate attributeName="stroke-dashoffset" from="0" to="-208" dur={`${2.6 + i * 0.2}s`} repeatCount="indefinite"/>
+              </path>
+            </g>
+          ))}
+
+          <!-- Footer label inside core -->
+          <text x="550" y="408" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="10" letter-spacing="2">SILOED SAAS · DEDICATED ENVIRONMENT PER CUSTOMER</text>
+        </svg>
+      </div>
+
+      <p class="text-center text-sm text-ink/50 mt-6 max-w-2xl mx-auto">
+        Every customer runs in a fully isolated deployment. No shared compute, no shared databases, no cross-customer data — by design and by audit requirement.
+      </p>
     </div>
   </section>
 
   <!-- The gap we fill -->
-  <section class="py-20 px-6">
+  <section class="py-20 px-6 bg-white">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-3xl font-bold text-navy text-center mb-12">
-        The gap nobody else fills
+        The gap nobody else fills.
       </h2>
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-3 gap-6">
         {[
           {
             title: 'Purpose-built for CDMOs',
-            body: 'Not a generic MES retrofitted to regulated manufacturing. Every workflow — DHR, FAI, CMM, OEE — was designed for contract manufacturers of medical devices from day one.',
+            body: 'Not a generic MES retrofitted to medical. Every workflow — DHR, FAI, CMM, OEE, NCR, lot release — was designed for regulated contract manufacturing from day one.',
           },
           {
-            title: 'Already FDA-validated',
-            body: 'IQ/OQ/PQ baseline passed in a live production environment. Validation documentation is transferable to your deployment. Skip the 12-month validation programme.',
+            title: 'Validation transferable',
+            body: 'IQ/OQ/PQ baseline already passed in a live regulated environment. Validation evidence transfers with the platform. Skip the 12-month validation programme.',
           },
           {
-            title: 'Live in production',
-            body: 'Running at 250,000 knee systems per year, 24/7, under ISO 13485 and FDA scrutiny. Every feature has been stress-tested on a real production floor — not a lab.',
+            title: 'Production-grade',
+            body: 'Stress-tested at scale, 24/7, under FDA scrutiny. Every feature has run on a real production floor — not a lab, not a pilot, not a demo environment.',
           },
         ].map(card => (
-          <div class="bg-white border border-border rounded-xl p-8">
+          <div class="bg-surface border border-border rounded-xl p-8">
             <h3 class="text-lg font-bold text-navy mb-3">{card.title}</h3>
             <p class="text-ink/70 leading-relaxed">{card.body}</p>
           </div>
@@ -99,85 +202,155 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Platform screenshots -->
-  <section class="bg-surface py-20 px-6">
+  <!-- Mockup scene: Operations dashboard (HTML/CSS, MESvantage-branded, fake data) -->
+  <section class="py-24 px-6 bg-navy">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-navy text-center mb-4">The real platform. No mockups.</h2>
-      <p class="text-center text-ink/60 mb-14 max-w-2xl mx-auto">
-        Every screen below is live production software running inside Croom Medical today.
-      </p>
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold tracking-widest text-accent uppercase">The platform</span>
+        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-white">Real-time intelligence. Without the Excel.</h2>
+        <p class="mt-4 text-white/60 max-w-2xl mx-auto">
+          See your shop floor the way your CEO wants to see it: live, drillable, audit-ready.
+        </p>
+      </div>
 
-      <!-- Large featured screenshot -->
-      <div class="rounded-xl overflow-hidden border border-border shadow-lg mb-8">
-        <div class="bg-[#1a2535] px-4 py-2.5 flex items-center gap-3">
+      <!-- Browser chrome -->
+      <div class="rounded-xl overflow-hidden shadow-2xl border border-white/10">
+        <div class="bg-[#1e2a3a] px-4 py-2.5 flex items-center gap-3">
           <div class="flex gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-red-400/60"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/60"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-green-400/60"></span>
+            <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
-          <span class="text-xs text-white/40 font-mono">Operations Dashboard — real-time production intelligence</span>
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+            app.mesvantage.com / operations
+          </div>
         </div>
-        <img
-          src="/screen-dashboard.png"
-          alt="MESvantage Operations Dashboard"
-          class="w-full block"
-          loading="lazy"
-        />
+
+        <!-- Mockup body -->
+        <div class="bg-[#F8F9FB] flex" style="min-height: 480px;">
+          <!-- Sidebar -->
+          <aside class="w-56 bg-[#0F2D52] text-white py-4 hidden md:block">
+            <div class="px-5 pb-4 border-b border-white/10">
+              <div class="font-extrabold tracking-tight text-lg">MESvantage</div>
+              <div class="text-[10px] text-accent uppercase tracking-wider mt-0.5">Operations</div>
+            </div>
+            <nav class="mt-3 text-sm">
+              {[
+                { label: 'Operations', active: true },
+                { label: 'Quality' },
+                { label: 'Genealogy' },
+                { label: 'Scheduling' },
+                { label: 'OEE Monitor' },
+                { label: 'Inspections' },
+                { label: 'Documents' },
+                { label: 'Assistant' },
+              ].map(item => (
+                <div class={`px-5 py-2 ${item.active ? 'bg-accent/20 border-l-2 border-accent text-white' : 'text-white/60'}`}>
+                  {item.label}
+                </div>
+              ))}
+            </nav>
+            <div class="absolute"></div>
+          </aside>
+
+          <!-- Main content -->
+          <div class="flex-1 p-6">
+            <div class="flex justify-between items-start mb-6">
+              <div>
+                <h3 class="text-xl font-bold text-navy">Operations Dashboard</h3>
+                <p class="text-xs text-ink/50 mt-0.5">Live · Sample data · Updated 14:06</p>
+              </div>
+              <div class="flex items-center gap-2 text-xs">
+                <span class="bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">● Synced</span>
+                <span class="bg-accent/10 text-accent px-2 py-1 rounded font-semibold">FDA 21 CFR Part 11</span>
+              </div>
+            </div>
+
+            <!-- KPI cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+              {[
+                { label: 'Output today', val: '1,248', sub: 'units · 96% target', tone: 'ok' },
+                { label: 'OEE', val: '78.4%', sub: 'fleet-wide', tone: 'ok' },
+                { label: 'FPY', val: '99.2%', sub: '24h rolling', tone: 'ok' },
+                { label: 'Open NCRs', val: '3', sub: '1 awaiting CAPA', tone: 'warn' },
+              ].map(kpi => (
+                <div class="bg-white border border-border rounded-lg p-3">
+                  <div class="text-[10px] uppercase tracking-wider text-ink/50 font-semibold">{kpi.label}</div>
+                  <div class={`text-2xl font-extrabold mt-1 ${kpi.tone === 'warn' ? 'text-amber-600' : 'text-navy'}`}>{kpi.val}</div>
+                  <div class="text-[10px] text-ink/50 mt-0.5">{kpi.sub}</div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Two-column: chart + cell list -->
+            <div class="grid md:grid-cols-3 gap-3">
+              <div class="md:col-span-2 bg-white border border-border rounded-lg p-4">
+                <div class="flex justify-between items-center mb-3">
+                  <div class="text-xs font-bold text-navy">OEE — last 12 hours</div>
+                  <div class="text-[10px] text-ink/50">Availability · Performance · Quality</div>
+                </div>
+                <!-- Inline chart -->
+                <svg viewBox="0 0 400 110" class="w-full h-24">
+                  <defs>
+                    <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#1A7FBF" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="#1A7FBF" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0 70 L 33 60 L 66 65 L 99 50 L 132 45 L 165 55 L 198 38 L 231 42 L 264 30 L 297 35 L 330 28 L 363 25 L 400 30 L 400 110 L 0 110 Z" fill="url(#chartFill)"/>
+                  <path d="M 0 70 L 33 60 L 66 65 L 99 50 L 132 45 L 165 55 L 198 38 L 231 42 L 264 30 L 297 35 L 330 28 L 363 25 L 400 30" fill="none" stroke="#1A7FBF" stroke-width="2"/>
+                </svg>
+                <div class="flex justify-between text-[9px] text-ink/40 font-mono mt-1">
+                  <span>02:00</span><span>06:00</span><span>10:00</span><span>14:00</span>
+                </div>
+              </div>
+              <div class="bg-white border border-border rounded-lg p-4">
+                <div class="text-xs font-bold text-navy mb-3">Cell status</div>
+                <div class="space-y-2">
+                  {[
+                    { cell: 'Cell 01', state: 'Running', tone: 'ok' },
+                    { cell: 'Cell 02', state: 'Running', tone: 'ok' },
+                    { cell: 'Cell 03', state: 'Setup', tone: 'warn' },
+                    { cell: 'Cell 04', state: 'Running', tone: 'ok' },
+                    { cell: 'CMM Bay', state: 'Idle', tone: 'idle' },
+                  ].map(row => (
+                    <div class="flex justify-between items-center text-xs">
+                      <span class="text-ink/70 font-medium">{row.cell}</span>
+                      <span class={
+                        row.tone === 'ok' ? 'text-green-600 font-semibold' :
+                        row.tone === 'warn' ? 'text-amber-600 font-semibold' :
+                        'text-ink/40 font-semibold'
+                      }>● {row.state}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Two-column screenshots -->
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="rounded-xl overflow-hidden border border-border shadow-md">
-          <div class="bg-[#1a2535] px-4 py-2 flex items-center gap-3">
-            <div class="flex gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-red-400/60"></span>
-              <span class="w-2 h-2 rounded-full bg-yellow-400/60"></span>
-              <span class="w-2 h-2 rounded-full bg-green-400/60"></span>
-            </div>
-            <span class="text-xs text-white/40 font-mono">Quality Inspections</span>
-          </div>
-          <img
-            src="/screen-inspections.png"
-            alt="MESvantage Quality Inspections"
-            class="w-full block"
-            loading="lazy"
-          />
-        </div>
-        <div class="rounded-xl overflow-hidden border border-border shadow-md">
-          <div class="bg-[#0a0f1a] px-4 py-2 flex items-center gap-3">
-            <div class="flex gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-red-400/60"></span>
-              <span class="w-2 h-2 rounded-full bg-yellow-400/60"></span>
-              <span class="w-2 h-2 rounded-full bg-green-400/60"></span>
-            </div>
-            <span class="text-xs text-white/40 font-mono">AI Executive Assistant</span>
-          </div>
-          <img
-            src="/screen-assistant.png"
-            alt="MESvantage AI Executive Assistant"
-            class="w-full block"
-            loading="lazy"
-          />
-        </div>
-      </div>
+      <p class="text-center text-xs text-white/40 mt-6 italic">
+        Sample data shown. Each MESvantage deployment runs in its own isolated environment.
+      </p>
     </div>
   </section>
 
   <!-- Module highlights -->
   <section class="bg-white py-20 px-6">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-navy text-center mb-4">50+ modules across 6 domains</h2>
+      <h2 class="text-3xl font-bold text-navy text-center mb-4">50+ modules across 6 domains.</h2>
       <p class="text-center text-ink/60 mb-12 max-w-2xl mx-auto">
-        From incoming inspection to CEO intelligence — everything a regulated CDMO needs in one validated platform.
+        From incoming inspection to executive intelligence — everything a regulated CDMO needs in one validated platform.
       </p>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
-          { domain: 'Quality', description: 'FAI, FPY, SPC, DHR, Incoming Inspection, Customer Quality Portal' },
-          { domain: 'Production', description: 'OEE, Scheduling, In-Process Documentation, Standard Times, Graduation' },
+          { domain: 'Quality', description: 'FAI · FPY · SPC · DHR · NCR · CAPA · Incoming Inspection · Customer Quality Portal' },
+          { domain: 'Production', description: 'OEE · Scheduling · In-Process Documentation · Standard Times · Operator Graduation' },
           { domain: 'Metrology', description: 'CMM integration with AI-powered parsing for Renishaw, Hexagon, and Zeiss' },
-          { domain: 'Training', description: 'Training enforcement, trainer/trainee context, operator-scoped access' },
-          { domain: 'Intelligence', description: 'CEO Dashboard, AI Executive Agent, Energy Intelligence, Machine Intel' },
-          { domain: 'Platform', description: 'Mobile PWA, Digital Signage, Audit Trail, Electronic Signatures, RBAC' },
+          { domain: 'Training', description: 'Training enforcement, trainer/trainee context, operator-scoped access controls' },
+          { domain: 'Intelligence', description: 'CEO Dashboard · AI Executive Assistant · Energy Intelligence · Machine Intel' },
+          { domain: 'Platform', description: 'Mobile PWA · Digital Signage · Audit Trail · Electronic Signatures · RBAC · SSO' },
         ].map(tile => (
           <div class="border border-border rounded-xl p-6 hover:border-accent transition-colors">
             <h3 class="font-bold text-navy mb-2">{tile.domain}</h3>
@@ -190,11 +363,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <!-- Closing CTA -->
   <section class="bg-navy text-white py-20 px-6 text-center">
-    <h2 class="text-3xl font-bold mb-4">Ready to see it live?</h2>
+    <h2 class="text-3xl font-bold mb-4">Ready to see it on your floor?</h2>
     <p class="text-white/70 mb-8 max-w-xl mx-auto">
-      A 30-minute demo shows the full platform running against real manufacturing data.
+      A 30-minute demo shows the full platform running against real manufacturing data, mapped to your stack.
     </p>
-    <a href="/about#contact" class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3 rounded-md transition-colors inline-block">
+    <a href="/about#contact" class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-md transition-colors inline-block">
       Book a Demo
     </a>
   </section>
