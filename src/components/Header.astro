@@ -1,0 +1,34 @@
+---
+const navLinks = [
+  { label: 'Product', href: '/product' },
+  { label: 'Compliance', href: '/compliance' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'About', href: '/about' },
+];
+---
+
+<header class="bg-white border-b border-border sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2">
+      <span class="text-navy font-bold text-xl tracking-tight">MESvantage</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="text-sm font-medium text-ink/70 hover:text-navy transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href="/about#contact"
+      class="bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors"
+    >
+      Book a Demo
+    </a>
+  </div>
+</header>
