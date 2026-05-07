@@ -1,14 +1,125 @@
 ---
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MESvantage</title>
-  </head>
-  <body>
-    <p class="text-navy font-bold text-2xl p-8">MESvantage — brand palette smoke test</p>
-  </body>
-</html>
+
+<BaseLayout title="Manufacturing Intelligence for Regulated Industry">
+
+  <!-- Hero -->
+  <section class="bg-navy text-white py-28 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
+        The manufacturing intelligence platform<br class="hidden md:block" /> for regulated industry.
+      </h1>
+      <p class="mt-6 text-lg text-white/80 max-w-2xl mx-auto">
+        Built and FDA-validated inside a live 250,000-knee-per-year orthopaedic CDMO.
+        Not a pilot. Not a prototype. Production-grade, today.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/about#contact" class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3 rounded-md transition-colors">
+          Book a Demo
+        </a>
+        <a href="/product" class="border border-white/40 hover:border-white text-white font-semibold px-8 py-3 rounded-md transition-colors">
+          See the Product
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof bar -->
+  <section class="border-b border-border bg-white">
+    <div class="max-w-6xl mx-auto px-6 py-6 flex flex-wrap items-center justify-center gap-4 text-sm text-ink/60 font-medium">
+      <span class="text-navy font-bold">Croom Medical</span>
+      <span class="text-border">·</span>
+      <span>250,000 knee systems / year</span>
+      <span class="text-border">·</span>
+      <span>ISO 13485 certified</span>
+      <span class="text-border">·</span>
+      <span>FDA 21 CFR Part 11 validated</span>
+    </div>
+  </section>
+
+  <!-- The gap we fill -->
+  <section class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-navy text-center mb-12">
+        The gap nobody else fills
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        {[
+          {
+            title: 'Purpose-built for CDMOs',
+            body: 'Not a generic MES retrofitted to regulated manufacturing. Every workflow — DHR, FAI, CMM, OEE — was designed for contract manufacturers of medical devices from day one.',
+          },
+          {
+            title: 'Already FDA-validated',
+            body: 'IQ/OQ/PQ baseline passed in a live production environment. Validation documentation is transferable to your deployment. Skip the 12-month validation programme.',
+          },
+          {
+            title: 'Live in production',
+            body: 'Running at 250,000 knee systems per year, 24/7, under ISO 13485 and FDA scrutiny. Every feature has been stress-tested on a real production floor — not a lab.',
+          },
+        ].map(card => (
+          <div class="bg-white border border-border rounded-xl p-8">
+            <h3 class="text-lg font-bold text-navy mb-3">{card.title}</h3>
+            <p class="text-ink/70 leading-relaxed">{card.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Module highlights -->
+  <section class="bg-white py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-navy text-center mb-4">50+ modules across 6 domains</h2>
+      <p class="text-center text-ink/60 mb-12 max-w-2xl mx-auto">
+        From incoming inspection to CEO intelligence — everything a regulated CDMO needs in one validated platform.
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          {
+            domain: 'Quality',
+            description: 'FAI, FPY, SPC, DHR, Incoming Inspection, Customer Quality Portal',
+          },
+          {
+            domain: 'Production',
+            description: 'OEE, Scheduling, In-Process Documentation, Standard Times, Graduation',
+          },
+          {
+            domain: 'Metrology',
+            description: 'CMM integration with AI-powered parsing for Renishaw, Hexagon, and Zeiss',
+          },
+          {
+            domain: 'Training',
+            description: 'Training enforcement, trainer/trainee context, operator-scoped access',
+          },
+          {
+            domain: 'Intelligence',
+            description: 'CEO Dashboard, AI Executive Agent, Energy Intelligence, Machine Intel',
+          },
+          {
+            domain: 'Platform',
+            description: 'Mobile PWA, Digital Signage, Audit Trail, Electronic Signatures, RBAC',
+          },
+        ].map(tile => (
+          <div class="border border-border rounded-xl p-6 hover:border-accent transition-colors">
+            <h3 class="font-bold text-navy mb-2">{tile.domain}</h3>
+            <p class="text-sm text-ink/60 leading-relaxed">{tile.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="bg-navy text-white py-20 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-4">Ready to see it live?</h2>
+    <p class="text-white/70 mb-8 max-w-xl mx-auto">
+      A 30-minute demo shows the full platform running against real manufacturing data.
+    </p>
+    <a href="/about#contact" class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3 rounded-md transition-colors inline-block">
+      Book a Demo
+    </a>
+  </section>
+
+</BaseLayout>
