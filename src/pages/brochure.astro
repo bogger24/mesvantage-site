@@ -1,0 +1,318 @@
+---
+// Single-page A4 brochure — designed to be rendered to PDF
+// Print: chromium --headless --print-to-pdf=mesvantage-brochure.pdf http://localhost:4321/brochure
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MESvantage — Manufacturing Intelligence for Medical Device CDMOs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style is:global>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #1A1A2E;
+      background: white;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      padding: 12mm 14mm;
+      display: flex;
+      flex-direction: column;
+      gap: 6mm;
+      background: white;
+      page-break-after: always;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 4mm;
+      border-bottom: 1.5px solid #E2E8F0;
+    }
+    .logo {
+      font-size: 18pt;
+      font-weight: 900;
+      color: #0F2D52;
+      letter-spacing: -0.5px;
+    }
+    .badges {
+      display: flex;
+      gap: 4px;
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .badge {
+      background: #1A7FBF;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+    .badge.outline {
+      background: white;
+      color: #1A7FBF;
+      border: 1px solid #1A7FBF;
+    }
+    .hero {
+      padding: 4mm 0 2mm;
+    }
+    .hero h1 {
+      font-size: 24pt;
+      font-weight: 900;
+      line-height: 1.05;
+      color: #0F2D52;
+      margin: 0 0 3mm;
+      letter-spacing: -0.5px;
+    }
+    .hero p {
+      font-size: 11pt;
+      line-height: 1.45;
+      color: #475569;
+      margin: 0;
+      max-width: 165mm;
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3mm;
+    }
+    .kpi {
+      background: #0F2D52;
+      color: white;
+      padding: 4mm 3mm;
+      border-radius: 3mm;
+      text-align: center;
+    }
+    .kpi-val { font-size: 22pt; font-weight: 900; line-height: 1; letter-spacing: -1px; }
+    .kpi-val .accent { color: #1A7FBF; }
+    .kpi-label {
+      font-size: 7pt;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-top: 2mm;
+      font-weight: 600;
+    }
+
+    .section-label {
+      font-size: 7pt;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1A7FBF;
+      margin-bottom: 1.5mm;
+    }
+    .section-title {
+      font-size: 13pt;
+      font-weight: 800;
+      color: #0F2D52;
+      margin: 0 0 3mm;
+    }
+
+    .arch {
+      background: #F8F9FB;
+      border: 1px solid #E2E8F0;
+      border-radius: 3mm;
+      padding: 4mm;
+    }
+    .arch svg { width: 100%; height: 65mm; display: block; }
+
+    .domains {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5mm;
+    }
+    .domain {
+      border: 1px solid #E2E8F0;
+      border-radius: 2.5mm;
+      padding: 3mm;
+      background: white;
+    }
+    .domain-name {
+      font-size: 9.5pt;
+      font-weight: 800;
+      color: #0F2D52;
+      margin: 0 0 1.5mm;
+    }
+    .domain-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 7.5pt;
+      line-height: 1.5;
+      color: #475569;
+    }
+    .domain-list li::before {
+      content: '✓ ';
+      color: #1A7FBF;
+      font-weight: 800;
+    }
+
+    .footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 3mm;
+      border-top: 1.5px solid #E2E8F0;
+      font-size: 8pt;
+    }
+    .footer-left { color: #64748B; line-height: 1.5; }
+    .footer-left strong { color: #0F2D52; }
+    .footer-cta {
+      background: #1A7FBF;
+      color: white;
+      padding: 3mm 6mm;
+      border-radius: 1.5mm;
+      font-weight: 700;
+      font-size: 9.5pt;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">MESvantage</div>
+      <div class="badges">
+        <span class="badge">FDA 21 CFR Part 11</span>
+        <span class="badge">ISO 13485</span>
+        <span class="badge outline">90-day deploy</span>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>The manufacturing intelligence platform for medical device CDMOs.</h1>
+      <p>Connect your ERP, your quality system, your CMMs and your machines into one validated platform. Validated under FDA 21 CFR Part 11. Certified under ISO 13485. Live on your floor in 90 days.</p>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-val">90<span class="accent">d</span></div><div class="kpi-label">Time to live</div></div>
+      <div class="kpi"><div class="kpi-val">~70<span class="accent">%</span></div><div class="kpi-label">Faster audit prep</div></div>
+      <div class="kpi"><div class="kpi-val">~75<span class="accent">%</span></div><div class="kpi-label">FAI cycle reduction</div></div>
+      <div class="kpi"><div class="kpi-val">€0</div><div class="kpi-label">Validation budget</div></div>
+    </div>
+
+    <!-- Architecture -->
+    <div>
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">One platform. Every system on your floor.</h2>
+      <div class="arch">
+        <svg viewBox="0 0 1100 480" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0F2D52"/>
+              <stop offset="1" stop-color="#1A7FBF"/>
+            </linearGradient>
+          </defs>
+          <text x="160" y="22" text-anchor="middle" fill="#64748B" font-size="11" font-weight="700" letter-spacing="1.5">YOUR INPUTS</text>
+          <text x="550" y="22" text-anchor="middle" fill="#64748B" font-size="11" font-weight="700" letter-spacing="1.5">MESVANTAGE</text>
+          <text x="940" y="22" text-anchor="middle" fill="#64748B" font-size="11" font-weight="700" letter-spacing="1.5">YOUR OUTPUTS</text>
+
+          <!-- Inputs -->
+          {[
+            { y: 60, label: 'ERP', sub: 'M1 · SAP · Plex · Infor' },
+            { y: 140, label: 'QMS', sub: 'Qualio · MasterControl' },
+            { y: 220, label: 'Machines', sub: 'OPC-UA · MTConnect' },
+            { y: 300, label: 'CMMs', sub: 'Renishaw · Hexagon · Zeiss' },
+            { y: 380, label: 'Documents', sub: 'OneDrive · SharePoint' },
+          ].map(n => (
+            <g>
+              <rect x="20" y={n.y} width="280" height="60" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+              <text x="40" y={n.y + 28} fill="#0F2D52" font-size="15" font-weight="700">{n.label}</text>
+              <text x="40" y={n.y + 47} fill="#64748B" font-size="11">{n.sub}</text>
+              <line x1="300" y1={n.y + 30} x2="380" y2="240" stroke="#1A7FBF" stroke-width="1.2" opacity="0.4"/>
+            </g>
+          ))}
+
+          <!-- Core -->
+          <rect x="380" y="80" width="340" height="320" rx="18" fill="url(#cg)"/>
+          <text x="550" y="118" text-anchor="middle" fill="white" font-size="20" font-weight="900">MESvantage</text>
+          <text x="550" y="138" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-size="10" letter-spacing="1.5">VALIDATED PLATFORM CORE</text>
+          {[
+            'Device History Records (DHR)',
+            'Genealogy & Traceability',
+            'OEE & Downtime Intelligence',
+            'FAI · Inspections · NCR · CAPA',
+            'Scheduling & Standard Times',
+            'Audit Trail & E-Signatures',
+            'AI Executive Assistant',
+          ].map((label, i) => (
+            <g>
+              <rect x="408" y={170 + i * 30 - 12} width="284" height="22" rx="6" fill="rgba(255,255,255,0.08)"/>
+              <text x="420" y={170 + i * 30 + 3} fill="white" font-size="12" font-weight="500">{label}</text>
+            </g>
+          ))}
+          <text x="550" y="392" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="9" letter-spacing="2">SILOED SAAS · ENV PER CUSTOMER</text>
+
+          <!-- Outputs -->
+          {[
+            { y: 100, label: 'OEM Customer Portals', sub: 'Lot release · Quality data' },
+            { y: 180, label: 'Floor & Mobile', sub: 'PWA · Operator UX' },
+            { y: 260, label: 'Executive Intelligence', sub: 'Power BI · Dashboards' },
+            { y: 340, label: 'Regulatory Packets', sub: 'IQ/OQ/PQ · Validation' },
+          ].map(n => (
+            <g>
+              <rect x="800" y={n.y} width="280" height="60" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+              <text x="820" y={n.y + 28} fill="#0F2D52" font-size="15" font-weight="700">{n.label}</text>
+              <text x="820" y={n.y + 47} fill="#64748B" font-size="11">{n.sub}</text>
+              <line x1="720" y1="240" x2="800" y2={n.y + 30} stroke="#1A7FBF" stroke-width="1.2" opacity="0.4"/>
+            </g>
+          ))}
+        </svg>
+      </div>
+    </div>
+
+    <!-- 6 Domains -->
+    <div>
+      <div class="section-label">The platform · 50+ modules</div>
+      <h2 class="section-title">Six domains. Built for medical device manufacturing.</h2>
+      <div class="domains">
+        {[
+          { name: 'Quality', items: ['FAI · FPY · SPC · DHR', 'NCR · CAPA · Hold mgmt', 'Customer Quality Portal'] },
+          { name: 'Production', items: ['Live OEE & downtime', 'Closed-loop scheduling', 'In-Process Documentation'] },
+          { name: 'Metrology', items: ['CMM auto-parsing', 'Renishaw · Hexagon · Zeiss', 'Calibration management'] },
+          { name: 'Training', items: ['Enforced at point of work', 'Operator graduation flow', 'Qualio bidirectional'] },
+          { name: 'Intelligence', items: ['CEO Dashboard', 'AI Executive Assistant', 'Energy & Machine Intel'] },
+          { name: 'Platform', items: ['Mobile PWA · Signage', 'Audit trail · E-sign', 'Siloed SaaS · per-customer'] },
+        ].map(d => (
+          <div class="domain">
+            <div class="domain-name">{d.name}</div>
+            <ul class="domain-list">
+              {d.items.map(i => <li>{i}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-left">
+        <strong>Compliance:</strong> FDA 21 CFR Part 11 · ISO 13485 · EU Annex 11<br />
+        <strong>Web:</strong> mesvantage.com &nbsp;·&nbsp; <strong>Email:</strong> hello@mesvantage.com
+      </div>
+      <div class="footer-cta">Book a demo →</div>
+    </div>
+  </div>
+</body>
+</html>
