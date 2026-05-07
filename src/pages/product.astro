@@ -1,119 +1,749 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const domains = [
-  {
-    name: 'Quality',
-    description:
-      'Full quality management suite designed for ISO 13485 compliance. Covers the complete quality lifecycle from incoming goods to final release, with digital DHR and electronic signatures throughout.',
-    modules: [
-      'First Article Inspection (FAI)',
-      'First Pass Yield (FPY) tracking',
-      'Statistical Process Control (SPC)',
-      'Device History Record (DHR)',
-      'Incoming Inspection',
-      'Customer Quality Portal',
-      'Quality Dashboard',
-    ],
-  },
-  {
-    name: 'Production',
-    description:
-      'Real-time production floor intelligence. OEE is calculated live from machine data — no manual entry. Scheduling integrates with your ERP routing to give operators a single source of truth.',
-    modules: [
-      'Overall Equipment Effectiveness (OEE)',
-      'Production Scheduling',
-      'In-Process Documentation (IPD)',
-      'Standard Times & Variance',
-      'Graduation & Release',
-    ],
-  },
-  {
-    name: 'Metrology',
-    description:
-      'AI-powered CMM result parsing that eliminates manual data entry from dimensional inspection. Supports Renishaw, Hexagon, and Zeiss report formats out of the box.',
-    modules: [
-      'CMM result ingestion & parsing',
-      'Dimensional conformance tracking',
-      'Calibration management',
-      'Out-of-tolerance alerting',
-    ],
-  },
-  {
-    name: 'Training',
-    description:
-      'Operator training is enforced at the point of work — not on a spreadsheet. The system checks training status before allowing access to any operation, and flags gaps in real time.',
-    modules: [
-      'Training enforcement by operation',
-      'Trainer/trainee context tracking',
-      'Operator scope management',
-      'Training gap reporting',
-    ],
-  },
-  {
-    name: 'Intelligence',
-    description:
-      'Executive and operational intelligence layers that surface what matters without requiring manual analysis. The CEO module gives leadership a live operational picture; the AI agent answers natural-language queries against live manufacturing data.',
-    modules: [
-      'CEO Intelligence Dashboard',
-      'AI Executive Agent (natural language)',
-      'Energy Intelligence & sustainability',
-      'Machine utilisation intelligence',
-      'Operational intelligence feeds',
-    ],
-  },
-  {
-    name: 'Platform',
-    description:
-      'Enterprise-grade platform foundations that regulated manufacturers require. FDA 21 CFR Part 11 compliance is built into the platform layer — not bolted on as an afterthought.',
-    modules: [
-      'Mobile PWA (install-ready)',
-      'Digital factory floor signage',
-      'Full audit trail (21 CFR Part 11)',
-      'Electronic signatures',
-      'Role-based access control',
-      'ERP integration (Infor M1, others)',
-    ],
-  },
-];
 ---
 
 <BaseLayout
-  title="Product"
-  description="MESvantage module breakdown — 50+ modules across Quality, Production, Metrology, Training, Intelligence, and Platform domains."
+  title="Product — 50+ modules across 6 domains"
+  description="The full MESvantage platform: Quality, Production, Metrology, Training, Intelligence, and Platform domains. Built for medical device manufacturing."
 >
-  <section class="py-16 px-6 border-b border-border">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl font-extrabold text-navy">The full platform</h1>
-      <p class="mt-4 text-lg text-ink/70 max-w-2xl mx-auto">
-        50+ modules built and validated inside a live orthopaedic CDMO. Every feature exists because a production floor needed it.
+
+  <!-- Hero -->
+  <section class="bg-navy text-white pt-20 pb-16 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none"
+         style="background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px); background-size: 48px 48px;"></div>
+    <div class="max-w-4xl mx-auto text-center relative">
+      <span class="text-xs font-bold tracking-widest text-accent uppercase">The platform</span>
+      <h1 class="mt-3 text-4xl md:text-5xl font-extrabold text-white tracking-tight">50+ validated modules. One platform.</h1>
+      <p class="mt-5 text-lg text-white/70 max-w-2xl mx-auto">
+        Six interconnected domains covering the full medical-device manufacturing lifecycle — from incoming inspection to executive intelligence.
       </p>
+    </div>
+
+    <!-- Domain quick-jump -->
+    <div class="max-w-4xl mx-auto mt-10 grid grid-cols-3 md:grid-cols-6 gap-2 relative">
+      {[
+        { id: 'quality', label: 'Quality' },
+        { id: 'production', label: 'Production' },
+        { id: 'metrology', label: 'Metrology' },
+        { id: 'training', label: 'Training' },
+        { id: 'intelligence', label: 'Intelligence' },
+        { id: 'platform', label: 'Platform' },
+      ].map(d => (
+        <a href={`#${d.id}`} class="bg-white/5 hover:bg-white/10 border border-white/10 hover:border-accent rounded-md px-3 py-2 text-xs font-semibold text-center text-white/80 hover:text-white transition-colors">{d.label}</a>
+      ))}
     </div>
   </section>
 
-  {domains.map(domain => (
-    <section class="py-16 px-6 border-b border-border last:border-0">
-      <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-10">
-        <div class="md:col-span-2">
-          <h2 class="text-2xl font-bold text-navy">{domain.name}</h2>
-          <p class="mt-3 text-ink/70 leading-relaxed">{domain.description}</p>
+  <!-- ====================== QUALITY ====================== -->
+  <section id="quality" class="py-24 px-6 bg-white border-b border-border">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-accent uppercase">Domain 01 · Quality</span>
+          <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">Quality, end to end. ISO 13485 by design.</h2>
+          <p class="mt-4 text-ink/70 leading-relaxed">
+            A complete quality management suite covering incoming goods, in-process inspection, FAI, SPC, NCR/CAPA workflows, and OEM-facing customer portals. Every record is electronically signed and version-locked under 21 CFR Part 11.
+          </p>
         </div>
-        <ul class="md:col-span-3 grid sm:grid-cols-2 gap-3 content-start">
-          {domain.modules.map(mod => (
-            <li class="flex items-start gap-2 text-sm text-ink/80">
-              <span class="text-accent font-bold mt-0.5">✓</span>
-              {mod}
+        <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-sm content-start">
+          {[
+            'First Article Inspection (FAI)',
+            'First Pass Yield (FPY) tracking',
+            'Statistical Process Control (SPC)',
+            'Device History Record (DHR)',
+            'Incoming Inspection workflow',
+            'Non-Conformance Reports (NCR)',
+            'Corrective Action (CAPA)',
+            'Customer Quality Portal',
+            'Hold & quarantine management',
+            'Quality KPI dashboards',
+            'Out-of-tolerance alerting',
+            'Root-cause analysis tooling',
+          ].map(m => (
+            <li class="flex items-start gap-2 text-ink/80">
+              <span class="text-accent font-bold mt-0.5">✓</span>{m}
             </li>
           ))}
         </ul>
       </div>
-    </section>
-  ))}
 
-  <section class="bg-navy text-white py-16 px-6 text-center">
-    <h2 class="text-2xl font-bold mb-4">See it in action</h2>
-    <a href="/about#contact" class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3 rounded-md transition-colors inline-block">
+      <!-- Mockup: Quality dashboard with SPC chart -->
+      <div class="rounded-xl overflow-hidden shadow-2xl border border-border">
+        <div class="bg-[#1e2a3a] px-4 py-2.5 flex items-center gap-3">
+          <div class="flex gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+          </div>
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+            app.mesvantage.com / quality / dashboard
+          </div>
+        </div>
+        <div class="bg-[#F8F9FB] p-6">
+          <div class="flex justify-between items-start mb-5">
+            <div>
+              <h3 class="text-xl font-bold text-navy">Quality Operations</h3>
+              <p class="text-xs text-ink/50 mt-0.5">Live · Sample data · 7 day rolling</p>
+            </div>
+            <div class="flex gap-2">
+              <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">● Synced</span>
+              <span class="bg-accent/10 text-accent px-2 py-1 rounded text-xs font-semibold">ISO 13485</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-5">
+            {[
+              { l: 'FPY', v: '99.2%', d: '+0.3%', tone: 'ok' },
+              { l: 'Open NCRs', v: '3', d: '−2 wk', tone: 'warn' },
+              { l: 'Open CAPAs', v: '7', d: '4 on track', tone: 'ok' },
+              { l: 'Lots on hold', v: '1', d: 'awaiting MRB', tone: 'warn' },
+              { l: 'Cpk avg', v: '1.87', d: 'goal 1.67', tone: 'ok' },
+            ].map(k => (
+              <div class="bg-white border border-border rounded-lg p-3">
+                <div class="text-[10px] uppercase tracking-wider text-ink/50 font-semibold">{k.l}</div>
+                <div class={`text-2xl font-extrabold mt-1 ${k.tone === 'warn' ? 'text-amber-600' : 'text-navy'}`}>{k.v}</div>
+                <div class="text-[10px] text-ink/50 mt-0.5">{k.d}</div>
+              </div>
+            ))}
+          </div>
+
+          <!-- SPC chart -->
+          <div class="bg-white border border-border rounded-lg p-4 mb-3">
+            <div class="flex justify-between items-center mb-3">
+              <div>
+                <div class="text-xs font-bold text-navy">SPC — PT-2049-B · Feature D2 (Ø 12.7 ±0.05)</div>
+                <div class="text-[10px] text-ink/50 mt-0.5">Last 32 measurements · Cpk 1.87 · Within control</div>
+              </div>
+              <span class="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">● In control</span>
+            </div>
+            <svg viewBox="0 0 700 140" class="w-full h-32">
+              <line x1="0" y1="20" x2="700" y2="20" stroke="#EF4444" stroke-width="1" stroke-dasharray="4 3" opacity="0.6"/>
+              <text x="0" y="14" fill="#EF4444" font-size="9" opacity="0.7">USL 12.75</text>
+              <line x1="0" y1="120" x2="700" y2="120" stroke="#EF4444" stroke-width="1" stroke-dasharray="4 3" opacity="0.6"/>
+              <text x="0" y="134" fill="#EF4444" font-size="9" opacity="0.7">LSL 12.65</text>
+              <line x1="0" y1="70" x2="700" y2="70" stroke="#1A7FBF" stroke-width="1" stroke-dasharray="2 3" opacity="0.4"/>
+              <text x="660" y="65" fill="#1A7FBF" font-size="9" opacity="0.7">12.70</text>
+              {[68, 72, 65, 71, 69, 73, 66, 70, 68, 67, 72, 65, 71, 68, 70, 69, 67, 73, 65, 70, 68, 71, 67, 69, 70, 68, 71, 66, 69, 70, 68, 67].map((y, i) => (
+                <g>
+                  <circle cx={i * 22 + 12} cy={y} r="3" fill="#1A7FBF"/>
+                  {i > 0 && <line x1={(i - 1) * 22 + 12} y1={[68, 72, 65, 71, 69, 73, 66, 70, 68, 67, 72, 65, 71, 68, 70, 69, 67, 73, 65, 70, 68, 71, 67, 69, 70, 68, 71, 66, 69, 70, 68, 67][i - 1]} x2={i * 22 + 12} y2={y} stroke="#1A7FBF" stroke-width="1.5" opacity="0.6"/>}
+                </g>
+              ))}
+            </svg>
+          </div>
+
+          <!-- Inspection queue -->
+          <div class="bg-white border border-border rounded-lg overflow-hidden">
+            <div class="px-4 py-2 bg-surface text-xs font-bold text-navy">Inspection queue · 4 pending</div>
+            <table class="w-full text-xs">
+              <thead class="text-ink/50 bg-surface">
+                <tr><th class="text-left px-4 py-2 font-semibold">#</th><th class="text-left font-semibold">Type</th><th class="text-left font-semibold">Part</th><th class="text-left font-semibold">Operation</th><th class="text-left font-semibold">Inspector</th><th class="text-left font-semibold">Status</th></tr>
+              </thead>
+              <tbody>
+                {[
+                  { i: 'INS-4892', t: 'FAI', p: 'PT-2103-A', o: 'OP-030', insp: 'Patel R.', s: 'In progress', tone: 'warn' },
+                  { i: 'INS-4891', t: 'In-process', p: 'PT-2049-B', o: 'OP-020', insp: 'Doyle M.', s: 'Pass', tone: 'ok' },
+                  { i: 'INS-4890', t: 'Final', p: 'PT-2210-C', o: 'OP-070', insp: 'Walsh F.', s: 'Pass', tone: 'ok' },
+                  { i: 'INS-4889', t: 'Incoming', p: 'RM-7732', o: '—', insp: 'Doyle M.', s: 'Pending', tone: 'idle' },
+                ].map(r => (
+                  <tr class="border-t border-border">
+                    <td class="px-4 py-2 font-mono text-navy">{r.i}</td>
+                    <td>{r.t}</td>
+                    <td class="font-mono">{r.p}</td>
+                    <td class="font-mono">{r.o}</td>
+                    <td>{r.insp}</td>
+                    <td><span class={
+                      r.tone === 'ok' ? 'text-green-700 font-semibold' :
+                      r.tone === 'warn' ? 'text-amber-600 font-semibold' :
+                      'text-ink/40 font-semibold'
+                    }>● {r.s}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== PRODUCTION ====================== -->
+  <section id="production" class="py-24 px-6 bg-surface border-b border-border">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-accent uppercase">Domain 02 · Production</span>
+          <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">Real-time floor intelligence. No manual entry.</h2>
+          <p class="mt-4 text-ink/70 leading-relaxed">
+            Live OEE direct from machine telemetry. Closed-loop scheduling that absorbs unplanned downtime in real time. In-process documentation that operators actually use because it's on the work order, not on the shared drive.
+          </p>
+        </div>
+        <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-sm content-start">
+          {[
+            'OEE — live per machine and fleet',
+            'Production scheduling (closed-loop)',
+            'In-Process Documentation (IPD)',
+            'Standard Times & variance analysis',
+            'Operator graduation & release',
+            'Work order execution tracking',
+            'Setup time tracking',
+            'Downtime root-cause coding',
+            'Shift handover briefings',
+            'Throughput vs. takt time',
+            'Cell load balancing',
+            'Live escalation routing',
+          ].map(m => (
+            <li class="flex items-start gap-2 text-ink/80">
+              <span class="text-accent font-bold mt-0.5">✓</span>{m}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Mockup: Production schedule + OEE waterfall -->
+      <div class="rounded-xl overflow-hidden shadow-2xl border border-border">
+        <div class="bg-[#1e2a3a] px-4 py-2.5 flex items-center gap-3">
+          <div class="flex gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+          </div>
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+            app.mesvantage.com / scheduling
+          </div>
+        </div>
+        <div class="bg-white p-6">
+          <!-- Schedule -->
+          <div class="mb-5">
+            <div class="flex justify-between mb-3">
+              <div>
+                <h3 class="text-base font-bold text-navy">Production schedule · Today</h3>
+                <p class="text-[10px] text-ink/50">Updated 14:06 · 4 cells · 3 shifts</p>
+              </div>
+              <div class="flex gap-1">
+                {['Day', 'Week', 'Month'].map((t, i) => (
+                  <button class={i === 0 ? 'bg-accent text-white text-xs px-3 py-1 rounded font-semibold' : 'bg-surface text-ink/60 text-xs px-3 py-1 rounded font-semibold'}>{t}</button>
+                ))}
+              </div>
+            </div>
+            <div class="bg-surface border border-border rounded-lg p-3">
+              <div class="flex text-[9px] text-ink/40 font-mono mb-1.5 pl-16">
+                {['06', '08', '10', '12', '14', '16', '18', '20', '22'].map(t => (
+                  <span class="flex-1 text-center">{t}:00</span>
+                ))}
+              </div>
+              {[
+                { cell: 'Cell 01', bars: [{ l: 8, w: 38, c: 'bg-accent', label: 'PT-2049-B · 320u' }, { l: 48, w: 22, c: 'bg-accent/70', label: 'PT-2103-A · 180u' }, { l: 72, w: 18, c: 'bg-amber-400', label: 'Setup' }] },
+                { cell: 'Cell 02', bars: [{ l: 0, w: 30, c: 'bg-accent', label: 'PT-2049-B · 290u' }, { l: 32, w: 28, c: 'bg-accent', label: 'PT-2049-B · 240u' }, { l: 62, w: 32, c: 'bg-accent/70', label: 'PT-2210-C · 210u' }] },
+                { cell: 'Cell 03', bars: [{ l: 5, w: 24, c: 'bg-accent', label: 'PT-2049-B · 200u' }, { l: 30, w: 12, c: 'bg-red-400', label: 'Down' }, { l: 44, w: 18, c: 'bg-amber-400', label: 'Setup' }, { l: 64, w: 28, c: 'bg-accent/70', label: 'PT-2103-A · 180u' }] },
+                { cell: 'Cell 04', bars: [{ l: 4, w: 42, c: 'bg-accent', label: 'PT-2210-C · 410u' }, { l: 50, w: 30, c: 'bg-accent', label: 'PT-2210-C · 290u' }, { l: 82, w: 14, c: 'bg-accent/70', label: 'PT-2049-B · 90u' }] },
+                { cell: 'CMM Bay', bars: [{ l: 12, w: 6, c: 'bg-navy', label: 'FAI' }, { l: 22, w: 4, c: 'bg-navy', label: 'IP' }, { l: 30, w: 6, c: 'bg-navy', label: 'IP' }, { l: 42, w: 8, c: 'bg-navy', label: 'IP' }, { l: 56, w: 6, c: 'bg-navy', label: 'Final' }, { l: 68, w: 8, c: 'bg-navy', label: 'IP' }] },
+              ].map(row => (
+                <div class="flex items-center gap-2 mb-1.5 last:mb-0">
+                  <div class="w-14 text-[11px] font-bold text-navy">{row.cell}</div>
+                  <div class="flex-1 relative h-6 bg-white rounded">
+                    {row.bars.map(b => (
+                      <div class={`absolute top-0 h-6 rounded ${b.c} text-[8px] text-white px-1.5 py-1 truncate font-medium`} style={`left:${b.l}%; width:${b.w}%`}>{b.label}</div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- OEE waterfall + variance -->
+          <div class="grid md:grid-cols-2 gap-3">
+            <div class="bg-surface border border-border rounded-lg p-4">
+              <div class="text-xs font-bold text-navy mb-3">OEE breakdown — fleet, today</div>
+              <div class="space-y-2">
+                {[
+                  { l: 'Loaded time', v: 100, c: '#1A7FBF' },
+                  { l: 'Availability 94%', v: 94, c: '#1A7FBF' },
+                  { l: '× Performance 89%', v: 84, c: '#1A7FBF' },
+                  { l: '× Quality 99.2%', v: 83, c: '#1A7FBF' },
+                  { l: 'OEE = 78.4%', v: 78, c: '#0F2D52', bold: true },
+                ].map(row => (
+                  <div>
+                    <div class="flex justify-between text-[10px] mb-0.5">
+                      <span class={row.bold ? 'font-bold text-navy' : 'text-ink/70'}>{row.l}</span>
+                      <span class="font-mono text-ink/50">{row.v}%</span>
+                    </div>
+                    <div class="h-3 bg-white rounded">
+                      <div class="h-3 rounded" style={`width:${row.v}%; background-color:${row.c}`}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div class="bg-surface border border-border rounded-lg p-4">
+              <div class="text-xs font-bold text-navy mb-3">Standard time variance — by part</div>
+              <div class="space-y-2">
+                {[
+                  { p: 'PT-2049-B', v: '+12%', tone: 'warn', w: 56 },
+                  { p: 'PT-2103-A', v: '−3%', tone: 'ok', w: 42 },
+                  { p: 'PT-2210-C', v: '+1%', tone: 'ok', w: 51 },
+                  { p: 'PT-2188-D', v: '−7%', tone: 'ok', w: 38 },
+                  { p: 'PT-2099-E', v: '+24%', tone: 'warn', w: 70 },
+                ].map(row => (
+                  <div class="flex items-center gap-3">
+                    <div class="w-20 text-[10px] font-mono text-ink/70">{row.p}</div>
+                    <div class="flex-1 h-3 bg-white rounded relative">
+                      <div class={`h-3 rounded ${row.tone === 'warn' ? 'bg-amber-400' : 'bg-accent'}`} style={`width:${row.w}%`}></div>
+                    </div>
+                    <div class={`w-12 text-[10px] text-right font-bold ${row.tone === 'warn' ? 'text-amber-600' : 'text-ink/60'}`}>{row.v}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== METROLOGY ====================== -->
+  <section id="metrology" class="py-24 px-6 bg-white border-b border-border">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-accent uppercase">Domain 03 · Metrology</span>
+          <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">CMM data, parsed automatically.</h2>
+          <p class="mt-4 text-ink/70 leading-relaxed">
+            AI-powered ingestion for Renishaw, Hexagon, and Zeiss output. The platform reads the report, extracts every feature, links it back to the part drawing tolerance, flags out-of-tolerance, and writes the result to the DHR — without an inspector touching a keyboard.
+          </p>
+        </div>
+        <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-sm content-start">
+          {[
+            'CMM result ingestion (auto)',
+            'Renishaw / Hexagon / Zeiss support',
+            'AI feature-to-tolerance mapping',
+            'Calibration management',
+            'Out-of-tolerance alerting',
+            'GD&T attribute parsing',
+            'Instrument type classification',
+            'Operator-readable PDF reports',
+            'Drift detection over lots',
+            'Auto-link to part revision',
+          ].map(m => (
+            <li class="flex items-start gap-2 text-ink/80">
+              <span class="text-accent font-bold mt-0.5">✓</span>{m}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Mockup: CMM report parsed -->
+      <div class="rounded-xl overflow-hidden shadow-2xl border border-border">
+        <div class="bg-[#1e2a3a] px-4 py-2.5 flex items-center gap-3">
+          <div class="flex gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+          </div>
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+            app.mesvantage.com / metrology / report / HX-2026-1184
+          </div>
+        </div>
+        <div class="bg-[#F8F9FB] p-6">
+          <div class="flex justify-between items-start mb-5">
+            <div>
+              <div class="text-[10px] uppercase tracking-wider text-ink/50 font-semibold">CMM Report</div>
+              <h3 class="text-xl font-bold text-navy">HX-2026-1184 · Hexagon Global S</h3>
+              <p class="text-xs text-ink/60 mt-0.5">Part PT-2049-B rev D · Op 020 · 18 features · auto-parsed in 1.2s</p>
+            </div>
+            <div class="flex gap-2">
+              <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">● 18/18 in tolerance</span>
+              <span class="bg-accent/10 text-accent px-2 py-1 rounded text-xs font-semibold">AI-parsed</span>
+            </div>
+          </div>
+
+          <div class="bg-white border border-border rounded-lg overflow-hidden">
+            <table class="w-full text-xs">
+              <thead class="bg-surface text-ink/50">
+                <tr>
+                  <th class="px-4 py-2 text-left font-semibold">Feature</th>
+                  <th class="text-left font-semibold">Type</th>
+                  <th class="text-right font-semibold">Nominal</th>
+                  <th class="text-right font-semibold">Actual</th>
+                  <th class="text-right font-semibold">Dev</th>
+                  <th class="text-right font-semibold">Tol</th>
+                  <th class="text-left font-semibold pl-3">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { f: 'D1', t: 'Diameter', n: '12.700', a: '12.703', d: '+0.003', tol: '±0.050', tone: 'ok', bar: 6 },
+                  { f: 'D2', t: 'Diameter', n: '8.500', a: '8.498', d: '−0.002', tol: '±0.030', tone: 'ok', bar: -7 },
+                  { f: 'L1', t: 'Length', n: '45.000', a: '45.012', d: '+0.012', tol: '±0.100', tone: 'ok', bar: 12 },
+                  { f: 'L2', t: 'Length', n: '22.500', a: '22.498', d: '−0.002', tol: '±0.050', tone: 'ok', bar: -4 },
+                  { f: 'P1', t: 'Position', n: '0.000', a: '0.018', d: '+0.018', tol: '⌀0.050 MMC', tone: 'warn', bar: 36 },
+                  { f: 'P2', t: 'Position', n: '0.000', a: '0.012', d: '+0.012', tol: '⌀0.050 MMC', tone: 'ok', bar: 24 },
+                  { f: 'F1', t: 'Flatness', n: '0.000', a: '0.008', d: '+0.008', tol: '0.020', tone: 'ok', bar: 40 },
+                  { f: 'CY1', t: 'Cylindricity', n: '0.000', a: '0.012', d: '+0.012', tol: '0.030', tone: 'ok', bar: 40 },
+                ].map(r => (
+                  <tr class="border-t border-border">
+                    <td class="px-4 py-2 font-mono font-semibold text-navy">{r.f}</td>
+                    <td class="text-ink/70">{r.t}</td>
+                    <td class="text-right font-mono text-ink/70">{r.n}</td>
+                    <td class="text-right font-mono text-ink/70">{r.a}</td>
+                    <td class={`text-right font-mono font-semibold ${r.tone === 'warn' ? 'text-amber-600' : 'text-ink/70'}`}>{r.d}</td>
+                    <td class="text-right font-mono text-ink/50">{r.tol}</td>
+                    <td class="pl-3 py-1">
+                      <div class="flex items-center gap-2">
+                        <div class="w-16 h-1.5 bg-surface rounded relative">
+                          <div class="absolute top-0 left-1/2 w-px h-1.5 bg-ink/20"></div>
+                          <div class={`absolute top-0 h-1.5 rounded ${r.tone === 'warn' ? 'bg-amber-500' : 'bg-accent'}`}
+                               style={`left:${50 + (r.bar / 2)}%; width:${Math.abs(r.bar) / 2 + 1}%; transform:translateX(${r.bar < 0 ? '-100%' : '0'})`}></div>
+                        </div>
+                        <span class={r.tone === 'warn' ? 'text-amber-600 text-[10px] font-bold' : 'text-green-600 text-[10px] font-bold'}>{r.tone === 'warn' ? '◐' : '✓'}</span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-3 flex justify-between items-center text-[11px] text-ink/50">
+            <span>Auto-linked to DHR · SN-A4729-00184 · Lot LT-2026-Q2-018</span>
+            <span class="font-mono">Parsed by MESvantage v3.4 · model cmm-parse-v9</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== TRAINING ====================== -->
+  <section id="training" class="py-24 px-6 bg-surface border-b border-border">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-accent uppercase">Domain 04 · Training</span>
+          <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">Training enforced at the point of work.</h2>
+          <p class="mt-4 text-ink/70 leading-relaxed">
+            Operators only see operations they're trained for. Trainer/trainee workflows are built into the work order, not bolted on as a checklist. Cert expiry triggers automatic graduation review.
+          </p>
+        </div>
+        <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-sm content-start">
+          {[
+            'Training enforcement at WO start',
+            'Trainer/trainee context tracking',
+            'Operator scope by part / op',
+            'Qualio QMS bidirectional sync',
+            'Cert expiry alerts',
+            'Graduation workflow',
+            'Training gap analytics',
+            'Skills matrix by cell',
+            'Re-training trigger rules',
+            'Audit-ready training history',
+          ].map(m => (
+            <li class="flex items-start gap-2 text-ink/80">
+              <span class="text-accent font-bold mt-0.5">✓</span>{m}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Mockup: Skills matrix grid -->
+      <div class="rounded-xl overflow-hidden shadow-2xl border border-border">
+        <div class="bg-[#1e2a3a] px-4 py-2.5 flex items-center gap-3">
+          <div class="flex gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+          </div>
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+            app.mesvantage.com / training / skills-matrix
+          </div>
+        </div>
+        <div class="bg-white p-6">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-lg font-bold text-navy">Skills Matrix · Cell 01–04</h3>
+              <p class="text-xs text-ink/50 mt-0.5">9 operators · 8 part programs · live from Qualio</p>
+            </div>
+            <div class="flex gap-2">
+              <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-[10px] font-semibold">● Certified</span>
+              <span class="bg-amber-100 text-amber-700 px-2 py-1 rounded text-[10px] font-semibold">▲ Trainee</span>
+              <span class="bg-red-100 text-red-700 px-2 py-1 rounded text-[10px] font-semibold">✕ Expired</span>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs">
+              <thead>
+                <tr class="text-[10px] text-ink/50">
+                  <th class="text-left px-3 py-2 font-semibold">Operator</th>
+                  {['PT-2049-B', 'PT-2103-A', 'PT-2210-C', 'PT-2188-D', 'PT-2099-E', 'PT-2317-F', 'PT-2401-G', 'CMM Ops'].map(p => (
+                    <th class="text-center font-mono font-semibold">{p}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { n: 'Smith K.', s: ['c', 'c', 'c', 't', 'c', 'x', 'c', 'c'] },
+                  { n: 'Jones K.', s: ['c', 'c', 'c', 'c', 't', 't', 'c', 'c'] },
+                  { n: 'Patel R.', s: ['c', 'c', 't', 'c', 'c', 'c', 'c', 'c'] },
+                  { n: 'Doyle M.', s: ['c', 't', 'c', 'c', '-', 'c', 't', 'c'] },
+                  { n: 'Walsh F.', s: ['c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'] },
+                  { n: 'O\'Brien S.', s: ['t', 'c', 'c', 'c', 'c', '-', 'c', 't'] },
+                  { n: 'Lynch J.', s: ['c', 'c', 'x', 'c', 'c', 'c', 'c', 'c'] },
+                  { n: 'Ryan P.', s: ['c', '-', 'c', 'c', 't', 'c', 't', '-'] },
+                  { n: 'Murphy A.', s: ['t', '-', 'c', 'c', 'c', 'c', 'c', 'c'] },
+                ].map(row => (
+                  <tr class="border-t border-border">
+                    <td class="px-3 py-2 font-semibold text-navy text-xs">{row.n}</td>
+                    {row.s.map(s => (
+                      <td class="text-center py-1.5">
+                        <div class={
+                          s === 'c' ? 'inline-block w-6 h-6 rounded bg-green-500/15 text-green-700 leading-6 text-[10px] font-bold' :
+                          s === 't' ? 'inline-block w-6 h-6 rounded bg-amber-500/15 text-amber-700 leading-6 text-[10px] font-bold' :
+                          s === 'x' ? 'inline-block w-6 h-6 rounded bg-red-500/15 text-red-700 leading-6 text-[10px] font-bold' :
+                          'inline-block w-6 h-6 rounded text-ink/20 leading-6 text-[10px]'
+                        }>{s === 'c' ? '●' : s === 't' ? '▲' : s === 'x' ? '✕' : '·'}</div>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Alerts -->
+          <div class="mt-4 grid md:grid-cols-2 gap-2">
+            <div class="bg-red-50 border border-red-200 rounded-lg p-2.5 text-[11px] text-red-900">
+              <span class="font-bold">⚠ Cert expired</span> — Lynch J. · PT-2210-C · expired 2 days ago. Re-cert WO drafted.
+            </div>
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-2.5 text-[11px] text-amber-900">
+              <span class="font-bold">▲ Trainee active</span> — Murphy A. on PT-2049-B with trainer Patel R. · 3 hrs logged.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== INTELLIGENCE ====================== -->
+  <section id="intelligence" class="py-24 px-6 bg-white border-b border-border">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-accent uppercase">Domain 05 · Intelligence</span>
+          <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">From shop floor to CEO. One pane of glass.</h2>
+          <p class="mt-4 text-ink/70 leading-relaxed">
+            Live executive intelligence aggregated across operations, finance, supply chain, and quality. Powered by a purpose-built LLM that reads your ERP, your QMS, and your floor in real time.
+          </p>
+        </div>
+        <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-sm content-start">
+          {[
+            'CEO Intelligence Dashboard',
+            'AI Executive Agent (LLM)',
+            'Energy & sustainability intel',
+            'Machine intelligence (predictive)',
+            'Customer-facing portals',
+            'Power BI bidirectional',
+            'Ops intelligence stream',
+            'Continuous improvement tracker',
+            'BD & pipeline intel',
+            'Competitive intel feed',
+            'Energy ECM live data',
+            'Anomaly detection (auto)',
+          ].map(m => (
+            <li class="flex items-start gap-2 text-ink/80">
+              <span class="text-accent font-bold mt-0.5">✓</span>{m}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Mockup: CEO dashboard -->
+      <div class="rounded-xl overflow-hidden shadow-2xl border border-border">
+        <div class="bg-[#1e2a3a] px-4 py-2.5 flex items-center gap-3">
+          <div class="flex gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+          </div>
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+            app.mesvantage.com / ceo
+          </div>
+        </div>
+        <div class="bg-[#0F2D52] p-6 text-white">
+          <div class="flex justify-between items-start mb-5">
+            <div>
+              <div class="text-[10px] uppercase tracking-wider text-accent font-bold">Executive Intelligence</div>
+              <h3 class="text-2xl font-extrabold mt-1">Operations Pulse · May 2026</h3>
+            </div>
+            <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-semibold">● All systems live</span>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+            {[
+              { l: 'Output MTD', v: '38,420', s: 'units · 102% plan', t: 'ok' },
+              { l: 'On-time delivery', v: '97.4%', s: '+2.1pp MoM', t: 'ok' },
+              { l: 'COGS variance', v: '−1.8%', s: 'vs. budget', t: 'ok' },
+              { l: 'NCR rate', v: '0.42%', s: '−0.08pp MoM', t: 'ok' },
+            ].map(k => (
+              <div class="bg-white/5 border border-white/10 rounded-lg p-3">
+                <div class="text-[9px] uppercase tracking-wider text-white/50 font-semibold">{k.l}</div>
+                <div class="text-2xl font-extrabold mt-1 text-white">{k.v}</div>
+                <div class="text-[10px] text-green-400 mt-0.5 font-semibold">{k.s}</div>
+              </div>
+            ))}
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-3">
+            <!-- Output trend -->
+            <div class="md:col-span-2 bg-white/5 border border-white/10 rounded-lg p-4">
+              <div class="text-[11px] font-bold text-white mb-3">Output trend · last 30 days</div>
+              <svg viewBox="0 0 480 100" class="w-full h-24">
+                <defs>
+                  <linearGradient id="ceoGrad" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#1A7FBF" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="#1A7FBF" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="50" x2="480" y2="50" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
+                <path d="M 0 70 L 16 65 L 32 60 L 48 55 L 64 58 L 80 50 L 96 48 L 112 52 L 128 45 L 144 40 L 160 42 L 176 35 L 192 38 L 208 30 L 224 32 L 240 28 L 256 25 L 272 30 L 288 22 L 304 28 L 320 20 L 336 25 L 352 18 L 368 22 L 384 15 L 400 20 L 416 12 L 432 18 L 448 10 L 464 14 L 480 8 L 480 100 L 0 100 Z" fill="url(#ceoGrad)"/>
+                <path d="M 0 70 L 16 65 L 32 60 L 48 55 L 64 58 L 80 50 L 96 48 L 112 52 L 128 45 L 144 40 L 160 42 L 176 35 L 192 38 L 208 30 L 224 32 L 240 28 L 256 25 L 272 30 L 288 22 L 304 28 L 320 20 L 336 25 L 352 18 L 368 22 L 384 15 L 400 20 L 416 12 L 432 18 L 448 10 L 464 14 L 480 8" fill="none" stroke="#1A7FBF" stroke-width="2"/>
+              </svg>
+            </div>
+
+            <!-- AI insight feed -->
+            <div class="bg-white/5 border border-white/10 rounded-lg p-3">
+              <div class="text-[11px] font-bold text-white mb-2 flex items-center gap-1">
+                <span class="text-accent">✦</span> AI insights
+              </div>
+              <div class="space-y-2 text-[10px]">
+                <div class="border-l-2 border-accent pl-2">
+                  <div class="text-white/85"><span class="font-bold text-green-300">Up</span> · PT-2049-B yield trending +2.4pp; expect to clear backlog by Friday.</div>
+                </div>
+                <div class="border-l-2 border-amber-400 pl-2">
+                  <div class="text-white/85"><span class="font-bold text-amber-300">Watch</span> · Cell 03 thermal drift recurring weekly. Recommend tool study.</div>
+                </div>
+                <div class="border-l-2 border-accent pl-2">
+                  <div class="text-white/85"><span class="font-bold text-green-300">Up</span> · Energy: solar offset hit 41% peak last Sun. EUR 2.4k saved MTD.</div>
+                </div>
+                <div class="border-l-2 border-white/30 pl-2">
+                  <div class="text-white/85">Customer portal: 3 OEMs viewed lot release packets in last 24h.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== PLATFORM ====================== -->
+  <section id="platform" class="py-24 px-6 bg-surface">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-accent uppercase">Domain 06 · Platform</span>
+          <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">Compliance-grade foundations.</h2>
+          <p class="mt-4 text-ink/70 leading-relaxed">
+            Every record signed, hashed, and audit-trailed. Every action role-gated. Every customer in their own isolated environment. The platform is the validation evidence — not a layer on top of one.
+          </p>
+        </div>
+        <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-sm content-start">
+          {[
+            'Mobile PWA (install-ready)',
+            'Digital factory floor signage',
+            'Full audit trail (21 CFR Part 11)',
+            'Electronic signatures (Annex 11)',
+            'Role-based access control',
+            'Microsoft Entra SSO',
+            'Siloed SaaS deployment',
+            'Validated backups (verified daily)',
+            'ERP integration (M1/SAP/Plex)',
+            'Power BI bidirectional',
+            'OneDrive document linking',
+            'Self-service environment provisioning',
+          ].map(m => (
+            <li class="flex items-start gap-2 text-ink/80">
+              <span class="text-accent font-bold mt-0.5">✓</span>{m}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Mockup: Audit trail -->
+      <div class="rounded-xl overflow-hidden shadow-2xl border border-border">
+        <div class="bg-[#1e2a3a] px-4 py-2.5 flex items-center gap-3">
+          <div class="flex gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+          </div>
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+            app.mesvantage.com / admin / audit-trail
+          </div>
+        </div>
+        <div class="bg-white p-6">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-lg font-bold text-navy">Audit Trail · 21 CFR Part 11</h3>
+              <p class="text-xs text-ink/50 mt-0.5">Immutable · Hash-chained · Exportable to FDA-ready PDF</p>
+            </div>
+            <div class="flex gap-2">
+              <span class="bg-accent/10 text-accent px-2 py-1 rounded text-[10px] font-semibold">3,482 events today</span>
+              <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-[10px] font-semibold">● Hash chain valid</span>
+            </div>
+          </div>
+
+          <div class="bg-surface border border-border rounded-lg overflow-hidden font-mono text-[11px]">
+            <div class="grid grid-cols-12 gap-2 px-3 py-2 text-ink/50 text-[10px] uppercase tracking-wider font-semibold border-b border-border">
+              <div class="col-span-2">Timestamp (UTC)</div>
+              <div class="col-span-2">Actor</div>
+              <div class="col-span-2">Action</div>
+              <div class="col-span-2">Entity</div>
+              <div class="col-span-3">Change</div>
+              <div class="col-span-1 text-right">Hash</div>
+            </div>
+            {[
+              { t: '2026-05-07 14:06:18', a: 'Walsh F.', ac: 'SIGN', e: 'DHR · SN-A4729-00184', ch: 'Lock + e-signature', h: '0x9A4F…E218', tone: 'sign' },
+              { t: '2026-05-07 14:06:14', a: 'Walsh F.', ac: 'AUTH', e: 'DHR · SN-A4729-00184', ch: 'Re-auth (≤3 min)', h: '0x7B3C…0091', tone: 'norm' },
+              { t: '2026-05-07 13:58:42', a: 'auto', ac: 'INGEST', e: 'CMM · HX-2026-1184', ch: 'Parsed 18 features', h: '0x4D8E…AA21', tone: 'norm' },
+              { t: '2026-05-07 13:42:11', a: 'Patel R.', ac: 'CREATE', e: 'NCR · NCR-1147', ch: 'Coolant Δ flagged', h: '0x2F61…99A4', tone: 'warn' },
+              { t: '2026-05-07 13:30:55', a: 'Smith K.', ac: 'UPDATE', e: 'WO · WO-4892', ch: 'Op 020 → in-progress', h: '0x8C19…F127', tone: 'norm' },
+              { t: '2026-05-07 13:22:09', a: 'Smith K.', ac: 'AUTH', e: 'WO · WO-4892', ch: 'Op start auth', h: '0x6E40…4F09', tone: 'norm' },
+              { t: '2026-05-07 12:58:33', a: 'auto', ac: 'EXPORT', e: 'Lot release · LT-2026-Q2-018', ch: 'Sent to OEM portal', h: '0x1A92…7C3D', tone: 'sign' },
+              { t: '2026-05-07 12:45:14', a: 'Walsh F.', ac: 'SIGN', e: 'CAPA · CAPA-0089', ch: 'QA approval signature', h: '0x5B70…2E18', tone: 'sign' },
+            ].map(r => (
+              <div class="grid grid-cols-12 gap-2 px-3 py-1.5 border-b border-border last:border-b-0 text-ink/80">
+                <div class="col-span-2 text-ink/60">{r.t}</div>
+                <div class="col-span-2 font-semibold text-navy">{r.a}</div>
+                <div class="col-span-2"><span class={
+                  r.tone === 'sign' ? 'bg-accent/10 text-accent px-1.5 py-0.5 rounded text-[9px] font-bold' :
+                  r.tone === 'warn' ? 'bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded text-[9px] font-bold' :
+                  'bg-surface text-ink/70 px-1.5 py-0.5 rounded text-[9px] font-bold'
+                }>{r.ac}</span></div>
+                <div class="col-span-2 text-ink/70">{r.e}</div>
+                <div class="col-span-3">{r.ch}</div>
+                <div class="col-span-1 text-right text-ink/40">{r.h}</div>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-3 flex justify-between items-center text-[11px] text-ink/50">
+            <span>Hash-chain verified: latest block 0xE921…4A78 · prev 0xC4D3…81FB</span>
+            <span class="text-accent font-semibold">Export FDA-ready PDF →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="bg-navy text-white py-20 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-4">Ready to see the full platform?</h2>
+    <p class="text-white/70 mb-8 max-w-xl mx-auto">
+      A 30-minute demo walks through every domain, with live data mapped to your stack.
+    </p>
+    <a href="/about#contact" class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-md transition-colors inline-block">
       Book a Demo
     </a>
   </section>
+
 </BaseLayout>

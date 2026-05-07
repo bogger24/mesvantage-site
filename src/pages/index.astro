@@ -336,6 +336,280 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <!-- Mockup scene: Machine Intelligence -->
+  <section class="py-24 px-6 bg-surface">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-accent uppercase">Machine Intelligence</span>
+          <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">
+            Every machine, every shift, every alert — predictive.
+          </h2>
+          <p class="mt-4 text-ink/70 leading-relaxed">
+            Live ingestion from OPC-UA, MTConnect and Modbus. ML models trained per machine class predict thermal drift, dimensional risk, and tool wear before they break a part — not after.
+          </p>
+          <ul class="mt-6 space-y-2 text-sm">
+            {[
+              'Real-time OEE per cell, work centre, and fleet',
+              'Thermal-drift prediction with 24-hour horizon',
+              'Auto-generated maintenance work orders',
+              'Closed-loop feedback to scheduling',
+              'Edge ML — no cloud round-trip required',
+            ].map(item => (
+              <li class="flex items-start gap-2 text-ink/80">
+                <span class="text-accent font-bold mt-0.5">▸</span>{item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Browser mockup -->
+        <div class="rounded-xl overflow-hidden shadow-2xl border border-border">
+          <div class="bg-[#1e2a3a] px-4 py-2.5 flex items-center gap-3">
+            <div class="flex gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+              <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+            </div>
+            <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+              app.mesvantage.com / machine-intel
+            </div>
+          </div>
+          <div class="bg-[#0F2D52] p-5">
+            <!-- AI alert -->
+            <div class="bg-amber-500/10 border border-amber-500/30 rounded-lg px-3 py-2 mb-4 flex items-start gap-2">
+              <span class="text-amber-400 mt-0.5 text-xs">⚠</span>
+              <div class="text-[11px] text-white/85 leading-snug">
+                <span class="font-semibold text-amber-300">Predictive alert.</span> Cell 03 thermal drift trending. 73% probability of dimensional drift in next 4h. Maintenance scheduled 16:30.
+              </div>
+            </div>
+
+            <!-- Machine cards grid -->
+            <div class="grid grid-cols-2 gap-2">
+              {[
+                { name: 'Cell 01', oee: 84, status: 'Running', tone: 'ok', part: 'PT-2049-B' },
+                { name: 'Cell 02', oee: 79, status: 'Running', tone: 'ok', part: 'PT-2103-A' },
+                { name: 'Cell 03', oee: 62, status: 'Setup', tone: 'warn', part: 'PT-2049-B' },
+                { name: 'Cell 04', oee: 88, status: 'Running', tone: 'ok', part: 'PT-2210-C' },
+                { name: 'CMM-Bay-1', oee: 71, status: 'Running', tone: 'ok', part: 'QC Queue' },
+                { name: 'VMC-09', oee: 45, status: 'Idle', tone: 'idle', part: '—' },
+              ].map(m => (
+                <div class="bg-white/5 border border-white/10 rounded-md p-2.5">
+                  <div class="flex justify-between items-start mb-1.5">
+                    <div>
+                      <div class="text-white text-[11px] font-bold tracking-wide">{m.name}</div>
+                      <div class="text-white/40 text-[9px] font-mono">{m.part}</div>
+                    </div>
+                    <span class={
+                      m.tone === 'ok' ? 'text-[9px] bg-green-500/20 text-green-300 px-1.5 py-0.5 rounded font-semibold' :
+                      m.tone === 'warn' ? 'text-[9px] bg-amber-500/20 text-amber-300 px-1.5 py-0.5 rounded font-semibold' :
+                      'text-[9px] bg-white/10 text-white/40 px-1.5 py-0.5 rounded font-semibold'
+                    }>● {m.status}</span>
+                  </div>
+                  <div class="flex items-end gap-2">
+                    <div class={`text-2xl font-extrabold leading-none ${m.tone === 'warn' ? 'text-amber-300' : m.tone === 'idle' ? 'text-white/40' : 'text-white'}`}>{m.oee}<span class="text-[10px] text-white/40 font-normal">%</span></div>
+                    <!-- Sparkline -->
+                    <svg viewBox="0 0 60 16" class="flex-1 h-4 opacity-70">
+                      <polyline
+                        fill="none"
+                        stroke={m.tone === 'warn' ? '#FCD34D' : m.tone === 'idle' ? '#64748B' : '#1A7FBF'}
+                        stroke-width="1.5"
+                        points={
+                          m.tone === 'warn' ? '0,4 10,5 20,7 30,8 40,10 50,11 60,12' :
+                          m.tone === 'idle' ? '0,8 10,9 20,8 30,9 40,8 50,9 60,9' :
+                          '0,10 10,8 20,9 30,6 40,7 50,4 60,3'
+                        }
+                      />
+                    </svg>
+                  </div>
+                  <div class="text-[9px] text-white/40 mt-1">MTBF 18.4h · MTTR 22m</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mockup scene: AI Executive Assistant -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <!-- Browser mockup (dark) -->
+        <div class="rounded-xl overflow-hidden shadow-2xl border border-border order-2 md:order-1">
+          <div class="bg-[#0a0f1a] px-4 py-2.5 flex items-center gap-3">
+            <div class="flex gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+              <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+            </div>
+            <div class="flex-1 bg-white/5 rounded px-3 py-1 text-xs text-white/40 font-mono">
+              app.mesvantage.com / assistant
+            </div>
+          </div>
+          <div class="bg-[#0a0f1a] p-5 text-white" style="min-height: 460px;">
+            <!-- User question -->
+            <div class="flex justify-end mb-4">
+              <div class="bg-accent/20 border border-accent/40 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[85%]">
+                <div class="text-[12px] text-white/90 leading-snug">Why did Cell 03 miss target this week?</div>
+              </div>
+            </div>
+
+            <!-- Assistant response -->
+            <div class="flex gap-2 mb-3">
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-accent to-blue-700 flex items-center justify-center text-[10px] font-bold flex-shrink-0">M</div>
+              <div class="flex-1 space-y-3">
+                <div class="text-[11px] text-white/85 leading-relaxed">
+                  Cell 03 hit <span class="font-bold text-amber-300">87.4%</span> of target this week vs. fleet average <span class="font-bold text-green-400">96.1%</span>. Three contributing factors:
+                </div>
+
+                <!-- Inline chart -->
+                <div class="bg-white/5 border border-white/10 rounded-lg p-3">
+                  <div class="text-[10px] text-white/50 mb-2 font-semibold">Cell 03 — Output vs. Target (this week)</div>
+                  <svg viewBox="0 0 280 60" class="w-full h-14">
+                    <line x1="0" y1="20" x2="280" y2="20" stroke="#1A7FBF" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+                    <text x="0" y="16" fill="#1A7FBF" font-size="7" opacity="0.7">target</text>
+                    {[40, 38, 32, 45, 28, 42, 36].map((v, i) => (
+                      <rect x={i * 38 + 4} y={50 - v} width="28" height={v} fill={v < 35 ? '#FCD34D' : '#1A7FBF'} opacity="0.85" rx="1"/>
+                    ))}
+                    {['M','T','W','T','F','S','S'].map((d, i) => (
+                      <text x={i * 38 + 18} y="58" fill="#64748B" font-size="7" text-anchor="middle">{d}</text>
+                    ))}
+                  </svg>
+                </div>
+
+                <ol class="text-[11px] text-white/80 leading-relaxed space-y-1.5 list-decimal list-inside">
+                  <li><span class="font-semibold text-white">Tool change overrun</span> on Wed — operator Smith K. flagged thermal drift; 47min unscheduled stop.</li>
+                  <li><span class="font-semibold text-white">PT-2049-B setup time</span> averaging 28% above Standard Time. Linked NCR <a class="text-accent underline">NCR-1147</a> still open.</li>
+                  <li><span class="font-semibold text-white">Operator coverage</span> — 3 shifts ran short by 1 trained operator (Qualio cert gap).</li>
+                </ol>
+
+                <div class="bg-accent/10 border border-accent/30 rounded-lg p-3">
+                  <div class="text-[10px] text-accent font-bold uppercase tracking-wide mb-1">Recommendation</div>
+                  <div class="text-[11px] text-white/85 leading-snug">Approve recalibration WO #4892 (drafted) and schedule operator Patel R. for PT-2049-B graduation Thursday. Estimated recovery: <span class="font-bold text-green-400">+8.2 OEE pts</span> next week.</div>
+                </div>
+
+                <!-- Sources pill -->
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  {['OEE telemetry', 'NCR-1147', 'Standard Times', 'Qualio training', 'WO #4892'].map(src => (
+                    <span class="text-[9px] bg-white/5 border border-white/10 text-white/60 px-2 py-0.5 rounded font-mono">{src}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <!-- Input -->
+            <div class="mt-5 bg-white/5 border border-white/10 rounded-full px-4 py-2 flex items-center gap-3">
+              <span class="text-white/30 text-[11px]">Ask anything about your floor…</span>
+              <span class="ml-auto text-[10px] text-white/40 font-mono">⌘ K</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copy -->
+        <div class="order-1 md:order-2">
+          <span class="text-xs font-bold tracking-widest text-accent uppercase">Executive Assistant</span>
+          <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">
+            Ask the question. Skip the dashboard.
+          </h2>
+          <p class="mt-4 text-ink/70 leading-relaxed">
+            A purpose-built LLM trained on your shop floor. It speaks DHR, FAI, NCR, OEE and ERP — and it cites every source. Auditors love it. Operators ask it everything.
+          </p>
+          <ul class="mt-6 space-y-2 text-sm">
+            {[
+              'Trained on your data, never co-mingled with another customer',
+              'Cites source records for every claim — audit-defensible',
+              'Drafts work orders, NCRs and CAPAs from natural-language requests',
+              'Available to every authorised role — operator to CEO',
+              'Runs in your isolated environment — your data never leaves',
+            ].map(item => (
+              <li class="flex items-start gap-2 text-ink/80">
+                <span class="text-accent font-bold mt-0.5">▸</span>{item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mockup scene: Genealogy & DHR -->
+  <section class="py-24 px-6 bg-navy text-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold tracking-widest text-accent uppercase">Genealogy & DHR</span>
+        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-white">Every part. Every operation. Every signature.</h2>
+        <p class="mt-4 text-white/60 max-w-2xl mx-auto">
+          Trace a single serial number from raw stock to OEM dispatch in two clicks. Audit-ready out of the box.
+        </p>
+      </div>
+
+      <!-- Browser mockup -->
+      <div class="rounded-xl overflow-hidden shadow-2xl border border-white/10">
+        <div class="bg-[#1e2a3a] px-4 py-2.5 flex items-center gap-3">
+          <div class="flex gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+          </div>
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+            app.mesvantage.com / genealogy / SN-A4729-00184
+          </div>
+        </div>
+
+        <div class="bg-[#F8F9FB] p-6">
+          <!-- Header -->
+          <div class="flex flex-wrap items-start justify-between mb-6 gap-3">
+            <div>
+              <div class="text-[10px] uppercase tracking-wider text-ink/50 font-semibold">Serial number</div>
+              <div class="text-2xl font-extrabold text-navy">SN-A4729-00184</div>
+              <div class="text-xs text-ink/60 mt-0.5">Part PT-2049-B · Lot LT-2026-Q2-018 · Released 12 May 2026</div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">● Released to OEM</span>
+              <span class="text-[10px] bg-accent/10 text-accent px-2 py-1 rounded font-semibold">FDA 21 CFR Part 11</span>
+              <span class="text-[10px] bg-navy/10 text-navy px-2 py-1 rounded font-semibold">DHR complete</span>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="relative">
+            <div class="absolute left-[15px] top-2 bottom-2 w-px bg-border"></div>
+            {[
+              { time: '08 May · 14:32', op: 'Lot received', detail: 'Supplier SUP-217 · CoC verified · Incoming Qty 240', actor: 'Receiving · auto', tone: 'done' },
+              { time: '08 May · 16:15', op: 'Incoming inspection', detail: 'Hardness ✓ · Surface ✓ · Dimensional ✓ · Sample n=8', actor: 'Inspector Doyle M.', tone: 'done' },
+              { time: '09 May · 09:00', op: 'First Article Inspection', detail: 'CMM Renishaw EQUATOR · 32/32 features in tolerance · FAI-2026-0418', actor: 'Inspector Patel R.', tone: 'done' },
+              { time: '10 May · 14:22 → 15:45', op: 'Operation 010 — VMC turning', detail: 'VMC-09 · Program PRG-2049-010-r4 · Tool offsets logged · Cycle 18m24s', actor: 'Operator Smith K.', tone: 'done' },
+              { time: '10 May · 16:00 → 17:30', op: 'Operation 020 — Mill & finish', detail: 'Cell 03 · Program PRG-2049-020-r2 · Coolant Δ flagged · NCR-1147 raised', actor: 'Operator Jones K.', tone: 'warn' },
+              { time: '11 May · 10:15', op: 'Dimensional CMM', detail: 'Hexagon Global S · 18/18 features ✓ · Report HX-2026-1184', actor: 'Inspector Patel R.', tone: 'done' },
+              { time: '11 May · 13:42', op: 'Final inspection', detail: 'Visual ✓ · Marking ✓ · Packaging ✓', actor: 'Inspector Doyle M.', tone: 'done' },
+              { time: '12 May · 09:14', op: 'DHR signed & locked', detail: 'Electronic signature · Hash 0x9A4F…E218', actor: 'QA Manager Walsh F.', tone: 'done' },
+              { time: '12 May · 14:00', op: 'Released to OEM portal', detail: 'Lot release packet generated · transmitted to customer portal', actor: 'auto · MESvantage', tone: 'done' },
+            ].map(step => (
+              <div class="relative pl-10 pb-4 last:pb-0">
+                <div class={`absolute left-2 top-1 w-3 h-3 rounded-full border-2 border-white ${step.tone === 'warn' ? 'bg-amber-500' : 'bg-accent'}`}></div>
+                <div class="text-[10px] font-mono text-ink/50">{step.time}</div>
+                <div class="font-semibold text-navy text-sm">{step.op}</div>
+                <div class="text-[11px] text-ink/60 mt-0.5">{step.detail}</div>
+                <div class="text-[10px] text-ink/40 mt-0.5 italic">{step.actor}</div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Footer pills -->
+          <div class="flex flex-wrap gap-2 mt-6 pt-4 border-t border-border">
+            <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">Linked NCR · NCR-1147</span>
+            <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">9 e-signatures</span>
+            <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">2 CMM reports attached</span>
+            <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">FAI-2026-0418</span>
+            <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">CoC available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Module highlights -->
   <section class="bg-white py-20 px-6">
     <div class="max-w-6xl mx-auto">
