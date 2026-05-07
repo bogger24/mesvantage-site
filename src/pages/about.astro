@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.tsx';
+
+const FORMSPREE_ENDPOINT = import.meta.env.FORMSPREE_ENDPOINT ?? '#';
+---
+
+<BaseLayout
+  title="About"
+  description="MESvantage — built by a CDMO CEO who couldn't find an MES that worked for orthopaedic manufacturing."
+>
+  <!-- About -->
+  <section class="py-20 px-6 border-b border-border">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-4xl font-extrabold text-navy mb-8">About MESvantage</h1>
+
+      <div class="space-y-6 text-ink/80 leading-relaxed">
+        <p>
+          MESvantage was built by a manufacturing CEO who couldn't find a system that worked.
+        </p>
+        <p>
+          Croom Medical manufactures 250,000 orthopaedic knee systems per year for DePuy Synthes, Stryker,
+          Zimmer Biomet, and Arthrex. In 2023, the team evaluated every credible MES on the market.
+          None of them were built for a medical device CDMO. The generic platforms required months of
+          configuration. The compliance-focused systems were QMS tools masquerading as MES. The enterprise
+          platforms were priced for Fortune 500 OEMs, not contract manufacturers.
+        </p>
+        <p>
+          So we built one. Over two years, we developed a full-stack MES inside Croom's live production
+          environment — validated under FDA 21 CFR Part 11, certified under ISO 13485, and stress-tested
+          against a quarter-million knee systems per year.
+        </p>
+        <p>
+          MESvantage is that system, made available to other CDMOs who face the same gap.
+        </p>
+      </div>
+
+      <div class="mt-12 p-8 bg-white border border-border rounded-xl">
+        <h2 class="text-lg font-bold text-navy mb-2">Croom Medical — Founding Customer</h2>
+        <p class="text-ink/70 text-sm leading-relaxed">
+          Croom Medical is MESvantage's founding customer and the production environment where the platform
+          was built and validated. They continue to operate MESvantage as their primary MES — every new
+          module is deployed to a live 250,000-unit production line before it reaches any other customer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 px-6">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-3xl font-bold text-navy mb-2">Get in touch</h2>
+      <p class="text-ink/70 mb-8">
+        Book a demo, ask a compliance question, or tell us about your environment.
+        We respond within one business day.
+      </p>
+
+      <ContactForm client:load endpoint={FORMSPREE_ENDPOINT} />
+    </div>
+  </section>
+</BaseLayout>
