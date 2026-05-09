@@ -1,318 +1,216 @@
 ---
-// Single-page A4 brochure — designed to be rendered to PDF
-// Print: chromium --headless --print-to-pdf=mesvantage-brochure.pdf http://localhost:4321/brochure
+// 2-page A4 product overview — designed to be rendered to PDF
+// Generate: chromium --headless --no-sandbox --print-to-pdf=public/mesvantage-product-overview.pdf --no-pdf-header-footer http://localhost:4321/brochure
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MESvantage — Manufacturing Intelligence for Medical Device CDMOs</title>
+  <title>MESvantage — Product Overview</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style is:global>
-    @page {
-      size: A4 portrait;
-      margin: 0;
-    }
-    * { box-sizing: border-box; }
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Inter', sans-serif;
       color: #1A1A2E;
       background: white;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
     .page {
-      width: 210mm;
-      height: 297mm;
+      width: 210mm; height: 297mm;
       padding: 12mm 14mm;
-      display: flex;
-      flex-direction: column;
-      gap: 6mm;
-      background: white;
+      display: flex; flex-direction: column; gap: 5mm;
       page-break-after: always;
+      overflow: hidden;
     }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 4mm;
-      border-bottom: 1.5px solid #E2E8F0;
-    }
-    .logo {
-      font-size: 18pt;
-      font-weight: 900;
-      color: #0F2D52;
-      letter-spacing: -0.5px;
-    }
-    .badges {
-      display: flex;
-      gap: 4px;
-      font-size: 7pt;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    .badge {
-      background: #1A7FBF;
-      color: white;
-      padding: 3px 8px;
-      border-radius: 999px;
-    }
-    .badge.outline {
-      background: white;
-      color: #1A7FBF;
-      border: 1px solid #1A7FBF;
-    }
-    .hero {
-      padding: 4mm 0 2mm;
-    }
-    .hero h1 {
-      font-size: 24pt;
-      font-weight: 900;
-      line-height: 1.05;
-      color: #0F2D52;
-      margin: 0 0 3mm;
-      letter-spacing: -0.5px;
-    }
-    .hero p {
-      font-size: 11pt;
-      line-height: 1.45;
-      color: #475569;
-      margin: 0;
-      max-width: 165mm;
-    }
-    .kpis {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 3mm;
-    }
-    .kpi {
-      background: #0F2D52;
-      color: white;
-      padding: 4mm 3mm;
-      border-radius: 3mm;
-      text-align: center;
-    }
-    .kpi-val { font-size: 22pt; font-weight: 900; line-height: 1; letter-spacing: -1px; }
-    .kpi-val .accent { color: #1A7FBF; }
-    .kpi-label {
-      font-size: 7pt;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      margin-top: 2mm;
-      font-weight: 600;
-    }
-
-    .section-label {
-      font-size: 7pt;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #1A7FBF;
-      margin-bottom: 1.5mm;
-    }
-    .section-title {
-      font-size: 13pt;
-      font-weight: 800;
-      color: #0F2D52;
-      margin: 0 0 3mm;
-    }
-
-    .arch {
-      background: #F8F9FB;
-      border: 1px solid #E2E8F0;
-      border-radius: 3mm;
-      padding: 4mm;
-    }
-    .arch svg { width: 100%; height: 65mm; display: block; }
-
-    .domains {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5mm;
-    }
-    .domain {
-      border: 1px solid #E2E8F0;
-      border-radius: 2.5mm;
-      padding: 3mm;
-      background: white;
-    }
-    .domain-name {
-      font-size: 9.5pt;
-      font-weight: 800;
-      color: #0F2D52;
-      margin: 0 0 1.5mm;
-    }
-    .domain-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 7.5pt;
-      line-height: 1.5;
-      color: #475569;
-    }
-    .domain-list li::before {
-      content: '✓ ';
-      color: #1A7FBF;
-      font-weight: 800;
-    }
-
-    .footer {
-      margin-top: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding-top: 3mm;
-      border-top: 1.5px solid #E2E8F0;
-      font-size: 8pt;
-    }
-    .footer-left { color: #64748B; line-height: 1.5; }
-    .footer-left strong { color: #0F2D52; }
-    .footer-cta {
-      background: #1A7FBF;
-      color: white;
-      padding: 3mm 6mm;
-      border-radius: 1.5mm;
-      font-weight: 700;
-      font-size: 9.5pt;
-      text-decoration: none;
-    }
+    .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 4mm; border-bottom: 1.5px solid #E2E8F0; }
+    .logo { font-size: 20pt; font-weight: 900; color: #0F2D52; letter-spacing: -0.5px; }
+    .logo span { color: #1A7FBF; }
+    .badges { display: flex; gap: 5px; }
+    .badge { background: #EFF6FF; color: #1A7FBF; font-size: 6.5pt; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 7px; border-radius: 20px; }
+    .hero { background: #0F2D52; color: white; padding: 8mm 10mm; border-radius: 8px; }
+    .hero h1 { font-size: 16pt; font-weight: 800; line-height: 1.2; margin-bottom: 3mm; }
+    .hero p { font-size: 9pt; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 150mm; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; }
+    .stat-card { background: #F8F9FB; border: 1px solid #E2E8F0; border-radius: 6px; padding: 4mm; text-align: center; }
+    .stat-num { font-size: 18pt; font-weight: 900; color: #0F2D52; }
+    .stat-label { font-size: 6.5pt; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 1mm; }
+    .stat-context { font-size: 6pt; color: #94A3B8; margin-top: 0.5mm; }
+    .section-title { font-size: 8pt; font-weight: 700; color: #1A7FBF; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 3mm; }
+    .modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; }
+    .module-card { background: #F8F9FB; border: 1px solid #E2E8F0; border-radius: 6px; padding: 4mm; }
+    .module-num { font-size: 6pt; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1mm; }
+    .module-name { font-size: 9pt; font-weight: 800; color: #0F2D52; margin-bottom: 1.5mm; }
+    .module-body { font-size: 7.5pt; color: #475569; line-height: 1.5; }
+    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+    .proof-card { padding: 4mm; border: 1px solid #E2E8F0; border-radius: 6px; }
+    .proof-title { font-size: 8.5pt; font-weight: 700; color: #0F2D52; margin-bottom: 1.5mm; }
+    .proof-body { font-size: 7.5pt; color: #475569; line-height: 1.5; }
+    .compliance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+    .compliance-card { background: #0F2D52; color: white; padding: 4mm 5mm; border-radius: 6px; }
+    .compliance-title { font-size: 8pt; font-weight: 800; margin-bottom: 1.5mm; }
+    .compliance-body { font-size: 7pt; color: rgba(255,255,255,0.65); line-height: 1.5; }
+    .timeline { display: grid; grid-template-columns: 18mm 1fr; gap: 2mm 5mm; align-items: start; }
+    .t-week { font-size: 7.5pt; font-weight: 700; color: #1A7FBF; padding-top: 1mm; }
+    .t-body { font-size: 7.5pt; color: #475569; line-height: 1.5; padding-bottom: 2mm; border-bottom: 1px solid #F1F5F9; }
+    .quote-block { background: #F8F9FB; border-left: 3px solid #1A7FBF; padding: 5mm 6mm; border-radius: 0 6px 6px 0; }
+    .quote-text { font-size: 9pt; font-style: italic; color: #0F2D52; line-height: 1.6; margin-bottom: 2.5mm; }
+    .quote-attr { font-size: 7.5pt; font-weight: 700; color: #475569; }
+    .footer-bar { display: flex; justify-content: space-between; align-items: center; padding-top: 3mm; border-top: 1px solid #E2E8F0; margin-top: auto; }
+    .footer-text { font-size: 7pt; color: #94A3B8; }
+    .footer-url { font-size: 7.5pt; font-weight: 700; color: #1A7FBF; }
   </style>
 </head>
 <body>
-  <div class="page">
-    <!-- Header -->
-    <div class="header">
-      <div class="logo">MESvantage</div>
-      <div class="badges">
-        <span class="badge">FDA 21 CFR Part 11</span>
-        <span class="badge">ISO 13485</span>
-        <span class="badge outline">90-day deploy</span>
-      </div>
-    </div>
 
-    <!-- Hero -->
-    <div class="hero">
-      <h1>The manufacturing intelligence platform for medical device CDMOs.</h1>
-      <p>Connect your ERP, your quality system, your CMMs and your machines into one validated platform. Validated under FDA 21 CFR Part 11. Certified under ISO 13485. Live on your floor in 90 days.</p>
-    </div>
-
-    <!-- KPIs -->
-    <div class="kpis">
-      <div class="kpi"><div class="kpi-val">90<span class="accent">d</span></div><div class="kpi-label">Time to live</div></div>
-      <div class="kpi"><div class="kpi-val">~70<span class="accent">%</span></div><div class="kpi-label">Faster audit prep</div></div>
-      <div class="kpi"><div class="kpi-val">~75<span class="accent">%</span></div><div class="kpi-label">FAI cycle reduction</div></div>
-      <div class="kpi"><div class="kpi-val">€0</div><div class="kpi-label">Validation budget</div></div>
-    </div>
-
-    <!-- Architecture -->
-    <div>
-      <div class="section-label">How it works</div>
-      <h2 class="section-title">One platform. Every system on your floor.</h2>
-      <div class="arch">
-        <svg viewBox="0 0 1100 480" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#0F2D52"/>
-              <stop offset="1" stop-color="#1A7FBF"/>
-            </linearGradient>
-          </defs>
-          <text x="160" y="22" text-anchor="middle" fill="#64748B" font-size="11" font-weight="700" letter-spacing="1.5">YOUR INPUTS</text>
-          <text x="550" y="22" text-anchor="middle" fill="#64748B" font-size="11" font-weight="700" letter-spacing="1.5">MESVANTAGE</text>
-          <text x="940" y="22" text-anchor="middle" fill="#64748B" font-size="11" font-weight="700" letter-spacing="1.5">YOUR OUTPUTS</text>
-
-          <!-- Inputs -->
-          {[
-            { y: 60, label: 'ERP', sub: 'M1 · SAP · Plex · Infor' },
-            { y: 140, label: 'QMS', sub: 'Qualio · MasterControl' },
-            { y: 220, label: 'Machines', sub: 'OPC-UA · MTConnect' },
-            { y: 300, label: 'CMMs', sub: 'Renishaw · Hexagon · Zeiss' },
-            { y: 380, label: 'Documents', sub: 'OneDrive · SharePoint' },
-          ].map(n => (
-            <g>
-              <rect x="20" y={n.y} width="280" height="60" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
-              <text x="40" y={n.y + 28} fill="#0F2D52" font-size="15" font-weight="700">{n.label}</text>
-              <text x="40" y={n.y + 47} fill="#64748B" font-size="11">{n.sub}</text>
-              <line x1="300" y1={n.y + 30} x2="380" y2="240" stroke="#1A7FBF" stroke-width="1.2" opacity="0.4"/>
-            </g>
-          ))}
-
-          <!-- Core -->
-          <rect x="380" y="80" width="340" height="320" rx="18" fill="url(#cg)"/>
-          <text x="550" y="118" text-anchor="middle" fill="white" font-size="20" font-weight="900">MESvantage</text>
-          <text x="550" y="138" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-size="10" letter-spacing="1.5">VALIDATED PLATFORM CORE</text>
-          {[
-            'Device History Records (DHR)',
-            'Genealogy & Traceability',
-            'OEE & Downtime Intelligence',
-            'FAI · Inspections · NCR · CAPA',
-            'Scheduling & Standard Times',
-            'Audit Trail & E-Signatures',
-            'AI Executive Assistant',
-          ].map((label, i) => (
-            <g>
-              <rect x="408" y={170 + i * 30 - 12} width="284" height="22" rx="6" fill="rgba(255,255,255,0.08)"/>
-              <text x="420" y={170 + i * 30 + 3} fill="white" font-size="12" font-weight="500">{label}</text>
-            </g>
-          ))}
-          <text x="550" y="392" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="9" letter-spacing="2">SILOED SAAS · ENV PER CUSTOMER</text>
-
-          <!-- Outputs -->
-          {[
-            { y: 100, label: 'OEM Customer Portals', sub: 'Lot release · Quality data' },
-            { y: 180, label: 'Floor & Mobile', sub: 'PWA · Operator UX' },
-            { y: 260, label: 'Executive Intelligence', sub: 'Power BI · Dashboards' },
-            { y: 340, label: 'Regulatory Packets', sub: 'IQ/OQ/PQ · Validation' },
-          ].map(n => (
-            <g>
-              <rect x="800" y={n.y} width="280" height="60" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
-              <text x="820" y={n.y + 28} fill="#0F2D52" font-size="15" font-weight="700">{n.label}</text>
-              <text x="820" y={n.y + 47} fill="#64748B" font-size="11">{n.sub}</text>
-              <line x1="720" y1="240" x2="800" y2={n.y + 30} stroke="#1A7FBF" stroke-width="1.2" opacity="0.4"/>
-            </g>
-          ))}
-        </svg>
-      </div>
-    </div>
-
-    <!-- 6 Domains -->
-    <div>
-      <div class="section-label">The platform · 50+ modules</div>
-      <h2 class="section-title">Six domains. Built for medical device manufacturing.</h2>
-      <div class="domains">
-        {[
-          { name: 'Quality', items: ['FAI · FPY · SPC · DHR', 'NCR · CAPA · Hold mgmt', 'Customer Quality Portal'] },
-          { name: 'Production', items: ['Live OEE & downtime', 'Closed-loop scheduling', 'In-Process Documentation'] },
-          { name: 'Metrology', items: ['CMM auto-parsing', 'Renishaw · Hexagon · Zeiss', 'Calibration management'] },
-          { name: 'Training', items: ['Enforced at point of work', 'Operator graduation flow', 'Qualio bidirectional'] },
-          { name: 'Intelligence', items: ['CEO Dashboard', 'AI Executive Assistant', 'Energy & Machine Intel'] },
-          { name: 'Platform', items: ['Mobile PWA · Signage', 'Audit trail · E-sign', 'Siloed SaaS · per-customer'] },
-        ].map(d => (
-          <div class="domain">
-            <div class="domain-name">{d.name}</div>
-            <ul class="domain-list">
-              {d.items.map(i => <li>{i}</li>)}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      <div class="footer-left">
-        <strong>Compliance:</strong> FDA 21 CFR Part 11 · ISO 13485 · EU Annex 11<br />
-        <strong>Web:</strong> mesvantage.com &nbsp;·&nbsp; <strong>Email:</strong> hello@mesvantage.com
-      </div>
-      <div class="footer-cta">Book a demo →</div>
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="header">
+    <div class="logo">MES<span>vantage</span></div>
+    <div class="badges">
+      <span class="badge">FDA 21 CFR Part 11</span>
+      <span class="badge">ISO 13485</span>
+      <span class="badge">Validated</span>
     </div>
   </div>
+
+  <div class="hero">
+    <h1>The manufacturing intelligence platform<br/>for medical device CDMOs.</h1>
+    <p>
+      Medical device CDMOs spend three weeks preparing for an audit. MESvantage cuts that to four days.
+      Built and FDA-validated inside a live 250,000-knee-per-year orthopaedic CDMO — not a pilot, not a demo,
+      but a product that has been running under FDA scrutiny for two years.
+    </p>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-num">90d</div>
+      <div class="stat-label">Time to Live</div>
+      <div class="stat-context">Contract to production floor</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">~70%</div>
+      <div class="stat-label">Faster Audit Prep</div>
+      <div class="stat-context">Weeks of prep becomes days</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">~75%</div>
+      <div class="stat-label">FAI Cycle Reduction</div>
+      <div class="stat-context">Drawing to approved record</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">€0</div>
+      <div class="stat-label">Validation Budget</div>
+      <div class="stat-context">IQ/OQ/PQ already passed</div>
+    </div>
+  </div>
+
+  <div class="section-title">Platform modules — 6 domains, 50+ features</div>
+  <div class="modules">
+    <div class="module-card">
+      <div class="module-num">Domain 01</div>
+      <div class="module-name">Quality</div>
+      <div class="module-body">FAI, FPY, SPC, DHR, NCR, CAPA, Incoming Inspection, Customer Quality Portal. Every record electronically signed and audit-ready.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-num">Domain 02</div>
+      <div class="module-name">Production</div>
+      <div class="module-body">Real-time OEE, scheduling, and in-process documentation. Paper travellers eliminated. Shift handover in one screen.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-num">Domain 03</div>
+      <div class="module-name">Metrology</div>
+      <div class="module-body">Automatic CMM parsing from Renishaw, Hexagon, and Zeiss. Tolerance failures flagged before the part leaves the machine.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-num">Domain 04</div>
+      <div class="module-name">Training</div>
+      <div class="module-body">Operators can only run what they are trained on. Competency expiry, trainer sign-off, and enforcement automated.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-num">Domain 05</div>
+      <div class="module-name">Intelligence</div>
+      <div class="module-body">CEO dashboard: machine utilisation, quality trends, energy spend, predictive alerts. No BI team or data analyst required.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-num">Domain 06</div>
+      <div class="module-name">Platform</div>
+      <div class="module-body">Mobile PWA, digital signage, audit trail, e-signatures, role-based access. The regulated infrastructure layer.</div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="footer-text">MESvantage — Confidential product overview</div>
+    <div class="footer-url">mesvantage.com</div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="header">
+    <div class="logo">MES<span>vantage</span></div>
+    <div class="footer-text" style="font-size:7.5pt;color:#64748B;">Product Overview — Page 2 of 2</div>
+  </div>
+
+  <div class="section-title">Why MESvantage</div>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <div class="proof-title">Purpose-built for CDMOs</div>
+      <div class="proof-body">Not a generic MES retrofitted to medical. Every workflow — DHR, FAI, CMM, OEE, NCR — was designed for regulated contract manufacturing.</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-title">Validation transferable</div>
+      <div class="proof-body">IQ/OQ/PQ baseline already passed in a live regulated environment. Validation evidence transfers. Skip the 12-month validation programme.</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-title">Production-grade from day one</div>
+      <div class="proof-body">Stress-tested at scale, 24/7, under FDA scrutiny. Every feature has run on a real production floor — not a lab, not a sandbox.</div>
+    </div>
+  </div>
+
+  <div class="section-title">Compliance credentials</div>
+  <div class="compliance-grid">
+    <div class="compliance-card">
+      <div class="compliance-title">FDA 21 CFR Part 11</div>
+      <div class="compliance-body">Full audit trail on every record change. Electronic signatures with intent capture. Access control and session management built in.</div>
+    </div>
+    <div class="compliance-card">
+      <div class="compliance-title">ISO 13485</div>
+      <div class="compliance-body">DHR, traceability, incoming inspection, CAPA, and document control aligned to ISO 13485 quality management requirements.</div>
+    </div>
+    <div class="compliance-card">
+      <div class="compliance-title">Siloed SaaS</div>
+      <div class="compliance-body">Each customer has their own compute, database, and storage. No data co-mingles across customers — a compliance feature, not a limitation.</div>
+    </div>
+  </div>
+
+  <div class="section-title">Implementation timeline — 90 days to live</div>
+  <div class="timeline">
+    <div class="t-week">Weeks 1–4</div>
+    <div class="t-body">Environment provisioned. Data migration from ERP (M1, SAP, Plex, Infor). Quality module configured. Staff onboarding begins.</div>
+    <div class="t-week">Weeks 5–10</div>
+    <div class="t-body">Production, OEE, and training modules live. CMM integration connected to existing metrology hardware. Parallel run vs. legacy system.</div>
+    <div class="t-week">Weeks 11–13</div>
+    <div class="t-body">Intelligence and reporting live. Legacy system retired. IQ/OQ/PQ documentation package delivered. Go-live sign-off.</div>
+  </div>
+
+  <div class="section-title">Founding customer</div>
+  <div class="quote-block">
+    <div class="quote-text">"We built the MES we couldn't find on the market. It's been running live in our plant for two years — 250,000 knee systems a year, fully under FDA scrutiny. That's not a pilot. That's the product."</div>
+    <div class="quote-attr">Patrick Byrnes, CEO — Croom Medical &nbsp;·&nbsp; ISO 13485 &nbsp;·&nbsp; FDA 21 CFR Part 11 &nbsp;·&nbsp; 250,000 knee systems/year</div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="footer-text">mesvantage.com &nbsp;·&nbsp; hello@mesvantage.com &nbsp;·&nbsp; MESvantage Limited, Ireland</div>
+    <div class="footer-url">Book a demo: mesvantage.com/about</div>
+  </div>
+</div>
+
 </body>
 </html>
