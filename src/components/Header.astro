@@ -1,4 +1,5 @@
 ---
+import LeadCaptureModal from './LeadCaptureModal';
 const navLinks = [
   { label: 'Product', href: '/product' },
   { label: 'Compliance', href: '/compliance' },
@@ -26,12 +27,7 @@ const navLinks = [
     </nav>
 
     <div class="flex items-center gap-3">
-      <a
-        href="/about#contact"
-        class="bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors"
-      >
-        Book a Demo
-      </a>
+      <LeadCaptureModal label="Download Overview" variant="nav" client:load />
 
       <!-- Mobile menu toggle (visible on small screens only) -->
       <details class="md:hidden relative">
