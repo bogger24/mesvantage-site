@@ -66,24 +66,20 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
   </section>
 
   <!-- Quantified outcomes band -->
-  <section class="bg-white border-b border-border">
-    <div class="max-w-6xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div>
-        <div class="text-3xl md:text-4xl font-extrabold text-navy">90<span class="text-accent">d</span></div>
-        <div class="text-xs uppercase tracking-wider text-ink/60 mt-1 font-semibold">Time to Live</div>
-      </div>
-      <div>
-        <div class="text-3xl md:text-4xl font-extrabold text-navy">~70<span class="text-accent">%</span></div>
-        <div class="text-xs uppercase tracking-wider text-ink/60 mt-1 font-semibold">Faster Audit Prep</div>
-      </div>
-      <div>
-        <div class="text-3xl md:text-4xl font-extrabold text-navy">~75<span class="text-accent">%</span></div>
-        <div class="text-xs uppercase tracking-wider text-ink/60 mt-1 font-semibold">FAI Cycle Reduction</div>
-      </div>
-      <div>
-        <div class="text-3xl md:text-4xl font-extrabold text-navy">€0</div>
-        <div class="text-xs uppercase tracking-wider text-ink/60 mt-1 font-semibold">Validation Budget</div>
-      </div>
+  <section class="bg-navy/5 border-b border-border">
+    <div class="max-w-6xl mx-auto px-6 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {[
+        { stat: '90d', label: 'Time to Live', context: 'From contract to production floor' },
+        { stat: '~70%', label: 'Faster Audit Prep', context: 'Weeks of prep becomes days' },
+        { stat: '~75%', label: 'FAI Cycle Reduction', context: 'From drawing to approved record' },
+        { stat: '€0', label: 'Validation Budget', context: 'IQ/OQ/PQ already passed' },
+      ].map(item => (
+        <div>
+          <div class="text-3xl md:text-4xl font-extrabold text-navy">{item.stat}</div>
+          <div class="text-xs uppercase tracking-wider text-ink/60 mt-1 font-semibold">{item.label}</div>
+          <div class="text-xs text-ink/40 mt-1">{item.context}</div>
+        </div>
+      ))}
     </div>
   </section>
 
