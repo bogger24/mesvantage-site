@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface Props {
   label?: string;
@@ -17,6 +17,16 @@ export default function LeadCaptureModal({
   const [email, setEmail] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
+  const devTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const firstInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (open) {
+      const t = setTimeout(() => firstInputRef.current?.focus(), 50);
+      return () => clearTimeout(t);
+    }
+  }, [open]);
+
   const buttonClass =
     variant === 'primary'
       ? 'bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-md transition-colors'
@@ -34,7 +44,7 @@ export default function LeadCaptureModal({
 
     // Dev fallback: if no ConvertKit vars, simulate success
     if (!apiKey || !formId) {
-      setTimeout(() => setState('success'), 800);
+      devTimerRef.current = setTimeout(() => setState('success'), 800);
       return;
     }
 
@@ -56,6 +66,7 @@ export default function LeadCaptureModal({
   }
 
   function close() {
+    if (devTimerRef.current) clearTimeout(devTimerRef.current);
     setOpen(false);
     setTimeout(() => {
       setState('idle');
@@ -76,7 +87,7 @@ export default function LeadCaptureModal({
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
           onClick={(e) => e.target === e.currentTarget && close()}
         >
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative" role="dialog" aria-modal="true" aria-labelledby="modal-title">
             <button
               type="button"
               onClick={close}
@@ -95,7 +106,7 @@ export default function LeadCaptureModal({
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-navy mb-2">Check your inbox</h3>
+                <h3 id="modal-title" className="text-xl font-bold text-navy mb-2">Check your inbox</h3>
                 <p className="text-ink/60 text-sm leading-relaxed">
                   Your product overview is on its way — it should arrive within a minute.
                   <br />Can't find it? Check your spam folder.
@@ -103,7 +114,7 @@ export default function LeadCaptureModal({
               </div>
             ) : (
               <>
-                <h3 className="text-xl font-bold text-navy mb-1">Download the Product Overview</h3>
+                <h3 id="modal-title" className="text-xl font-bold text-navy mb-1">Download the Product Overview</h3>
                 <p className="text-sm text-ink/60 mb-6">
                   We'll send the 2-page PDF to your inbox. No spam, unsubscribe any time.
                 </p>
@@ -113,6 +124,7 @@ export default function LeadCaptureModal({
                       First name
                     </label>
                     <input
+                      ref={firstInputRef}
                       id="ck-first-name"
                       type="text"
                       required
