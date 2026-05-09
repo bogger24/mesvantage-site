@@ -639,26 +639,67 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
   </section>
 
   <!-- Module highlights -->
-  <section class="bg-white py-20 px-6">
+  <section class="py-24 px-6 bg-white border-b border-border">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-navy text-center mb-4">50+ modules across 6 domains.</h2>
-      <p class="text-center text-ink/60 mb-12 max-w-2xl mx-auto">
-        From incoming inspection to executive intelligence — everything a regulated CDMO needs in one validated platform.
-      </p>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="text-center mb-14">
+        <span class="text-xs font-bold tracking-widest text-accent uppercase">The platform</span>
+        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy">50+ validated modules. Six domains.</h2>
+        <p class="mt-4 text-ink/60 max-w-xl mx-auto">
+          Every module was designed for regulated contract manufacturing — not retrofitted from a generic platform.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
-          { domain: 'Quality', description: 'FAI · FPY · SPC · DHR · NCR · CAPA · Incoming Inspection · Customer Quality Portal' },
-          { domain: 'Production', description: 'OEE · Scheduling · In-Process Documentation · Standard Times · Operator Graduation' },
-          { domain: 'Metrology', description: 'CMM integration with AI-powered parsing for Renishaw, Hexagon, and Zeiss' },
-          { domain: 'Training', description: 'Training enforcement, trainer/trainee context, operator-scoped access controls' },
-          { domain: 'Intelligence', description: 'CEO Dashboard · AI Executive Assistant · Energy Intelligence · Machine Intel' },
-          { domain: 'Platform', description: 'Mobile PWA · Digital Signage · Audit Trail · Electronic Signatures · RBAC · SSO' },
-        ].map(tile => (
-          <div class="border border-border rounded-xl p-6 hover:border-accent transition-colors">
-            <h3 class="font-bold text-navy mb-2">{tile.domain}</h3>
-            <p class="text-sm text-ink/60 leading-relaxed">{tile.description}</p>
+          {
+            domain: 'Quality', num: '01',
+            icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+            outcome: 'From incoming inspection to lot release — every quality record signed, traceable, and audit-ready under 21 CFR Part 11.',
+          },
+          {
+            domain: 'Production', num: '02',
+            icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+            outcome: 'Real-time OEE, scheduling, and in-process documentation that eliminates paper travellers and floor clipboards.',
+          },
+          {
+            domain: 'Metrology', num: '03',
+            icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`,
+            outcome: 'CMM results parsed automatically from Renishaw, Hexagon, and Zeiss — tolerance failures flagged before the part leaves the machine.',
+          },
+          {
+            domain: 'Training', num: '04',
+            icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>`,
+            outcome: 'Operators can only run what they are trained on. Trainer sign-off, competency expiry, and enforcement — fully automated.',
+          },
+          {
+            domain: 'Intelligence', num: '05',
+            icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+            outcome: 'CEO-level visibility: machine utilisation, quality trends, energy spend, and predictive alerts — without a BI team or data analyst.',
+          },
+          {
+            domain: 'Platform', num: '06',
+            icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" /></svg>`,
+            outcome: 'Mobile PWA, digital signage, audit trail, e-signatures, and role-based access — the regulated infrastructure that makes the rest possible.',
+          },
+        ].map(m => (
+          <div class="bg-surface border border-border rounded-xl p-8 hover:border-accent/40 hover:shadow-sm transition-all">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center flex-shrink-0" set:html={m.icon} />
+              <div>
+                <div class="text-xs font-bold tracking-wider text-ink/30 uppercase">Domain {m.num}</div>
+                <div class="text-base font-bold text-navy leading-tight">{m.domain}</div>
+              </div>
+            </div>
+            <p class="text-ink/70 leading-relaxed text-sm">{m.outcome}</p>
+            <a href={`/product#${m.domain.toLowerCase()}`} class="inline-flex items-center gap-1 mt-4 text-xs font-semibold text-accent hover:text-accent-dark transition-colors">
+              See modules <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
+            </a>
           </div>
         ))}
+      </div>
+      <div class="mt-10 text-center">
+        <a href="/product" class="text-sm font-semibold text-accent hover:text-accent-dark transition-colors">
+          View all 50+ modules →
+        </a>
       </div>
     </div>
   </section>
