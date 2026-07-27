@@ -25,7 +25,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           The FDA's electronic records and electronic signatures regulation requires that any software used in regulated manufacturing maintains trustworthy, reliable, and generally equivalent records to paper.
         </p>
         <p class="mt-3 text-ink/70 leading-relaxed">
-          MESvantage has passed IQ/OQ/PQ validation under Part 11 in a live high-volume orthopaedic production environment. The validation documentation package is transferable to new customer deployments.
+          In March 2026 we completed an IQ/OQ/PQ exercise for MESvantage at our founding customer's site: 226 of 226 test cases executed and passed, against a 175-item requirements traceability matrix. Protocols, scripts, the matrix and executed reports are available for review under NDA and are reusable as the starting point for your own validation. This is a point-in-time qualification of that configuration — our change-control statement sets out how each release is assessed and regression-tested.
         </p>
       </div>
       <ul class="md:col-span-3 grid sm:grid-cols-2 gap-3 content-start">
@@ -88,7 +88,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Each MESvantage customer receives a fully isolated deployment: their own compute, their own database, their own Redis cache, their own backups.
         </p>
         <p class="mt-3 text-ink/70 leading-relaxed">
-          This is not a limitation — it is the model. FDA auditors and ISO 13485 QA teams strongly prefer that customer data never co-mingles with another manufacturer's stack. Each customer's environment is audited independently.
+          Isolation is not a regulatory requirement, and we will not claim it is. It is a practical one: your environment can be inspected and evidenced without reference to any other customer's system, which keeps your audit scope simple and your data unambiguously yours.
         </p>
         <p class="mt-3 text-sm font-semibold text-navy">Siloed SaaS is a compliance feature, not a technical compromise.</p>
       </div>
@@ -99,9 +99,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           'Separate Redis cache',
           'Independent automated backups',
           'Independent security patching',
-          'Independent FDA audit scope',
+          'Audit scope limited to your own environment',
           'No cross-customer data access (by design)',
-          'New environment provisioned in < 30 minutes',
+          'Infrastructure provisioned from code',
         ].map(item => (
           <li class="flex items-start gap-2 text-sm text-ink/80">
             <span class="text-accent font-bold mt-0.5">✓</span>

@@ -13,7 +13,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
          style="background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px); background-size: 48px 48px;"></div>
     <div class="max-w-4xl mx-auto text-center relative">
       <span class="text-xs font-bold tracking-widest text-accent uppercase">The platform</span>
-      <h1 class="mt-3 text-4xl md:text-5xl font-extrabold text-white tracking-tight">50+ validated modules. One platform.</h1>
+      <h1 class="mt-3 text-4xl md:text-5xl font-extrabold text-white tracking-tight">74 modules. One platform.</h1>
       <p class="mt-5 text-lg text-white/70 max-w-2xl mx-auto">
         Six interconnected domains covering the full medical-device manufacturing lifecycle — from incoming inspection to executive intelligence.
       </p>
@@ -76,7 +76,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
           <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
-            app.mesvantage.com / quality / dashboard
+            app.mesvantage.example / quality / dashboard
           </div>
         </div>
         <div class="bg-[#F8F9FB] p-6">
@@ -111,7 +111,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="bg-white border border-border rounded-lg p-4 mb-3">
             <div class="flex justify-between items-center mb-3">
               <div>
-                <div class="text-xs font-bold text-navy">SPC — PT-2049-B · Feature D2 (Ø 12.7 ±0.05)</div>
+                <div class="text-xs font-bold text-navy">SPC — PT-EXAMPLE-A · Feature D2 (Ø 12.7 ±0.05)</div>
                 <div class="text-[10px] text-ink/50 mt-0.5">Last 32 measurements · Cpk 1.87 · Within control</div>
               </div>
               <span class="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">● In control</span>
@@ -141,10 +141,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </thead>
               <tbody>
                 {[
-                  { i: 'INS-4892', t: 'FAI', p: 'PT-2103-A', o: 'OP-030', insp: 'Patel R.', s: 'In progress', tone: 'warn' },
-                  { i: 'INS-4891', t: 'In-process', p: 'PT-2049-B', o: 'OP-020', insp: 'Doyle M.', s: 'Pass', tone: 'ok' },
-                  { i: 'INS-4890', t: 'Final', p: 'PT-2210-C', o: 'OP-070', insp: 'Walsh F.', s: 'Pass', tone: 'ok' },
-                  { i: 'INS-4889', t: 'Incoming', p: 'RM-7732', o: '—', insp: 'Doyle M.', s: 'Pending', tone: 'idle' },
+                  { i: 'INS-EXAMPLE-04', t: 'FAI', p: 'PT-EXAMPLE-B', o: 'OP-030', insp: 'Inspector 1', s: 'In progress', tone: 'warn' },
+                  { i: 'INS-EXAMPLE-03', t: 'In-process', p: 'PT-EXAMPLE-A', o: 'OP-020', insp: 'Inspector 2', s: 'Pass', tone: 'ok' },
+                  { i: 'INS-EXAMPLE-02', t: 'Final', p: 'PT-EXAMPLE-C', o: 'OP-070', insp: 'Inspector 3', s: 'Pass', tone: 'ok' },
+                  { i: 'INS-EXAMPLE-01', t: 'Incoming', p: 'RM-EXAMPLE', o: '—', insp: 'Inspector 2', s: 'Pending', tone: 'idle' },
                 ].map(r => (
                   <tr class="border-t border-border">
                     <td class="px-4 py-2 font-mono text-navy">{r.i}</td>
@@ -209,7 +209,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
           <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
-            app.mesvantage.com / scheduling
+            app.mesvantage.example / scheduling
           </div>
         </div>
         <div class="bg-white p-6">
@@ -233,10 +233,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 ))}
               </div>
               {[
-                { cell: 'Cell 01', bars: [{ l: 8, w: 38, c: 'bg-accent', label: 'PT-2049-B · 320u' }, { l: 48, w: 22, c: 'bg-accent/70', label: 'PT-2103-A · 180u' }, { l: 72, w: 18, c: 'bg-amber-400', label: 'Setup' }] },
-                { cell: 'Cell 02', bars: [{ l: 0, w: 30, c: 'bg-accent', label: 'PT-2049-B · 290u' }, { l: 32, w: 28, c: 'bg-accent', label: 'PT-2049-B · 240u' }, { l: 62, w: 32, c: 'bg-accent/70', label: 'PT-2210-C · 210u' }] },
-                { cell: 'Cell 03', bars: [{ l: 5, w: 24, c: 'bg-accent', label: 'PT-2049-B · 200u' }, { l: 30, w: 12, c: 'bg-red-400', label: 'Down' }, { l: 44, w: 18, c: 'bg-amber-400', label: 'Setup' }, { l: 64, w: 28, c: 'bg-accent/70', label: 'PT-2103-A · 180u' }] },
-                { cell: 'Cell 04', bars: [{ l: 4, w: 42, c: 'bg-accent', label: 'PT-2210-C · 410u' }, { l: 50, w: 30, c: 'bg-accent', label: 'PT-2210-C · 290u' }, { l: 82, w: 14, c: 'bg-accent/70', label: 'PT-2049-B · 90u' }] },
+                { cell: 'Cell 01', bars: [{ l: 8, w: 38, c: 'bg-accent', label: 'PT-EXAMPLE-A · 320u' }, { l: 48, w: 22, c: 'bg-accent/70', label: 'PT-EXAMPLE-B · 180u' }, { l: 72, w: 18, c: 'bg-amber-400', label: 'Setup' }] },
+                { cell: 'Cell 02', bars: [{ l: 0, w: 30, c: 'bg-accent', label: 'PT-EXAMPLE-A · 290u' }, { l: 32, w: 28, c: 'bg-accent', label: 'PT-EXAMPLE-A · 240u' }, { l: 62, w: 32, c: 'bg-accent/70', label: 'PT-EXAMPLE-C · 210u' }] },
+                { cell: 'Cell 03', bars: [{ l: 5, w: 24, c: 'bg-accent', label: 'PT-EXAMPLE-A · 200u' }, { l: 30, w: 12, c: 'bg-red-400', label: 'Down' }, { l: 44, w: 18, c: 'bg-amber-400', label: 'Setup' }, { l: 64, w: 28, c: 'bg-accent/70', label: 'PT-EXAMPLE-B · 180u' }] },
+                { cell: 'Cell 04', bars: [{ l: 4, w: 42, c: 'bg-accent', label: 'PT-EXAMPLE-C · 410u' }, { l: 50, w: 30, c: 'bg-accent', label: 'PT-EXAMPLE-C · 290u' }, { l: 82, w: 14, c: 'bg-accent/70', label: 'PT-EXAMPLE-A · 90u' }] },
                 { cell: 'CMM Bay', bars: [{ l: 12, w: 6, c: 'bg-navy', label: 'FAI' }, { l: 22, w: 4, c: 'bg-navy', label: 'IP' }, { l: 30, w: 6, c: 'bg-navy', label: 'IP' }, { l: 42, w: 8, c: 'bg-navy', label: 'IP' }, { l: 56, w: 6, c: 'bg-navy', label: 'Final' }, { l: 68, w: 8, c: 'bg-navy', label: 'IP' }] },
               ].map(row => (
                 <div class="flex items-center gap-2 mb-1.5 last:mb-0">
@@ -279,11 +279,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <div class="text-xs font-bold text-navy mb-3">Standard time variance — by part</div>
               <div class="space-y-2">
                 {[
-                  { p: 'PT-2049-B', v: '+12%', tone: 'warn', w: 56 },
-                  { p: 'PT-2103-A', v: '−3%', tone: 'ok', w: 42 },
-                  { p: 'PT-2210-C', v: '+1%', tone: 'ok', w: 51 },
-                  { p: 'PT-2188-D', v: '−7%', tone: 'ok', w: 38 },
-                  { p: 'PT-2099-E', v: '+24%', tone: 'warn', w: 70 },
+                  { p: 'PT-EXAMPLE-A', v: '+12%', tone: 'warn', w: 56 },
+                  { p: 'PT-EXAMPLE-B', v: '−3%', tone: 'ok', w: 42 },
+                  { p: 'PT-EXAMPLE-C', v: '+1%', tone: 'ok', w: 51 },
+                  { p: 'PT-EXAMPLE-D', v: '−7%', tone: 'ok', w: 38 },
+                  { p: 'PT-EXAMPLE-E', v: '+24%', tone: 'warn', w: 70 },
                 ].map(row => (
                   <div class="flex items-center gap-3">
                     <div class="w-20 text-[10px] font-mono text-ink/70">{row.p}</div>
@@ -341,15 +341,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
           <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
-            app.mesvantage.com / metrology / report / HX-2026-1184
+            app.mesvantage.example / metrology / report / CMM-EXAMPLE-11
           </div>
         </div>
         <div class="bg-[#F8F9FB] p-6">
           <div class="flex justify-between items-start mb-5">
             <div>
               <div class="text-[10px] uppercase tracking-wider text-ink/50 font-semibold">CMM Report</div>
-              <h3 class="text-xl font-bold text-navy">HX-2026-1184 · Hexagon Global S</h3>
-              <p class="text-xs text-ink/60 mt-0.5">Part PT-2049-B rev D · Op 020 · 18 features · auto-parsed in 1.2s</p>
+              <h3 class="text-xl font-bold text-navy">CMM-EXAMPLE-11 · CMM — example report</h3>
+              <p class="text-xs text-ink/60 mt-0.5">Part PT-EXAMPLE-A rev D · Op 020 · 18 features · auto-parsed in 1.2s</p>
             </div>
             <div class="flex gap-2">
               <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">● 18/18 in tolerance</span>
@@ -405,8 +405,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <div class="mt-3 flex justify-between items-center text-[11px] text-ink/50">
-            <span>Auto-linked to DHR · SN-A4729-00184 · Lot LT-2026-Q2-018</span>
-            <span class="font-mono">Parsed by MESvantage v3.4 · model cmm-parse-v9</span>
+            <span>Auto-linked to DHR · SN-EXAMPLE-0001 · Lot LT-EXAMPLE-018</span>
+            <span class="font-mono">Parsed automatically and written to the batch record</span>
           </div>
         </div>
       </div>
@@ -453,7 +453,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
           <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
-            app.mesvantage.com / training / skills-matrix
+            app.mesvantage.example / training / skills-matrix
           </div>
         </div>
         <div class="bg-white p-6">
@@ -474,22 +474,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <thead>
                 <tr class="text-[10px] text-ink/50">
                   <th class="text-left px-3 py-2 font-semibold">Operator</th>
-                  {['PT-2049-B', 'PT-2103-A', 'PT-2210-C', 'PT-2188-D', 'PT-2099-E', 'PT-2317-F', 'PT-2401-G', 'CMM Ops'].map(p => (
+                  {['PT-EXAMPLE-A', 'PT-EXAMPLE-B', 'PT-EXAMPLE-C', 'PT-EXAMPLE-D', 'PT-EXAMPLE-E', 'PT-EXAMPLE-F', 'PT-EXAMPLE-G', 'CMM Ops'].map(p => (
                     <th class="text-center font-mono font-semibold">{p}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { n: 'Smith K.', s: ['c', 'c', 'c', 't', 'c', 'x', 'c', 'c'] },
-                  { n: 'Jones K.', s: ['c', 'c', 'c', 'c', 't', 't', 'c', 'c'] },
-                  { n: 'Patel R.', s: ['c', 'c', 't', 'c', 'c', 'c', 'c', 'c'] },
-                  { n: 'Doyle M.', s: ['c', 't', 'c', 'c', '-', 'c', 't', 'c'] },
-                  { n: 'Walsh F.', s: ['c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'] },
-                  { n: 'O\'Brien S.', s: ['t', 'c', 'c', 'c', 'c', '-', 'c', 't'] },
-                  { n: 'Lynch J.', s: ['c', 'c', 'x', 'c', 'c', 'c', 'c', 'c'] },
-                  { n: 'Ryan P.', s: ['c', '-', 'c', 'c', 't', 'c', 't', '-'] },
-                  { n: 'Murphy A.', s: ['t', '-', 'c', 'c', 'c', 'c', 'c', 'c'] },
+                  { n: 'Operator A', s: ['c', 'c', 'c', 't', 'c', 'x', 'c', 'c'] },
+                  { n: 'Operator B', s: ['c', 'c', 'c', 'c', 't', 't', 'c', 'c'] },
+                  { n: 'Operator C', s: ['c', 'c', 't', 'c', 'c', 'c', 'c', 'c'] },
+                  { n: 'Operator D', s: ['c', 't', 'c', 'c', '-', 'c', 't', 'c'] },
+                  { n: 'Operator E', s: ['c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'] },
+                  { n: 'Operator F', s: ['t', 'c', 'c', 'c', 'c', '-', 'c', 't'] },
+                  { n: 'Operator G', s: ['c', 'c', 'x', 'c', 'c', 'c', 'c', 'c'] },
+                  { n: 'Operator H', s: ['c', '-', 'c', 'c', 't', 'c', 't', '-'] },
+                  { n: 'Operator J', s: ['t', '-', 'c', 'c', 'c', 'c', 'c', 'c'] },
                 ].map(row => (
                   <tr class="border-t border-border">
                     <td class="px-3 py-2 font-semibold text-navy text-xs">{row.n}</td>
@@ -512,10 +512,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <!-- Alerts -->
           <div class="mt-4 grid md:grid-cols-2 gap-2">
             <div class="bg-red-50 border border-red-200 rounded-lg p-2.5 text-[11px] text-red-900">
-              <span class="font-bold">⚠ Cert expired</span> — Lynch J. · PT-2210-C · expired 2 days ago. Re-cert WO drafted.
+              <span class="font-bold">⚠ Certification lapsed</span> — one operator is no longer qualified for this operation. A re-certification task has been drafted.
             </div>
             <div class="bg-amber-50 border border-amber-200 rounded-lg p-2.5 text-[11px] text-amber-900">
-              <span class="font-bold">▲ Trainee active</span> — Murphy A. on PT-2049-B with trainer Patel R. · 3 hrs logged.
+              <span class="font-bold">▲ Trainee active</span> — a trainee is working under a named trainer; hours are logged against the operation.
             </div>
           </div>
         </div>
@@ -531,7 +531,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="text-xs font-bold tracking-widest text-accent uppercase">Domain 05 · Intelligence</span>
           <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">From shop floor to CEO. One pane of glass.</h2>
           <p class="mt-4 text-ink/70 leading-relaxed">
-            Live executive intelligence aggregated across operations, finance, supply chain, and quality. Powered by a purpose-built LLM that reads your ERP, your QMS, and your floor in real time.
+            Live executive intelligence aggregated across operations, finance, supply chain, and quality. An assistant grounded in your own records: it answers using retrieval over your MESvantage data and links to the source record behind each statement. It cannot approve, sign, disposition or release anything.
           </p>
         </div>
         <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-sm content-start">
@@ -539,7 +539,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             'CEO Intelligence Dashboard',
             'AI Executive Agent (LLM)',
             'Energy & sustainability intel',
-            'Machine intelligence (predictive)',
+            'Machine condition monitoring',
             'Customer-facing portals',
             'Power BI bidirectional',
             'Ops intelligence stream',
@@ -565,7 +565,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
           <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
-            app.mesvantage.com / ceo
+            app.mesvantage.example / ceo
           </div>
         </div>
         <div class="bg-[#0F2D52] p-6 text-white">
@@ -616,7 +616,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
               <div class="space-y-2 text-[10px]">
                 <div class="border-l-2 border-accent pl-2">
-                  <div class="text-white/85"><span class="font-bold text-green-300">Up</span> · PT-2049-B yield trending +2.4pp; expect to clear backlog by Friday.</div>
+                  <div class="text-white/85"><span class="font-bold text-green-300">Up</span> · PT-EXAMPLE-A yield trending +2.4pp; expect to clear backlog by Friday.</div>
                 </div>
                 <div class="border-l-2 border-amber-400 pl-2">
                   <div class="text-white/85"><span class="font-bold text-amber-300">Watch</span> · Cell 03 thermal drift recurring weekly. Recommend tool study.</div>
@@ -643,23 +643,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="text-xs font-bold tracking-widest text-accent uppercase">Domain 06 · Platform</span>
           <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">Compliance-grade foundations.</h2>
           <p class="mt-4 text-ink/70 leading-relaxed">
-            Every record signed, hashed, and audit-trailed. Every action role-gated. Every customer in their own isolated environment. The platform is the validation evidence — not a layer on top of one.
+            Every record signed, hashed and audit-trailed. Every action role-gated. Every customer in
+            their own isolated deployment. The platform is the object of validation — we supply the
+            evidence that lets your team qualify it in your environment.
           </p>
         </div>
         <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-sm content-start">
           {[
             'Mobile PWA (install-ready)',
             'Digital factory floor signage',
-            'Full audit trail (21 CFR Part 11)',
-            'Electronic signatures (Annex 11)',
+            'Audit trail against 21 CFR Part 11 §11.10',
+            'Electronic signatures against Part 11 Subpart C',
             'Role-based access control',
             'Microsoft Entra SSO',
-            'Siloed SaaS deployment',
-            'Validated backups (verified daily)',
+            'Dedicated deployment per customer',
+            'Backups with tested restores — last test date published',
             'ERP integration (M1/SAP/Plex)',
             'Power BI bidirectional',
             'OneDrive document linking',
-            'Self-service environment provisioning',
+            'Infrastructure provisioned from code',
           ].map(m => (
             <li class="flex items-start gap-2 text-ink/80">
               <span class="text-accent font-bold mt-0.5">✓</span>{m}
@@ -668,69 +670,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </ul>
       </div>
 
-      <!-- Mockup: Audit trail -->
-      <div class="rounded-xl overflow-hidden shadow-2xl border border-border">
-        <div class="bg-[#1e2a3a] px-4 py-2.5 flex items-center gap-3">
-          <div class="flex gap-1.5">
-            <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
-            <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
-            <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
-          </div>
-          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
-            app.mesvantage.com / admin / audit-trail
-          </div>
-        </div>
-        <div class="bg-white p-6">
-          <div class="flex justify-between items-start mb-4">
-            <div>
-              <h3 class="text-lg font-bold text-navy">Audit Trail · 21 CFR Part 11</h3>
-              <p class="text-xs text-ink/50 mt-0.5">Immutable · Hash-chained · Exportable to FDA-ready PDF</p>
-            </div>
-            <div class="flex gap-2">
-              <span class="bg-accent/10 text-accent px-2 py-1 rounded text-[10px] font-semibold">3,482 events today</span>
-              <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-[10px] font-semibold">● Hash chain valid</span>
-            </div>
-          </div>
+      {/*
+        REMOVED 2026-07-27: fabricated "Audit Trail · 21 CFR Part 11" mockup.
+        It depicted a record-integrity control operating correctly — hash chain valid, named
+        actors applying electronic signatures, invented block hashes, "3,482 events today" —
+        using entirely invented data and carrying no disclaimer.
+        Two reasons it cannot be labelled and kept:
+          1. Customers paste vendor screenshots into their validation files. A fabricated Part 11
+             audit-trail image entering a customer's validation package is falsified evidence
+             with our logo on it.
+          2. We hold an internal finding of open e-signature enforcement gaps. Publishing a
+             picture of that control working is the "they knew" narrative, pre-assembled.
+        Replacement: the Part 11 control map on /validation — control -> mechanism -> evidence
+        artefact, including open items. Never a depicted audit trail.
+      */}
 
-          <div class="bg-surface border border-border rounded-lg overflow-hidden font-mono text-[11px]">
-            <div class="grid grid-cols-12 gap-2 px-3 py-2 text-ink/50 text-[10px] uppercase tracking-wider font-semibold border-b border-border">
-              <div class="col-span-2">Timestamp (UTC)</div>
-              <div class="col-span-2">Actor</div>
-              <div class="col-span-2">Action</div>
-              <div class="col-span-2">Entity</div>
-              <div class="col-span-3">Change</div>
-              <div class="col-span-1 text-right">Hash</div>
-            </div>
-            {[
-              { t: '2026-05-07 14:06:18', a: 'Walsh F.', ac: 'SIGN', e: 'DHR · SN-A4729-00184', ch: 'Lock + e-signature', h: '0x9A4F…E218', tone: 'sign' },
-              { t: '2026-05-07 14:06:14', a: 'Walsh F.', ac: 'AUTH', e: 'DHR · SN-A4729-00184', ch: 'Re-auth (≤3 min)', h: '0x7B3C…0091', tone: 'norm' },
-              { t: '2026-05-07 13:58:42', a: 'auto', ac: 'INGEST', e: 'CMM · HX-2026-1184', ch: 'Parsed 18 features', h: '0x4D8E…AA21', tone: 'norm' },
-              { t: '2026-05-07 13:42:11', a: 'Patel R.', ac: 'CREATE', e: 'NCR · NCR-1147', ch: 'Coolant Δ flagged', h: '0x2F61…99A4', tone: 'warn' },
-              { t: '2026-05-07 13:30:55', a: 'Smith K.', ac: 'UPDATE', e: 'WO · WO-4892', ch: 'Op 020 → in-progress', h: '0x8C19…F127', tone: 'norm' },
-              { t: '2026-05-07 13:22:09', a: 'Smith K.', ac: 'AUTH', e: 'WO · WO-4892', ch: 'Op start auth', h: '0x6E40…4F09', tone: 'norm' },
-              { t: '2026-05-07 12:58:33', a: 'auto', ac: 'EXPORT', e: 'Lot release · LT-2026-Q2-018', ch: 'Sent to OEM portal', h: '0x1A92…7C3D', tone: 'sign' },
-              { t: '2026-05-07 12:45:14', a: 'Walsh F.', ac: 'SIGN', e: 'CAPA · CAPA-0089', ch: 'QA approval signature', h: '0x5B70…2E18', tone: 'sign' },
-            ].map(r => (
-              <div class="grid grid-cols-12 gap-2 px-3 py-1.5 border-b border-border last:border-b-0 text-ink/80">
-                <div class="col-span-2 text-ink/60">{r.t}</div>
-                <div class="col-span-2 font-semibold text-navy">{r.a}</div>
-                <div class="col-span-2"><span class={
-                  r.tone === 'sign' ? 'bg-accent/10 text-accent px-1.5 py-0.5 rounded text-[9px] font-bold' :
-                  r.tone === 'warn' ? 'bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded text-[9px] font-bold' :
-                  'bg-surface text-ink/70 px-1.5 py-0.5 rounded text-[9px] font-bold'
-                }>{r.ac}</span></div>
-                <div class="col-span-2 text-ink/70">{r.e}</div>
-                <div class="col-span-3">{r.ch}</div>
-                <div class="col-span-1 text-right text-ink/40">{r.h}</div>
-              </div>
-            ))}
-          </div>
-
-          <div class="mt-3 flex justify-between items-center text-[11px] text-ink/50">
-            <span>Hash-chain verified: latest block 0xE921…4A78 · prev 0xC4D3…81FB</span>
-            <span class="text-accent font-semibold">Export FDA-ready PDF →</span>
-          </div>
-        </div>
+      <div class="bg-surface border border-border rounded-xl p-8 md:p-10">
+        <h3 class="text-xl font-bold text-navy">How we evidence Part 11, rather than illustrate it</h3>
+        <p class="mt-3 text-ink/70 leading-relaxed max-w-3xl">
+          Audit trail and electronic signature controls are implemented against 21 CFR Part 11
+          §11.10, §11.50 and §11.70. We publish the control map — each control, the mechanism that
+          implements it, and the evidence artefact that demonstrates it — rather than a picture of
+          a record. Our current control matrix, including open items, is available for review
+          under NDA.
+        </p>
+        <a href="/compliance" class="inline-flex items-center gap-1 mt-5 text-sm font-semibold text-accent hover:text-accent-dark transition-colors">
+          See the compliance detail
+          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -739,7 +706,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="bg-navy text-white py-20 px-6 text-center">
     <h2 class="text-3xl font-bold mb-4">Ready to see the full platform?</h2>
     <p class="text-white/70 mb-8 max-w-xl mx-auto">
-      A 30-minute demo walks through every domain, with live data mapped to your stack.
+      A 30-minute session walks through every domain. Bring us the hardest part you make and we will show you that part's life in MESvantage.
     </p>
     <a href="/about#contact" class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-md transition-colors inline-block">
       Book a Demo

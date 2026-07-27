@@ -1,5 +1,4 @@
 ---
-import LeadCaptureModal from './LeadCaptureModal';
 const navLinks = [
   { label: 'Product', href: '/product' },
   { label: 'Compliance', href: '/compliance' },
@@ -15,7 +14,7 @@ const navLinks = [
     </a>
 
     <!-- Desktop nav -->
-    <nav class="hidden md:flex items-center gap-8">
+    <nav aria-label="Primary" class="hidden md:flex items-center gap-8">
       {navLinks.map(link => (
         <a
           href={link.href}
@@ -27,7 +26,10 @@ const navLinks = [
     </nav>
 
     <div class="flex items-center gap-3">
-      <LeadCaptureModal label="Download Overview" variant="nav" client:load />
+      <a href="/mesvantage-product-overview.pdf"
+         class="hidden sm:inline-flex bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors">
+        Download overview
+      </a>
 
       <!-- Mobile menu toggle (visible on small screens only) -->
       <details class="md:hidden relative">
@@ -36,7 +38,7 @@ const navLinks = [
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </summary>
-        <nav class="absolute right-0 top-full mt-1 w-48 bg-white border border-border rounded-xl shadow-lg py-2 z-50">
+        <nav aria-label="Mobile" class="absolute right-0 top-full mt-1 w-48 bg-white border border-border rounded-xl shadow-lg py-2 z-50">
           {navLinks.map(link => (
             <a
               href={link.href}

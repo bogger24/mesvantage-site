@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LeadCaptureModal from '../components/LeadCaptureModal';
 ---
 
-<BaseLayout title="The Manufacturing Intelligence Platform for Medical Device CDMOs">
+<BaseLayout
+  title="MES for orthopaedic implant manufacturers"
+  description="Manufacturing execution and intelligence built inside a live 250,000-knee-a-year orthopaedic plant and validated there in production. FAI, DHR, NCR, CMM and OEE in one record. Published pricing from EUR 32,000 a year."
+>
 
   <!-- Hero -->
   <section class="bg-navy text-white pt-24 pb-20 px-6 overflow-hidden relative">
@@ -11,18 +13,22 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
          style="background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px); background-size: 48px 48px;"></div>
     <div class="max-w-5xl mx-auto text-center relative">
       <div class="inline-flex items-center gap-2 bg-accent/15 border border-accent/30 rounded-full px-4 py-1.5 text-xs font-semibold text-accent tracking-wide uppercase mb-6">
-        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-        Validated · ISO 13485 · 21 CFR Part 11
+        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+        Orthopaedic implant manufacturing
       </div>
       <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight">
-        Every FAI, NCR, audit, and machine —<br class="hidden md:block" /> one validated platform.
+        Every implant. Every operation.<br class="hidden md:block" /> Every signature. One record.
       </h1>
       <p class="mt-7 text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-        Medical device CDMOs spend three weeks preparing for an audit. MESvantage cuts that to four days.
-        Built and FDA-validated inside a live 250,000-knee-per-year orthopaedic CDMO.
+        MESvantage is the manufacturing execution and intelligence system built inside a live
+        250,000-knee-a-year orthopaedic plant in Ireland — and validated there, in production,
+        under that site's ISO 13485 quality system. Audit preparation stops being an archaeology project.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-        <LeadCaptureModal label="Download Product Overview" variant="primary" client:load />
+        <a href="/mesvantage-product-overview.pdf"
+           class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-md transition-colors">
+          Download the product overview
+        </a>
         <a href="/about#contact" class="border border-white/30 hover:border-white text-white font-semibold px-8 py-3.5 rounded-md transition-colors">
           Book a Demo
         </a>
@@ -65,21 +71,37 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
     </div>
   </section>
 
-  <!-- Quantified outcomes band -->
+  {/*
+    Facts band. Replaced the previous outcomes band (90d / ~70% / ~75% / €0) on 2026-07-27.
+    Those four were unsourced outcome claims and one of them — "€0 Validation Budget" — was
+    false: under ISO 13485 §4.1.6 and the FDA QMSR, validating software for intended use is the
+    device manufacturer's obligation and no supplier can discharge it.
+    Rule from here: counts, not percentages. A hostile reader can argue with a percentage; they
+    cannot argue with a count. No percentage returns to this page until it has been measured,
+    with a stated method, signed off by the person who measured it.
+  */}
   <section class="bg-navy/5 border-b border-border">
-    <div class="max-w-6xl mx-auto px-6 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      {[
-        { stat: '90d', label: 'Time to Live', context: 'From contract to production floor' },
-        { stat: '~70%', label: 'Faster Audit Prep', context: 'Weeks of prep becomes days' },
-        { stat: '~75%', label: 'FAI Cycle Reduction', context: 'From drawing to approved record' },
-        { stat: '€0', label: 'Validation Budget', context: 'IQ/OQ/PQ already passed' },
-      ].map(item => (
-        <div>
-          <div class="text-3xl md:text-4xl font-extrabold text-navy">{item.stat}</div>
-          <div class="text-xs uppercase tracking-wider text-ink/60 mt-1 font-semibold">{item.label}</div>
-          <div class="text-xs text-ink/40 mt-1">{item.context}</div>
-        </div>
-      ))}
+    <div class="max-w-6xl mx-auto px-6 py-14">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
+        {[
+          { stat: '250,000', label: 'Knee systems a year', context: 'The plant it was built in' },
+          { stat: '74', label: 'Modules', context: 'Across seven domains' },
+          { stat: '226 / 226', label: 'Test cases passed', context: 'Validation exercise, March 2026' },
+          { stat: '175 / 175', label: 'Requirements traced', context: 'In the traceability matrix' },
+          { stat: '0', label: 'Vendors with an ortho reference', context: 'Other than us — see method' },
+        ].map(item => (
+          <div>
+            <div class="text-2xl md:text-3xl font-extrabold text-navy tabular-nums">{item.stat}</div>
+            <div class="text-xs uppercase tracking-wider text-ink/70 mt-1 font-semibold">{item.label}</div>
+            <div class="text-xs text-ink/60 mt-1">{item.context}</div>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-sm text-ink/60 mt-8 max-w-3xl mx-auto">
+        On that last one: we looked across eighteen platforms and roughly three hundred sources in
+        July 2026 and could not find another MES vendor with a named orthopaedic implant machining
+        customer. <span class="font-semibold text-navy">If you can name one, tell us and we will publish it here.</span>
+      </p>
     </div>
   </section>
 
@@ -134,7 +156,7 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
           <!-- CENTER: MESvantage core -->
           <rect x="380" y="100" width="340" height="320" rx="18" fill="url(#centerGrad)" filter="url(#glow)"/>
           <text x="550" y="138" text-anchor="middle" fill="white" font-size="20" font-weight="800" letter-spacing="0.5">MESvantage</text>
-          <text x="550" y="158" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-size="11" letter-spacing="1.5">VALIDATED PLATFORM CORE</text>
+          <text x="550" y="158" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-size="11" letter-spacing="1.5">PLATFORM CORE</text>
 
           {[
             { y: 192, label: 'Device History Records (DHR)' },
@@ -143,7 +165,7 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
             { y: 282, label: 'FAI · Inspections · NCR · CAPA' },
             { y: 312, label: 'Scheduling & Standard Times' },
             { y: 342, label: 'Audit Trail & E-Signatures' },
-            { y: 372, label: 'AI Executive Assistant' },
+            { y: 372, label: 'AI Assistant' },
           ].map(item => (
             <g>
               <rect x="408" y={item.y - 12} width="284" height="22" rx="6" fill="rgba(255,255,255,0.08)"/>
@@ -195,39 +217,20 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
       </div>
 
       <p class="text-center text-sm text-ink/50 mt-6 max-w-2xl mx-auto">
-        Every customer runs in a fully isolated deployment. No shared compute, no shared databases, no cross-customer data — by design and by audit requirement.
+        Each customer runs in a dedicated deployment: separate compute, database and storage. Isolation is not a regulatory requirement, but it keeps your audit scope simple and your data unambiguously yours.
       </p>
     </div>
   </section>
 
-  <!-- Screenshot callout -->
-  <section class="py-24 px-6 bg-navy relative overflow-hidden">
-    <div class="absolute inset-0 opacity-[0.04] pointer-events-none"
-         style="background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px); background-size: 48px 48px;"></div>
-    <div class="max-w-6xl mx-auto relative">
-      <div class="text-center mb-10">
-        <span class="text-xs font-bold tracking-widest text-accent uppercase">Real platform. Live in production.</span>
-        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-white">Not a demo. Not a pilot.</h2>
-        <p class="mt-4 text-white/60 max-w-xl mx-auto">
-          The platform has been running under FDA scrutiny at 250,000 knees per year for two years.
-          What you see is what you get.
-        </p>
-      </div>
-      <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-        <img
-          src="/screenshots/intelligence-dashboard.svg"
-          alt="MESvantage Intelligence Dashboard — CEO-level visibility across quality, production, and energy"
-          class="w-full h-auto block"
-          width="1400"
-          height="800"
-          loading="lazy"
-        />
-      </div>
-      <p class="text-center text-white/30 text-xs mt-4">
-        Intelligence module — machine utilisation, quality trends, and predictive alerts. All data anonymised.
-      </p>
-    </div>
-  </section>
+  <!--
+    REMOVED 2026-07-27: "Screenshot callout" section.
+    It rendered /screenshots/intelligence-dashboard.svg — a grey placeholder box whose only
+    visible text was "[ Screenshot placeholder — replace with real anonymised PNG ]" — directly
+    beneath the headline "Not a demo. Not a pilot." and the line "What you see is what you get."
+    The alt text and caption both described content that did not exist.
+    Replacement: real captures from the declared demo tenant (Phase 9/10 of the roadmap).
+    Do not reinstate this section without a real image and a provenance manifest entry.
+  -->
 
   <!-- The gap we fill -->
   <section class="py-20 px-6 bg-white">
@@ -242,12 +245,12 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
             body: 'Not a generic MES retrofitted to medical. Every workflow — DHR, FAI, CMM, OEE, NCR, lot release — was designed for regulated contract manufacturing from day one.',
           },
           {
-            title: 'Validation transferable',
-            body: 'IQ/OQ/PQ baseline already passed in a live regulated environment. Validation evidence transfers with the platform. Skip the 12-month validation programme.',
+            title: 'Validation you execute, not author',
+            body: 'IQ/OQ/PQ has been executed for MESvantage at our founding customer\'s site, under their quality system. You still own validation — no supplier can discharge it. We supply the protocols, test scripts, traceability matrix and executed reference evidence so your team executes rather than writes.',
           },
           {
             title: 'Production-grade',
-            body: 'Stress-tested at scale, 24/7, under FDA scrutiny. Every feature has run on a real production floor — not a lab, not a pilot, not a demo environment.',
+            body: 'Running daily in an FDA-registered, ISO 13485-certified orthopaedic plant. Every feature in the validated scope has run on a real production floor — not a lab, not a pilot, not a demo environment.',
           },
         ].map(card => (
           <div class="bg-surface border border-border rounded-xl p-8">
@@ -266,16 +269,26 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
         <path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.657 1.343-3 3-3V8zm18 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.657 1.343-3 3-3V8z"/>
       </svg>
       <blockquote class="text-xl md:text-2xl font-medium text-navy leading-relaxed">
-        "We built the MES we couldn't find on the market. It's been running live in our plant for two years —
-        250,000 knee systems a year, fully under FDA scrutiny. That's not a pilot. That's the product."
+        "We spent two years looking for an MES that understood a knee. Everything we found was a QMS
+        pretending to be an MES, a platform we would have had to build ourselves, or a two-year
+        programme priced for a company ten times our size. So we built it, we validated it, and we
+        ran our plant on it. This is that system — not a version of it, not a demonstration of it.
+        The same one."
       </blockquote>
       <div class="mt-8 flex items-center justify-center gap-4">
         <div class="w-12 h-12 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold text-lg">PB</div>
         <div class="text-left">
           <div class="font-bold text-navy">Patrick Byrnes</div>
-          <div class="text-sm text-ink/60">CEO, Croom Medical — Founding Customer</div>
+          <div class="text-sm text-ink/70">CEO, Croom Medical · Founder, MESvantage</div>
         </div>
       </div>
+      <p class="mt-8 text-sm text-ink/70 leading-relaxed max-w-2xl mx-auto border-t border-border pt-6">
+        <span class="font-semibold text-navy">A disclosure, because you would find it anyway.</span>
+        MESvantage Limited and Croom Medical share a founder and chief executive. Croom is our only
+        customer to date, so this is a related-party reference and we describe it as one. What is not
+        related-party is the record: the system has been in scope for external audits of an
+        FDA-registered, ISO 13485-certified plant, and Croom's quality manager will take your call.
+      </p>
     </div>
   </section>
 
@@ -299,7 +312,7 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
           <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
-            app.mesvantage.com / operations
+            app.mesvantage.example / operations
           </div>
         </div>
 
@@ -418,20 +431,22 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
         <div>
-          <span class="text-xs font-bold tracking-widest text-accent uppercase">Machine Intelligence</span>
+          <span class="text-xs font-bold tracking-widest text-accent uppercase">Machine condition monitoring</span>
           <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">
-            Every machine, every shift, every alert — predictive.
+            Every connected machine, every shift, on one screen.
           </h2>
           <p class="mt-4 text-ink/70 leading-relaxed">
-            Live ingestion from OPC-UA, MTConnect and Modbus. ML models trained per machine class predict thermal drift, dimensional risk, and tool wear before they break a part — not after.
+            Live ingestion from OPC-UA, MTConnect and Modbus. Machine state, utilisation and downtime reasons
+            are captured as they happen and surfaced per cell, per work centre and across the fleet — with
+            threshold and trend alerting on the signals your maintenance team already watches.
           </p>
           <ul class="mt-6 space-y-2 text-sm">
             {[
               'Real-time OEE per cell, work centre, and fleet',
-              'Thermal-drift prediction with 24-hour horizon',
-              'Auto-generated maintenance work orders',
-              'Closed-loop feedback to scheduling',
-              'Edge ML — no cloud round-trip required',
+              'Downtime reasons captured by operators at the machine',
+              'Threshold and trend alerting on temperature, cycle and feed',
+              'Maintenance work orders drafted for a person to approve',
+              'Before we quote, we survey your machines and tell you which can be read on day one',
             ].map(item => (
               <li class="flex items-start gap-2 text-ink/80">
                 <span class="text-accent font-bold mt-0.5">▸</span>{item}
@@ -449,27 +464,30 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
               <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
             </div>
             <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
-              app.mesvantage.com / machine-intel
+              app.mesvantage.example / machine-intel
             </div>
+            <span class="text-[11px] font-semibold tracking-wider text-white uppercase bg-white/20 px-2 py-1 rounded">
+              Illustration
+            </span>
           </div>
           <div class="bg-[#0F2D52] p-5">
-            <!-- AI alert -->
+            <!-- Threshold alert -->
             <div class="bg-amber-500/10 border border-amber-500/30 rounded-lg px-3 py-2 mb-4 flex items-start gap-2">
               <span class="text-amber-400 mt-0.5 text-xs">⚠</span>
               <div class="text-[11px] text-white/85 leading-snug">
-                <span class="font-semibold text-amber-300">Predictive alert.</span> Cell 03 thermal drift trending. 73% probability of dimensional drift in next 4h. Maintenance scheduled 16:30.
+                <span class="font-semibold text-amber-300">Trend alert.</span> Cell 03 spindle temperature rising across the last six hours. Review recommended.
               </div>
             </div>
 
             <!-- Machine cards grid -->
             <div class="grid grid-cols-2 gap-2">
               {[
-                { name: 'Cell 01', oee: 84, status: 'Running', tone: 'ok', part: 'PT-2049-B' },
-                { name: 'Cell 02', oee: 79, status: 'Running', tone: 'ok', part: 'PT-2103-A' },
-                { name: 'Cell 03', oee: 62, status: 'Setup', tone: 'warn', part: 'PT-2049-B' },
-                { name: 'Cell 04', oee: 88, status: 'Running', tone: 'ok', part: 'PT-2210-C' },
-                { name: 'CMM-Bay-1', oee: 71, status: 'Running', tone: 'ok', part: 'QC Queue' },
-                { name: 'VMC-09', oee: 45, status: 'Idle', tone: 'idle', part: '—' },
+                { name: 'Cell 01', oee: 84, status: 'Running', tone: 'ok', part: 'PT-EXAMPLE-A' },
+                { name: 'Cell 02', oee: 79, status: 'Running', tone: 'ok', part: 'PT-EXAMPLE-B' },
+                { name: 'Cell 03', oee: 62, status: 'Setup', tone: 'warn', part: 'PT-EXAMPLE-A' },
+                { name: 'Cell 04', oee: 88, status: 'Running', tone: 'ok', part: 'PT-EXAMPLE-C' },
+                { name: 'CMM bay', oee: 71, status: 'Running', tone: 'ok', part: 'QC queue' },
+                { name: 'Mill 09', oee: 45, status: 'Idle', tone: 'idle', part: '—' },
               ].map(m => (
                 <div class="bg-white/5 border border-white/10 rounded-md p-2.5">
                   <div class="flex justify-between items-start mb-1.5">
@@ -509,7 +527,7 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
     </div>
   </section>
 
-  <!-- Mockup scene: AI Executive Assistant -->
+  <!-- Mockup scene: AI Assistant -->
   <section class="py-24 px-6 bg-white">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -522,7 +540,7 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
               <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
             </div>
             <div class="flex-1 bg-white/5 rounded px-3 py-1 text-xs text-white/40 font-mono">
-              app.mesvantage.com / assistant
+              app.mesvantage.example / assistant
             </div>
           </div>
           <div class="bg-[#0a0f1a] p-5 text-white" style="min-height: 460px;">
@@ -557,19 +575,22 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
                 </div>
 
                 <ol class="text-[11px] text-white/80 leading-relaxed space-y-1.5 list-decimal list-inside">
-                  <li><span class="font-semibold text-white">Tool change overrun</span> on Wed — operator Smith K. flagged thermal drift; 47min unscheduled stop.</li>
-                  <li><span class="font-semibold text-white">PT-2049-B setup time</span> averaging 28% above Standard Time. Linked NCR <a class="text-accent underline">NCR-1147</a> still open.</li>
-                  <li><span class="font-semibold text-white">Operator coverage</span> — 3 shifts ran short by 1 trained operator (Qualio cert gap).</li>
+                  <li><span class="font-semibold text-white">Tool change overrun</span> on Wednesday — an unscheduled stop was recorded against this cell.</li>
+                  <li><span class="font-semibold text-white">Setup time</span> on PT-EXAMPLE-A is running above its standard time. Linked NCR-EXAMPLE-01 is still open.</li>
+                  <li><span class="font-semibold text-white">Operator coverage</span> — three shifts ran short of a trained operator for this operation.</li>
                 </ol>
 
-                <div class="bg-accent/10 border border-accent/30 rounded-lg p-3">
-                  <div class="text-[10px] text-accent font-bold uppercase tracking-wide mb-1">Recommendation</div>
-                  <div class="text-[11px] text-white/85 leading-snug">Approve recalibration WO #4892 (drafted) and schedule operator Patel R. for PT-2049-B graduation Thursday. Estimated recovery: <span class="font-bold text-green-400">+8.2 OEE pts</span> next week.</div>
+                <div class="bg-white/5 border border-white/10 rounded-lg p-3">
+                  <div class="text-[10px] text-white/50 font-bold uppercase tracking-wide mb-1">Drafted for review</div>
+                  <div class="text-[11px] text-white/85 leading-snug">
+                    A recalibration work order has been drafted and a graduation review suggested.
+                    Neither takes effect until a qualified user reviews and signs.
+                  </div>
                 </div>
 
                 <!-- Sources pill -->
                 <div class="flex flex-wrap gap-1.5 pt-1">
-                  {['OEE telemetry', 'NCR-1147', 'Standard Times', 'Qualio training', 'WO #4892'].map(src => (
+                  {['OEE telemetry', 'NCR-EXAMPLE-01', 'Standard times', 'Training records'].map(src => (
                     <span class="text-[9px] bg-white/5 border border-white/10 text-white/60 px-2 py-0.5 rounded font-mono">{src}</span>
                   ))}
                 </div>
@@ -586,20 +607,22 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
 
         <!-- Copy -->
         <div class="order-1 md:order-2">
-          <span class="text-xs font-bold tracking-widest text-accent uppercase">Executive Assistant</span>
+          <span class="text-xs font-bold tracking-widest text-accent uppercase">Intelligence, governed</span>
           <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy leading-tight">
-            Ask the question. Skip the dashboard.
+            People sign. The system proves.
           </h2>
           <p class="mt-4 text-ink/70 leading-relaxed">
-            A purpose-built LLM trained on your shop floor. It speaks DHR, FAI, NCR, OEE and ERP — and it cites every source. Auditors love it. Operators ask it everything.
+            An assistant grounded in your own records. It answers using retrieval over your MESvantage data
+            and links to the source record behind each statement. It is a read-and-draft tool: it cannot
+            approve, sign, disposition or release anything.
           </p>
           <ul class="mt-6 space-y-2 text-sm">
             {[
-              'Trained on your data, never co-mingled with another customer',
-              'Cites source records for every claim — audit-defensible',
-              'Drafts work orders, NCRs and CAPAs from natural-language requests',
-              'Available to every authorised role — operator to CEO',
-              'Runs in your isolated environment — your data never leaves',
+              'Your data is never used to train models — ours or a third party’s',
+              'Retrieval is scoped to your tenant; answers link to the underlying records',
+              'Drafts only — a qualified user reviews and signs; nothing takes effect without approval',
+              'Barred in software from releasing product, dispositioning parts or closing a quality record',
+              'Every response is written to the audit trail with its question, sources and model version',
             ].map(item => (
               <li class="flex items-start gap-2 text-ink/80">
                 <span class="text-accent font-bold mt-0.5">▸</span>{item}
@@ -618,7 +641,7 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
         <span class="text-xs font-bold tracking-widest text-accent uppercase">Genealogy & DHR</span>
         <h2 class="mt-2 text-3xl md:text-4xl font-bold text-white">Every part. Every operation. Every signature.</h2>
         <p class="mt-4 text-white/60 max-w-2xl mx-auto">
-          Trace a single serial number from raw stock to OEM dispatch in two clicks. Audit-ready out of the box.
+          Trace a single serial number from raw stock to dispatch in two clicks — assembled as the part is made, rather than reconstructed afterwards.
         </p>
       </div>
 
@@ -631,8 +654,11 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
           <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
-            app.mesvantage.com / genealogy / SN-A4729-00184
+            app.mesvantage.example / genealogy / SN-EXAMPLE-0001
           </div>
+          <span class="text-[11px] font-semibold tracking-wider text-white uppercase bg-white/20 px-2 py-1 rounded">
+            Illustration · Synthetic data
+          </span>
         </div>
 
         <div class="bg-[#F8F9FB] p-6">
@@ -640,13 +666,12 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
           <div class="flex flex-wrap items-start justify-between mb-6 gap-3">
             <div>
               <div class="text-[10px] uppercase tracking-wider text-ink/50 font-semibold">Serial number</div>
-              <div class="text-2xl font-extrabold text-navy">SN-A4729-00184</div>
-              <div class="text-xs text-ink/60 mt-0.5">Part PT-2049-B · Lot LT-2026-Q2-018 · Released 12 May 2026</div>
+              <div class="text-2xl font-extrabold text-navy">SN-EXAMPLE-0001</div>
+              <div class="text-xs text-ink/60 mt-0.5">Part PT-EXAMPLE-A · Lot LT-EXAMPLE-018</div>
             </div>
             <div class="flex flex-wrap gap-2">
-              <span class="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">● Released to OEM</span>
-              <span class="text-[10px] bg-accent/10 text-accent px-2 py-1 rounded font-semibold">FDA 21 CFR Part 11</span>
-              <span class="text-[10px] bg-navy/10 text-navy px-2 py-1 rounded font-semibold">DHR complete</span>
+              <span class="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">Released to customer</span>
+              <span class="text-[10px] bg-navy/10 text-navy px-2 py-1 rounded font-semibold">Record complete</span>
             </div>
           </div>
 
@@ -654,15 +679,14 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
           <div class="relative">
             <div class="absolute left-[15px] top-2 bottom-2 w-px bg-border"></div>
             {[
-              { time: '08 May · 14:32', op: 'Lot received', detail: 'Supplier SUP-217 · CoC verified · Incoming Qty 240', actor: 'Receiving · auto', tone: 'done' },
-              { time: '08 May · 16:15', op: 'Incoming inspection', detail: 'Hardness ✓ · Surface ✓ · Dimensional ✓ · Sample n=8', actor: 'Inspector Doyle M.', tone: 'done' },
-              { time: '09 May · 09:00', op: 'First Article Inspection', detail: 'CMM Renishaw EQUATOR · 32/32 features in tolerance · FAI-2026-0418', actor: 'Inspector Patel R.', tone: 'done' },
-              { time: '10 May · 14:22 → 15:45', op: 'Operation 010 — VMC turning', detail: 'VMC-09 · Program PRG-2049-010-r4 · Tool offsets logged · Cycle 18m24s', actor: 'Operator Smith K.', tone: 'done' },
-              { time: '10 May · 16:00 → 17:30', op: 'Operation 020 — Mill & finish', detail: 'Cell 03 · Program PRG-2049-020-r2 · Coolant Δ flagged · NCR-1147 raised', actor: 'Operator Jones K.', tone: 'warn' },
-              { time: '11 May · 10:15', op: 'Dimensional CMM', detail: 'Hexagon Global S · 18/18 features ✓ · Report HX-2026-1184', actor: 'Inspector Patel R.', tone: 'done' },
-              { time: '11 May · 13:42', op: 'Final inspection', detail: 'Visual ✓ · Marking ✓ · Packaging ✓', actor: 'Inspector Doyle M.', tone: 'done' },
-              { time: '12 May · 09:14', op: 'DHR signed & locked', detail: 'Electronic signature · Hash 0x9A4F…E218', actor: 'QA Manager Walsh F.', tone: 'done' },
-              { time: '12 May · 14:00', op: 'Released to OEM portal', detail: 'Lot release packet generated · transmitted to customer portal', actor: 'auto · MESvantage', tone: 'done' },
+              { time: 'Day 1 · 14:32', op: 'Lot received', detail: 'Supplier SUP-EXAMPLE · CoC verified · incoming quantity recorded', actor: 'Goods-in', tone: 'done' },
+              { time: 'Day 1 · 16:15', op: 'Incoming inspection', detail: 'Hardness, surface and dimensional checks recorded against the plan', actor: 'Inspector', tone: 'done' },
+              { time: 'Day 2 · 09:00', op: 'First Article Inspection', detail: 'CMM results linked to drawing characteristics · FAI-EXAMPLE-04', actor: 'Inspector', tone: 'done' },
+              { time: 'Day 3 · 14:22 → 15:45', op: 'Operation 010 — turning', detail: 'Machine and program recorded · tool offsets logged · cycle captured', actor: 'Operator', tone: 'done' },
+              { time: 'Day 3 · 16:00 → 17:30', op: 'Operation 020 — mill & finish', detail: 'Process deviation flagged · NCR-EXAMPLE-01 raised and linked', actor: 'Operator', tone: 'warn' },
+              { time: 'Day 4 · 10:15', op: 'Dimensional CMM', detail: 'Report ingested and matched to characteristics · CMM-EXAMPLE-11', actor: 'Inspector', tone: 'done' },
+              { time: 'Day 4 · 13:42', op: 'Final inspection', detail: 'Visual, marking and packaging checks recorded', actor: 'Inspector', tone: 'done' },
+              { time: 'Day 5 · 14:00', op: 'Released to customer', detail: 'Release packet assembled from the record and transmitted', actor: 'Quality', tone: 'done' },
             ].map(step => (
               <div class="relative pl-10 pb-4 last:pb-0">
                 <div class={`absolute left-2 top-1 w-3 h-3 rounded-full border-2 border-white ${step.tone === 'warn' ? 'bg-amber-500' : 'bg-accent'}`}></div>
@@ -676,14 +700,18 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
 
           <!-- Footer pills -->
           <div class="flex flex-wrap gap-2 mt-6 pt-4 border-t border-border">
-            <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">Linked NCR · NCR-1147</span>
-            <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">9 e-signatures</span>
+            <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">Linked NCR · NCR-EXAMPLE-01</span>
             <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">2 CMM reports attached</span>
-            <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">FAI-2026-0418</span>
+            <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">FAI-EXAMPLE-04</span>
             <span class="text-[10px] bg-white border border-border text-navy px-2 py-1 rounded font-semibold">CoC available</span>
           </div>
         </div>
       </div>
+
+      <p class="text-center text-white/60 text-sm mt-5 max-w-2xl mx-auto">
+        Illustration. MESvantage interface rendered with synthetic data — not a customer record.
+        Screenshots of a live system are available under NDA.
+      </p>
     </div>
   </section>
 
@@ -692,9 +720,9 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-14">
         <span class="text-xs font-bold tracking-widest text-accent uppercase">The platform</span>
-        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy">50+ validated modules. Six domains.</h2>
+        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy">74 modules. Seven domains.</h2>
         <p class="mt-4 text-ink/60 max-w-xl mx-auto">
-          Every module was designed for regulated contract manufacturing — not retrofitted from a generic platform.
+          Every module was written for regulated contract manufacturing, not retrofitted from a generic platform. Each one carries a label saying whether it is live in production today.
         </p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -717,12 +745,12 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
           {
             domain: 'Training', num: '04',
             icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>`,
-            outcome: 'Operators can only run what they are trained on. Trainer sign-off, competency expiry, and enforcement — fully automated.',
+            outcome: 'Operators can only run what they are trained on. Training is verified at start, record and sign — a gate that stops the work, not a matrix you maintain.',
           },
           {
             domain: 'Intelligence', num: '05',
             icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
-            outcome: 'CEO-level visibility: machine utilisation, quality trends, energy spend, and predictive alerts — without a BI team or data analyst.',
+            outcome: 'CEO-level visibility: machine utilisation, quality trends and energy spend, with threshold alerting — without a BI team or data analyst.',
           },
           {
             domain: 'Platform', num: '06',
@@ -747,7 +775,7 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
       </div>
       <div class="mt-10 text-center">
         <a href="/product" class="text-sm font-semibold text-accent hover:text-accent-dark transition-colors">
-          View all 50+ modules →
+          View all modules →
         </a>
       </div>
     </div>
@@ -763,12 +791,16 @@ import LeadCaptureModal from '../components/LeadCaptureModal';
         See exactly what MESvantage<br class="hidden md:block" /> would look like in your plant.
       </h2>
       <p class="mt-5 text-white/60 text-lg max-w-xl mx-auto">
-        Download the product overview — a 2-page summary of every module, compliance credentials, and implementation timeline.
+        A two-page summary of every domain, our compliance position, and the implementation plan.
+        No form — it downloads straight away.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-        <LeadCaptureModal label="Download Product Overview" variant="primary" client:load />
+        <a href="/mesvantage-product-overview.pdf"
+           class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-md transition-colors">
+          Download the product overview
+        </a>
         <a href="/about#contact" class="border border-white/30 hover:border-white text-white font-semibold px-8 py-3.5 rounded-md transition-colors">
-          Book a Demo Instead
+          Or talk to the founder
         </a>
       </div>
     </div>

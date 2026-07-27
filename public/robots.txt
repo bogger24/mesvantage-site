@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /brochure
+
+Sitemap: https://mesvantage.com/sitemap.xml

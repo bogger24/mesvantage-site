@@ -14,7 +14,7 @@ const links = [
       <p class="text-sm mt-1">The manufacturing intelligence platform for regulated industry.</p>
     </div>
 
-    <nav class="flex flex-wrap gap-6">
+    <nav aria-label="Footer" class="flex flex-wrap gap-6">
       {links.map(link => (
         <a href={link.href} class="text-sm hover:text-white transition-colors">{link.label}</a>
       ))}
