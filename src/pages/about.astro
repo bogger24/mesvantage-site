@@ -34,39 +34,66 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
         <div class="p-6 bg-white border border-border rounded-xl">
-          <h3 class="text-sm font-bold text-navy mb-2 uppercase tracking-wide">Already validated</h3>
+          <h3 class="text-sm font-bold text-navy mb-2 uppercase tracking-wide">Validation you execute</h3>
           <p class="text-ink/70 text-sm leading-relaxed">
-            IQ/OQ/PQ baseline passed in a live regulated environment. Validation documentation transfers with the platform — not a 12-month programme.
+            IQ/OQ/PQ has been executed at our founding customer’s site under their quality system. You still own validation — no supplier can discharge it. We supply the protocols, scripts, traceability matrix and executed reference evidence so your team executes rather than authors.
           </p>
         </div>
         <div class="p-6 bg-white border border-border rounded-xl">
           <h3 class="text-sm font-bold text-navy mb-2 uppercase tracking-wide">Production-grade</h3>
           <p class="text-ink/70 text-sm leading-relaxed">
-            Running daily in an FDA-registered, ISO 13485-certified orthopaedic plant. Every feature in the validated scope has run on a real production floor before it was offered to anyone else.
+            Running daily in an orthopaedic plant that is FDA-registered and ISO 13485-certified. Those are the plant’s credentials, not ours — MESvantage Limited holds no certification. Every feature in the validated scope has run on a real production floor before it was offered to anyone else.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-20 px-6">
+  {/*
+    The embedded Google Form was removed on 2026-07-27. It set third-party cookies on page load
+    for every visitor, which for an Irish controller means a consent requirement — and therefore
+    a banner — for a form most visitors never touch. It also read as a company without a contact
+    process, which is not the impression you want on the page where someone decides to call you.
+
+    The form still exists and is linked below, so nothing is lost. Because it now loads only when
+    a visitor chooses it, no non-essential cookie is set by this site at all, and no banner is
+    needed. A first-party form on our own endpoint replaces the link in Phase 8.
+  */}
+  <section id="contact" class="py-20 px-6 bg-surface border-t border-border">
     <div class="max-w-2xl mx-auto">
       <h2 class="text-3xl font-bold text-navy mb-2">Get in touch</h2>
-      <p class="text-ink/70 mb-8">
-        Book a demo, ask a compliance question, or tell us about your environment.
-        We respond within one business day.
+      <p class="text-ink/70 mb-8 leading-relaxed">
+        Ask a compliance question, tell us about your environment, or bring us the hardest part
+        you make — send one drawing and one traveller, and we will show you that part's life in
+        MESvantage on a call.
       </p>
 
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSepv09IsLVDDYsOXWPXKlUtQan8oIwSDNS-b8xEO_yifLA5Pg/viewform?embedded=true"
-        width="100%"
-        height="600"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        class="rounded-xl"
-      >Loading…</iframe>
+      <div class="bg-white border border-border rounded-xl p-8">
+        <p class="text-sm font-semibold uppercase tracking-wider text-ink/60">Email</p>
+        <a
+          href="mailto:hello@mesvantage.com?subject=MESvantage%20enquiry"
+          class="mt-1 inline-block text-xl md:text-2xl font-bold text-accent hover:text-accent-dark transition-colors break-all"
+        >
+          hello@mesvantage.com
+        </a>
+        <p class="mt-4 text-sm text-ink/70">
+          You will be talking to the people who run the plant this was built in, not a pre-sales
+          engineer. We aim to reply within one business day.
+        </p>
+
+        <p class="mt-6 pt-6 border-t border-border text-sm text-ink/70">
+          Prefer a form?
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSepv09IsLVDDYsOXWPXKlUtQan8oIwSDNS-b8xEO_yifLA5Pg/viewform"
+            rel="noopener noreferrer"
+            target="_blank"
+            class="font-semibold text-accent hover:text-accent-dark underline underline-offset-2"
+          >
+            Use this one instead
+          </a>
+          — it opens in a new tab and is hosted by Google, so it is only loaded if you choose it.
+        </p>
+      </div>
     </div>
   </section>
 </BaseLayout>

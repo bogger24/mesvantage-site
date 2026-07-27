@@ -28,6 +28,10 @@ if (claim.status === 'retired') {
 }
 
 const displayLabel = label ?? claim.label;
+
+// A claim whose evidence artefact does not exist yet must not render identically to one that
+// has been checked. The register drew the distinction; the component was throwing it away.
+const pending = claim.status === 'needs-evidence';
 ---
 
 {
@@ -38,6 +42,14 @@ const displayLabel = label ?? claim.label;
         {displayLabel}
       </div>
       {claim.context && <div class="text-xs text-ink/60 mt-1">{claim.context}</div>}
+      {pending && (
+        <a
+          href="/evidence"
+          class="mt-2 inline-block text-[10px] font-semibold uppercase tracking-wider text-amber-800 bg-amber-100 border border-amber-300 px-1.5 py-0.5 rounded hover:bg-amber-200 transition-colors"
+        >
+          Evidence pending
+        </a>
+      )}
     </div>
   ) : (
     <span data-evidence={claim.id} data-token={claim.token} class="font-semibold tabular-nums">

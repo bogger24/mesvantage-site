@@ -23,6 +23,8 @@ export type EvidenceToken =
   | 'VALIDATED'
   /** External or third-party. Must carry publisher, date, and a live link. */
   | 'SOURCED'
+  /** Our own research. Must name the method and say plainly that it is our own. */
+  | 'OUR-RESEARCH'
   /** Our own estimate. Must expose inputs and be labelled illustrative. */
   | 'MODELLED'
   /** Not shipped. Must say "not yet available" and name a target. */
@@ -55,7 +57,7 @@ export interface Claim {
   retiredReason?: string;
 }
 
-export const claims = {
+const claimsData = {
   'plant-volume': {
     id: 'plant-volume',
     value: '250,000',
@@ -119,8 +121,8 @@ export const claims = {
     id: 'ortho-vendor-count',
     value: '0',
     label: 'Vendors with an ortho reference',
-    context: 'Other than us — see method',
-    token: 'SOURCED',
+    context: 'Other than us — our own research',
+    token: 'OUR-RESEARCH',
     status: 'verified',
     statement:
       'We are not aware of another MES vendor with a named orthopaedic implant machining customer.',
@@ -242,7 +244,15 @@ export const claims = {
   },
 } as const satisfies Record<string, Claim>;
 
-export type ClaimId = keyof typeof claims;
+export type ClaimId = keyof typeof claimsData;
+
+/**
+ * The `as const satisfies` above keeps ClaimId as a literal union, but it also narrows each
+ * entry to its own exact shape — so optional fields like `context` only exist on the members
+ * that happen to set them, and any generic consumer fails to typecheck. Re-exporting through
+ * Record<ClaimId, Claim> keeps the literal keys and restores the common interface.
+ */
+export const claims: Record<ClaimId, Claim> = claimsData;
 
 export function getClaim(id: ClaimId): Claim {
   return claims[id];

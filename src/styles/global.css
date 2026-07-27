@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import '@fontsource-variable/inter';
 
 @tailwind base;
 @tailwind components;
@@ -6,4 +6,61 @@
 
 body {
   @apply bg-surface text-ink font-sans;
+}
+
+/* The codebase previously ran nine concurrent infinite SVG animations with no guard at all. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Sticky header is h-16; without this every in-page anchor lands under it. WCAG 2.2 SC 2.4.11. */
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+:focus-visible {
+  outline: 2px solid theme('colors.accent.DEFAULT');
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------------------
+   Illustration labelling.
+
+   Every element carrying data-illustration is stamped with a visible badge and
+   a hairline frame. This is deliberately not a per-block hand-applied class: a
+   red-team pass found that seven of nine mockups had been marked as
+   illustrations for the build check but never labelled for the reader.
+
+   The threat model is a prospect screenshotting a page, or pasting an image
+   into a validation file. A footnote at the bottom of the page does not travel
+   with the image. This badge does.
+   ------------------------------------------------------------------------- */
+[data-illustration] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-illustration]::after {
+  content: 'Illustration · synthetic data';
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  padding: 0.3rem 0.6rem;
+  border-bottom-left-radius: 0.25rem;
+  background-color: #0F2D52;
+  color: #ffffff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  pointer-events: none;
 }

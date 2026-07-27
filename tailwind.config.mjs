@@ -17,7 +17,9 @@ export default {
         ink: '#1A1A2E',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        // 'Inter Variable' is the family name @fontsource-variable/inter registers.
+        // Asking for 'Inter' silently matched nothing and fell back to system-ui.
+        sans: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

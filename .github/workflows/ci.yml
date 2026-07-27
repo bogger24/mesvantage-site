@@ -19,6 +19,10 @@ jobs:
 
       - run: npm ci
 
+      # astro check was declared in package.json but @astrojs/check was never installed,
+      # so the strict tsconfig enforced nothing and could not be run in CI at all.
+      - run: npm run typecheck
+
       # `npm run build` runs astro build and then scripts/check-claims.mjs.
       # The claims check fails the build on an unattributed statistic, on banned vocabulary,
       # or on a page that marks illustrations without disclosing that they are illustrations.
@@ -59,3 +63,18 @@ jobs:
             exit 1
           fi
           echo "✓ brochure excluded from indexing"
+
+      - name: Assert the PDF matches its source
+        run: |
+          # The truth pass rewrote brochure.astro but never re-rendered the PDF, so the primary
+          # CTA on every page kept serving "FDA-validated" and "€0 Validation Budget" for
+          # another push. The claims checker could not see it — it only walks *.html.
+          actual=$(sha256sum src/pages/brochure.astro | cut -d" " -f1)
+          recorded=$(cat public/mesvantage-product-overview.pdf.source-sha 2>/dev/null || echo missing)
+          if [ "$actual" != "$recorded" ]; then
+            echo "::error::brochure.astro has changed but the PDF was not regenerated. Run: npm run build && npm run pdf"
+            echo "  source:   $actual"
+            echo "  recorded: $recorded"
+            exit 1
+          fi
+          echo "✓ PDF is in step with its source"

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Evidence from '../components/Evidence.astro';
+import { claims } from '../data/claims';
 ---
 
 <BaseLayout
@@ -22,8 +23,9 @@ import Evidence from '../components/Evidence.astro';
       </h1>
       <p class="mt-7 text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
         MESvantage is the manufacturing execution and intelligence system built inside a live
-        250,000-knee-a-year orthopaedic plant in Ireland — and validated there, in production,
-        under that site's ISO 13485 quality system. Audit preparation stops being an archaeology project.
+        <span data-evidence="plant-volume" data-token={claims['plant-volume'].token}>{claims['plant-volume'].value}</span>-knee-a-year
+        orthopaedic plant in Ireland — and validated there, in production, under that site's
+        ISO 13485 quality system. Audit preparation stops being an archaeology project.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/mesvantage-product-overview.pdf"
@@ -244,7 +246,7 @@ import Evidence from '../components/Evidence.astro';
           },
           {
             title: 'Production-grade',
-            body: 'Running daily in an FDA-registered, ISO 13485-certified orthopaedic plant. Every feature in the validated scope has run on a real production floor — not a lab, not a pilot, not a demo environment.',
+            body: 'Running daily in an orthopaedic plant that is FDA-registered and ISO 13485-certified — the plant’s credentials, not ours. Every feature in the validated scope has run on a real production floor — not a lab, not a pilot, not a demo environment.',
           },
         ].map(card => (
           <div class="bg-surface border border-border rounded-xl p-8">
@@ -342,7 +344,7 @@ import Evidence from '../components/Evidence.astro';
             <div class="flex justify-between items-start mb-6">
               <div>
                 <h3 class="text-xl font-bold text-navy">Operations Dashboard</h3>
-                <p class="text-xs text-ink/50 mt-0.5">Live · Sample data · Updated 14:06</p>
+                <p class="text-xs text-ink/50 mt-0.5">Synthetic data</p>
               </div>
               <div class="flex items-center gap-2 text-xs">
                 <span class="bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">● Synced</span>
@@ -415,7 +417,7 @@ import Evidence from '../components/Evidence.astro';
       </div>
 
       <p class="text-center text-xs text-white/40 mt-6 italic">
-        Sample data shown. Each MESvantage deployment runs in its own isolated environment.
+        Illustration rendered with synthetic data. Each MESvantage deployment runs in its own isolated environment.
       </p>
     </div>
   </section>
@@ -460,9 +462,6 @@ import Evidence from '../components/Evidence.astro';
             <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
               app.mesvantage.example / machine-intel
             </div>
-            <span class="text-[11px] font-semibold tracking-wider text-white uppercase bg-white/20 px-2 py-1 rounded">
-              Illustration
-            </span>
           </div>
           <div class="bg-[#0F2D52] p-5">
             <!-- Threshold alert -->
@@ -650,9 +649,6 @@ import Evidence from '../components/Evidence.astro';
           <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
             app.mesvantage.example / genealogy / SN-EXAMPLE-0001
           </div>
-          <span class="text-[11px] font-semibold tracking-wider text-white uppercase bg-white/20 px-2 py-1 rounded">
-            Illustration · Synthetic data
-          </span>
         </div>
 
         <div class="bg-[#F8F9FB] p-6">
@@ -714,7 +710,7 @@ import Evidence from '../components/Evidence.astro';
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-14">
         <span class="text-xs font-bold tracking-widest text-accent uppercase">The platform</span>
-        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy">74 modules. Seven domains.</h2>
+        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy"><span data-evidence="module-count" data-token={claims['module-count'].token}>{claims['module-count'].value}</span> modules. Six domains on this page.</h2>
         <p class="mt-4 text-ink/60 max-w-xl mx-auto">
           Every module was written for regulated contract manufacturing, not retrofitted from a generic platform. Each one carries a label saying whether it is live in production today.
         </p>

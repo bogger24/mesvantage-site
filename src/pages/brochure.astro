@@ -10,14 +10,11 @@ import { claims } from '../data/claims';
   <meta charset="UTF-8" />
     <meta name="robots" content="noindex, nofollow" />
   <title>MESvantage — Product Overview</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style is:global>
     @page { size: A4 portrait; margin: 0; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter Variable', 'Inter', sans-serif;
       color: #1A1A2E;
       background: white;
       -webkit-print-color-adjust: exact;
@@ -77,43 +74,43 @@ import { claims } from '../data/claims';
     <div class="badges">
       <span class="badge">FDA 21 CFR Part 11</span>
       <span class="badge">ISO 13485</span>
-      <span class="badge">Validated</span>
+      <span class="badge">Orthopaedic implants</span>
     </div>
   </div>
 
   <div class="hero">
     <h1>The manufacturing intelligence platform<br/>for medical device CDMOs.</h1>
     <p>
-      Built inside a live 250,000-knee-a-year orthopaedic plant in Ireland, and validated there for that
+      Built inside a live <span data-evidence="plant-volume">{claims['plant-volume'].value}</span>-knee-a-year orthopaedic plant in Ireland, and validated there for that
       site's intended use under their ISO 13485 quality system. Not a pilot and not a demonstration —
       the system that plant runs on.
     </p>
   </div>
 
   <div class="stats">
-    <div class="stat-card">
-      <div class="stat-num">90d</div>
-      <div class="stat-label">Time to Live</div>
-      <div class="stat-context">Contract to production floor</div>
+    <div class="stat-card" data-evidence="plant-volume">
+      <div class="stat-num">{claims['plant-volume'].value}</div>
+      <div class="stat-label">Knee systems a year</div>
+      <div class="stat-context">The plant it was built in</div>
     </div>
-    <div class="stat-card">
-      <div class="stat-num">226/226</div>
-      <div class="stat-label">Validation tests passed</div>
-      <div class="stat-context">Weeks of prep becomes days</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">175/175</div>
-      <div class="stat-label">Requirements traced</div>
-      <div class="stat-context">Drawing to approved record</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">74</div>
+    <div class="stat-card" data-evidence="module-count">
+      <div class="stat-num">{claims['module-count'].value}</div>
       <div class="stat-label">Modules</div>
-      <div class="stat-context">IQ/OQ/PQ already passed</div>
+      <div class="stat-context">Across seven domains</div>
+    </div>
+    <div class="stat-card" data-evidence="validation-tests">
+      <div class="stat-num">{claims['validation-tests'].value}</div>
+      <div class="stat-label">Validation tests passed</div>
+      <div class="stat-context">March 2026, at the founding customer</div>
+    </div>
+    <div class="stat-card" data-evidence="validation-rtm">
+      <div class="stat-num">{claims['validation-rtm'].value}</div>
+      <div class="stat-label">Requirements traced</div>
+      <div class="stat-context">In the traceability matrix</div>
     </div>
   </div>
 
-  <div class="section-title">Platform modules — 6 domains, 50+ features</div>
+  <div class="section-title">Platform modules — seven domains</div>
   <div class="modules">
     <div class="module-card">
       <div class="module-num">Domain 01</div>
@@ -172,11 +169,11 @@ import { claims } from '../data/claims';
     </div>
     <div class="proof-card">
       <div class="proof-title">Production-grade from day one</div>
-      <div class="proof-body">Running daily in an FDA-registered, ISO 13485-certified orthopaedic plant. Every feature in the validated scope has run on a real production floor — not a lab, not a sandbox.</div>
+      <div class="proof-body">Running daily in an orthopaedic plant that is FDA-registered and ISO 13485-certified — the plant’s credentials, not ours. Every feature in the validated scope has run on a real production floor — not a lab, not a sandbox.</div>
     </div>
   </div>
 
-  <div class="section-title">Compliance credentials</div>
+  <div class="section-title">Our compliance position</div>
   <div class="compliance-grid">
     <div class="compliance-card">
       <div class="compliance-title">FDA 21 CFR Part 11</div>
@@ -205,7 +202,7 @@ import { claims } from '../data/claims';
   <div class="section-title">Founding customer</div>
   <div class="quote-block">
     <div class="quote-text">"We spent two years looking for an MES that understood a knee. Everything we found was a QMS pretending to be an MES, a platform we would have had to build ourselves, or a two-year programme priced for a company ten times our size. So we built it, we validated it, and we ran our plant on it."</div>
-    <div class="quote-attr">Patrick Byrnes, CEO — Croom Medical &nbsp;·&nbsp; ISO 13485 &nbsp;·&nbsp; FDA 21 CFR Part 11 &nbsp;·&nbsp; 250,000 knee systems/year</div>
+    <div class="quote-attr">Patrick Byrnes, CEO — Croom Medical &nbsp;·&nbsp; ISO 13485 &nbsp;·&nbsp; FDA 21 CFR Part 11 &nbsp;·&nbsp; <span data-evidence="plant-volume">{claims['plant-volume'].value}</span> knee systems/year</div>
   </div>
 
   <div class="footer-bar">
