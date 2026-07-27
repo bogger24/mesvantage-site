@@ -21,7 +21,18 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { execFileSync, spawn } from 'node:child_process';
 
-const SOURCE = 'src/pages/brochure.astro';
+// Hash the BUILT page, not the source.
+//
+// The first version of this guard hashed src/pages/brochure.astro while printing from dist/ via
+// astro preview. Those are different things: brochure.astro imports src/data/claims.ts, so every
+// number in the PDF comes from a file the guard never looked at, and nothing forced dist/ to be
+// in step with either. Red team broke it twice in under a minute — once by editing the source and
+// running `npm run pdf` alone (stale dist, fresh sidecar, CI green), once by editing a claim value
+// (source hash unchanged, PDF wrong, CI green).
+//
+// dist/brochure/index.html is the artefact actually printed, and it already reflects the source,
+// the register, and the stylesheet. Hashing it makes the attestation mean what it says.
+const SOURCE = 'dist/brochure/index.html';
 const OUT = 'public/mesvantage-product-overview.pdf';
 const SIDECAR = `${OUT}.source-sha`;
 const URL = 'http://localhost:4321/brochure';
@@ -45,6 +56,11 @@ export function expectedHash() {
 const chrome = CHROME_CANDIDATES.find((p) => existsSync(p));
 if (!chrome) {
   console.error('No Chrome/Chromium found. Set CHROME_PATH.');
+  process.exit(1);
+}
+
+if (!existsSync(SOURCE)) {
+  console.error(`${SOURCE} not found. Run \`npm run build\` first — this script prints what is in dist/.`);
   process.exit(1);
 }
 
@@ -74,6 +90,13 @@ try {
       '--no-sandbox',
       '--disable-gpu',
       '--no-pdf-header-footer',
+      // Without a virtual time budget, headless Chrome prints before the self-hosted webfont
+      // has loaded and silently substitutes whatever the machine resolves 'sans-serif' to.
+      // The brochure sets .page { height: 297mm; overflow: hidden }, so font metrics decide
+      // page fit and overflow is clipped rather than reflowed — the PDF would differ depending
+      // on who generated it.
+      '--virtual-time-budget=10000',
+      '--run-all-compositor-stages-before-draw',
       `--print-to-pdf=${OUT}`,
       URL,
     ],
@@ -82,6 +105,7 @@ try {
 
   writeFileSync(SIDECAR, `${sourceHash()}\n`);
   console.log(`✓ ${OUT} regenerated from ${SOURCE}`);
+  console.log('  (if you edited brochure.astro or claims.ts, you must run `npm run build` first)');
   console.log(`✓ ${SIDECAR} updated`);
 } finally {
   try {

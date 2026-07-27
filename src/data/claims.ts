@@ -77,11 +77,11 @@ const claimsData = {
     id: 'module-count',
     value: '74',
     label: 'Modules',
-    context: 'Across seven domains',
+    context: 'Six domains, as sold',
     token: 'MEASURED',
     status: 'verified',
     statement:
-      'The product has 74 feature modules across seven domains: Operations, Quality, Supply Chain, Intelligence, Communications, People and Admin.',
+      'The product has 74 feature modules. They are grouped for customers into six domains — Quality, Production, Metrology, Training, Intelligence and Platform — which is how they are presented on this site. Internally the application organises them across seven navigation sections (Operations, Quality, Supply Chain, Intelligence, Communications, People, Admin); the two groupings describe the same 74 modules.',
     source: 'Feature directory count in the MES client, packages/client/src/features.',
     method: 'Directory count, cross-checked against the route table and the sidebar navigation.',
     caveat:
@@ -229,6 +229,18 @@ const claimsData = {
     source: '—',
     retiredReason:
       'Neither figure was measured, so reconciling them would only have made them consistently unsourced. The replacement is a claim of kind, not magnitude, until the measurement exists: baseline QA labour hours for the two audits before go-live versus the two after, method documented and signed by Croom’s quality manager. If the measured figure turns out to be lower than the one we published, we publish the lower one.',
+  },
+
+  'RETIRED-time-to-live-90d': {
+    id: 'RETIRED-time-to-live-90d',
+    value: '90d',
+    label: 'Time to Live',
+    token: 'MODELLED',
+    status: 'retired',
+    statement: 'RETIRED — was published as "90d · Time to Live · From contract to production floor".',
+    source: '—',
+    retiredReason:
+      'Undefined. "Time to live" was never given a start or an end event, so it could not be checked or missed. Replaced by an explicit definition — contract signature to the first electronic traveller signed in production — and an honest note that the figure is our plan, demonstrated once, at our own site.',
   },
 
   'RETIRED-fai-cycle': {

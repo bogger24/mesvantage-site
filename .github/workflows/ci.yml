@@ -23,6 +23,11 @@ jobs:
       # so the strict tsconfig enforced nothing and could not be run in CI at all.
       - run: npm run typecheck
 
+      # Regression suite for the ratchet itself. Two adversarial reviews defeated it 27 ways and
+      # then 22 more; each fix landed without a test, so the second review just found a new set.
+      # Every case in here is an evasion that once worked.
+      - run: npm run test:claims
+
       # `npm run build` runs astro build and then scripts/check-claims.mjs.
       # The claims check fails the build on an unattributed statistic, on banned vocabulary,
       # or on a page that marks illustrations without disclosing that they are illustrations.
@@ -30,7 +35,7 @@ jobs:
       # to produce a deployable dist/ that has not been checked.
       - run: npm run build
 
-      - name: Assert no JavaScript ships to marketing routes
+      - name: Assert no JS bundles ship (inline scripts and analytics are permitted)
         run: |
           # The site was carrying 147KB of React on all six pages to open one dialog.
           # If an island reappears, it should be a deliberate decision, not a surprise.
@@ -39,7 +44,7 @@ jobs:
             ls -la dist/_astro/*.js
             exit 1
           fi
-          echo "✓ no JS bundles"
+          echo "✓ no JS bundles (note: Astro inline scripts and the analytics tag are not covered by this check)"
 
       - name: Assert no fabricated record artefacts
         run: |
@@ -69,10 +74,13 @@ jobs:
           # The truth pass rewrote brochure.astro but never re-rendered the PDF, so the primary
           # CTA on every page kept serving "FDA-validated" and "€0 Validation Budget" for
           # another push. The claims checker could not see it — it only walks *.html.
-          actual=$(sha256sum src/pages/brochure.astro | cut -d" " -f1)
+          #
+          # Hash the BUILT page, not the source: brochure.astro imports the claims register, so
+          # hashing the source alone left every number in the PDF unguarded.
+          actual=$(sha256sum dist/brochure/index.html | cut -d" " -f1)
           recorded=$(cat public/mesvantage-product-overview.pdf.source-sha 2>/dev/null || echo missing)
           if [ "$actual" != "$recorded" ]; then
-            echo "::error::brochure.astro has changed but the PDF was not regenerated. Run: npm run build && npm run pdf"
+            echo "::error::The brochure page has changed but the PDF was not regenerated. Run: npm run pdf"
             echo "  source:   $actual"
             echo "  recorded: $recorded"
             exit 1

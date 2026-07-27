@@ -53,18 +53,27 @@ const BANNED = [
 const STAT_PATTERNS = [
   // currency amounts
   /[€$£]\s?\d/,
-  // digit bound to a symbol or short unit
-  /\d\s?(?:%|×|x\b|k\b|m\b|bn\b|d\b)/i,
+  // digit bound to a symbol or short unit — [\s-]? because "sub-90-day" and "70-percent"
+  // walked straight past a version that only allowed an optional space
+  /\d[\s-]?(?:%|×|x\b|k\b|m\b|bn\b|d\b)/i,
   // digit bound to a word unit
-  /\d[\d,.]*\s?(?:percent|per cent|pc\b|hrs?\b|hours?\b|mins?\b|minutes?\b|days?\b|weeks?\b|months?\b|years?\b|fte\b|parts?\b|units?\b|sites?\b|customers?\b|modules?\b|domains?\b|tests?\b|requirements?\b|operators?\b|machines?\b)/i,
-  // any number of 1,000 or more, however written
-  /\b\d{1,3}(?:,\d{3})+\b|\b\d{4,}\b/,
+  /\d[\d,.]*[\s-]?(?:percent|per ?cent|pc\b|hrs?\b|hours?\b|mins?\b|minutes?\b|days?\b|weeks?\b|months?\b|years?\b|fte\b|parts?\b|units?\b|sites?\b|customers?\b|modules?\b|domains?\b|tests?\b|requirements?\b|operators?\b|machines?\b)/i,
+  // any number of 1,000 or more, however separated (comma, space, or full stop)
+  /\b\d{1,3}(?:[,. \u202f\u00a0]\d{3})+\b|\b\d{4,}\b/,
+  // non-ASCII digits: \d is ASCII-only, so Arabic-Indic and full-width forms were invisible
+  /[\u0660-\u0669\u06f0-\u06f9\uff10-\uff19]{2,}/u,
   // "N of N" / "N/N" score forms
   /\b\d+\s*(?:of|\/)\s*\d+\b/,
   // spelled-out magnitudes and comparatives
-  /\b(?:half|third|thirds|quarter|two[- ]thirds|three[- ]quarters)\s+of\b/i,
-  /\b(?:ten|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)\s+(?:per ?cent|percent)\b/i,
-  /\b(?:double|triple|halve[sd]?|twice|three times|ten times)\b/i,
+  // "third party" and "quarter" as a calendar/period noun are not magnitudes.
+  /\b(?:half|two[- ]thirds|three[- ]quarters|a tenth)\b/i,
+  /\bthirds?\b(?![\s-]*part)/i,
+  /\b(?:one|two|three|four|five|six|seven|eight|nine|ten)\s+(?:out of|in)\s+(?:two|three|four|five|ten|a hundred)\b/i,
+  /\b(?:ten|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)(?:[- ](?:one|two|three|four|five|six|seven|eight|nine))?[\s-](?:per ?cent|percent)\b/i,
+  // spelled-out counts attached to a countable noun — "eighteen platforms", "three hundred sources"
+  /\b(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|eighteen|twenty|thirty|fifty|hundred|thousand)\s+(?:hundred\s+)?(?:platforms?|vendors?|sources?|customers?|sites?|modules?|weeks?|months?|years?|days?)\b/i,
+  /\b(?:double|triple|halve[sd]?|twice)\b/i,
+  /\b(?:\d+|one|two|three|four|five|ten)\s+times\b/i,
   /\bup to\s+\w+\s*(?:%|percent|per cent)/i,
 ];
 
@@ -113,6 +122,11 @@ function maskNonClaims(text) {
 /** Chunks that are structurally exempt: the reader's own problem, stated back to them. */
 const CHUNK_ALLOWLIST = [
   /\b3-week fire drill\b/i,
+  // Biography inside attributed speech: "we spent two years looking for an MES" asserts nothing
+  // measurable about the product.
+  /\bwe spent two years looking\b/i,
+  // A meeting length is an offer, not a performance claim.
+  /\b30-minute session\b/i,
   // Rhetoric inside attributed speech, not a measurement. "Priced for a company ten times our
   // size" asserts nothing checkable and is quoted, not stated.
   /\bten times our size\b/i,
@@ -230,9 +244,31 @@ function extractMarkedBlocks(html, attr) {
   return out;
 }
 
+/**
+ * Reader-facing text held in attributes: meta descriptions, social card copy, alt text,
+ * aria-labels, link titles. None of this was scanned, because textChunks strips whole tags.
+ */
+const TEXT_ATTRS = /(?:content|alt|aria-label|title|placeholder)\s*=\s*"([^"]{12,})"/gi;
+
+function attributeChunks(html) {
+  const out = [];
+  for (const [, value] of html.matchAll(TEXT_ATTRS)) {
+    out.push(value.replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim());
+  }
+  return out;
+}
+
+/**
+ * Inline formatting elements that do not break a sentence. They are removed without inserting a
+ * boundary, so `<span>7</span><span>0</span>%` reads as `70%` rather than three separate chunks
+ * of "7", "0" and "%". Splitting on every tag made that a working evasion.
+ */
+const INLINE_TAGS = /<\/?(?:span|b|i|em|strong|a|small|sup|sub|code|mark|u|s|abbr|time|wbr|bdi|bdo|var|kbd|samp|q|cite|dfn|ruby|rt|rp|del|ins|font)\b[^>]*>/gi;
+
 /** Reduce markup to sentence-ish chunks of visible text. */
 function textChunks(html) {
   return html
+    .replace(INLINE_TAGS, '')
     .replace(/<[^>]+>/g, '\n')
     .split('\n')
     .map((s) => s.replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim())
@@ -315,8 +351,10 @@ for (const file of files) {
   }
 
   // 3. Unattributed statistics — checked only outside data-evidence subtrees.
+  //    Attribute text is checked from the raw HTML: a claim in a meta description cannot be
+  //    wrapped in an <Evidence> element, so it must simply not assert a statistic.
   const unattributed = stripMarkedBlocks(stripMarkedBlocks(visible, 'data-evidence'), 'data-illustration');
-  for (const chunk of textChunks(unattributed)) {
+  for (const chunk of [...textChunks(unattributed), ...attributeChunks(raw)]) {
     if (CHUNK_ALLOWLIST.some((re) => re.test(chunk))) continue;
     const hit = findStat(maskNonClaims(chunk));
     if (hit) {

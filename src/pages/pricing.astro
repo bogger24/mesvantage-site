@@ -76,9 +76,9 @@ const tiers = [
           <div>
             <h2 class="text-xl font-bold text-navy">{tier.name}</h2>
             <p class="mt-2 text-3xl font-extrabold text-navy">
-              <span data-evidence={tier.claim} data-token={claims[tier.claim].token} class="tabular-nums">{claims[tier.claim].value}</span><span class="text-base font-normal text-ink/60">/yr</span>
+              <span data-evidence={tier.claim} data-token={claims[tier.claim].token} class="tabular-nums">{claims[tier.claim].value}</span><span class="text-base font-normal text-muted">/yr</span>
             </p>
-            <p class="mt-1 text-sm text-ink/50">Contact us for a tailored quote</p>
+            <p class="mt-1 text-sm text-muted">Contact us for a tailored quote</p>
           </div>
           <ul class="flex flex-col gap-2 flex-1">
             {tier.modules.map(mod => (
@@ -107,7 +107,7 @@ const tiers = [
         Covers deployment, data migration, staff training, and the validation documentation package (IQ/OQ/PQ).
         Typically <Evidence claim="implementation-fee" variant="inline" /> depending on site size. Quoted per engagement.
       </p>
-      <p class="mt-4 text-xs text-ink/40">
+      <p class="mt-4 text-xs text-muted-soft">
         Infrastructure included · Per-site licensing · Multi-site discounts available
       </p>
     </div>

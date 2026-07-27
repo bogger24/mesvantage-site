@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "check": "node scripts/check-claims.mjs dist",
     "typecheck": "astro check --minimumSeverity error",
-    "pdf": "node scripts/build-pdf.mjs"
+    "pdf": "npm run build && node scripts/build-pdf.mjs",
+    "test:claims": "node scripts/check-claims.test.mjs"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",

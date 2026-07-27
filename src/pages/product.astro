@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Evidence from '../components/Evidence.astro';
 import { claims } from '../data/claims';
 ---
 
 <BaseLayout
-  title="Platform — every module, across seven domains"
+  title="Platform — every module, across six domains"
   description="The full MESvantage platform: Quality, Production, Metrology, Training, Intelligence, and Platform domains. Built for medical device manufacturing."
 >
 
@@ -13,10 +14,10 @@ import { claims } from '../data/claims';
     <div class="absolute inset-0 opacity-[0.04] pointer-events-none"
          style="background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px); background-size: 48px 48px;"></div>
     <div class="max-w-4xl mx-auto text-center relative">
-      <span class="text-xs font-bold tracking-widest text-accent uppercase">The platform</span>
-      <h1 class="mt-3 text-4xl md:text-5xl font-extrabold text-white tracking-tight"><span data-evidence="module-count" data-token={claims['module-count'].token}>{claims['module-count'].value}</span> modules. One platform.</h1>
+      <span class="text-xs font-bold tracking-widest text-accent-onDark uppercase">The platform</span>
+      <h1 class="mt-3 text-4xl md:text-5xl font-extrabold text-white tracking-tight"><Evidence claim="module-count" variant="inline" /> modules. One platform.</h1>
       <p class="mt-5 text-lg text-white/70 max-w-2xl mx-auto">
-        Seven domains covering the full medical-device manufacturing lifecycle — from incoming inspection to executive intelligence.
+        Six domains covering the full medical-device manufacturing lifecycle — from incoming inspection to executive intelligence.
       </p>
     </div>
 
@@ -76,7 +77,7 @@ import { claims } from '../data/claims';
             <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
-          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-muted-onDark font-mono">
             app.mesvantage.example / quality / dashboard
           </div>
         </div>
@@ -84,7 +85,7 @@ import { claims } from '../data/claims';
           <div class="flex justify-between items-start mb-5">
             <div>
               <h3 class="text-xl font-bold text-navy">Quality Operations</h3>
-              <p class="text-xs text-ink/50 mt-0.5">Synthetic data</p>
+              <p class="text-xs text-muted mt-0.5">Synthetic data</p>
             </div>
             <div class="flex gap-2">
               <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">● Synced</span>
@@ -101,9 +102,9 @@ import { claims } from '../data/claims';
               { l: 'Cpk avg', v: '1.87', d: 'goal 1.67', tone: 'ok' },
             ].map(k => (
               <div class="bg-white border border-border rounded-lg p-3">
-                <div class="text-[10px] uppercase tracking-wider text-ink/50 font-semibold">{k.l}</div>
+                <div class="text-[10px] uppercase tracking-wider text-muted font-semibold">{k.l}</div>
                 <div class={`text-2xl font-extrabold mt-1 ${k.tone === 'warn' ? 'text-amber-600' : 'text-navy'}`}>{k.v}</div>
-                <div class="text-[10px] text-ink/50 mt-0.5">{k.d}</div>
+                <div class="text-[10px] text-muted mt-0.5">{k.d}</div>
               </div>
             ))}
           </div>
@@ -113,7 +114,7 @@ import { claims } from '../data/claims';
             <div class="flex justify-between items-center mb-3">
               <div>
                 <div class="text-xs font-bold text-navy">SPC — PT-EXAMPLE-A · Feature D2 (Ø 12.7 ±0.05)</div>
-                <div class="text-[10px] text-ink/50 mt-0.5">Last 32 measurements · Cpk 1.87 · Within control</div>
+                <div class="text-[10px] text-muted mt-0.5">Last 32 measurements · Cpk 1.87 · Within control</div>
               </div>
               <span class="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">● In control</span>
             </div>
@@ -137,7 +138,7 @@ import { claims } from '../data/claims';
           <div class="bg-white border border-border rounded-lg overflow-hidden">
             <div class="px-4 py-2 bg-surface text-xs font-bold text-navy">Inspection queue · 4 pending</div>
             <table class="w-full text-xs">
-              <thead class="text-ink/50 bg-surface">
+              <thead class="text-muted bg-surface">
                 <tr><th class="text-left px-4 py-2 font-semibold">#</th><th class="text-left font-semibold">Type</th><th class="text-left font-semibold">Part</th><th class="text-left font-semibold">Operation</th><th class="text-left font-semibold">Inspector</th><th class="text-left font-semibold">Status</th></tr>
               </thead>
               <tbody>
@@ -156,7 +157,7 @@ import { claims } from '../data/claims';
                     <td><span class={
                       r.tone === 'ok' ? 'text-green-700 font-semibold' :
                       r.tone === 'warn' ? 'text-amber-600 font-semibold' :
-                      'text-ink/40 font-semibold'
+                      'text-muted-soft font-semibold'
                     }>● {r.s}</span></td>
                   </tr>
                 ))}
@@ -209,7 +210,7 @@ import { claims } from '../data/claims';
             <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
-          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-muted-onDark font-mono">
             app.mesvantage.example / scheduling
           </div>
         </div>
@@ -219,16 +220,16 @@ import { claims } from '../data/claims';
             <div class="flex justify-between mb-3">
               <div>
                 <h3 class="text-base font-bold text-navy">Production schedule · Today</h3>
-                <p class="text-[10px] text-ink/50">Updated 14:06 · 4 cells · 3 shifts</p>
+                <p class="text-[10px] text-muted">Updated 14:06 · 4 cells · 3 shifts</p>
               </div>
               <div class="flex gap-1">
                 {['Day', 'Week', 'Month'].map((t, i) => (
-                  <span class={i === 0 ? 'bg-accent text-white text-xs px-3 py-1 rounded font-semibold' : 'bg-surface text-ink/60 text-xs px-3 py-1 rounded font-semibold'}>{t}</span>
+                  <span class={i === 0 ? 'bg-accent text-white text-xs px-3 py-1 rounded font-semibold' : 'bg-surface text-muted text-xs px-3 py-1 rounded font-semibold'}>{t}</span>
                 ))}
               </div>
             </div>
             <div class="bg-surface border border-border rounded-lg p-3">
-              <div class="flex text-[9px] text-ink/40 font-mono mb-1.5 pl-16">
+              <div class="flex text-[9px] text-muted-soft font-mono mb-1.5 pl-16">
                 {['06', '08', '10', '12', '14', '16', '18', '20', '22'].map(t => (
                   <span class="flex-1 text-center">{t}:00</span>
                 ))}
@@ -267,7 +268,7 @@ import { claims } from '../data/claims';
                   <div>
                     <div class="flex justify-between text-[10px] mb-0.5">
                       <span class={row.bold ? 'font-bold text-navy' : 'text-ink/70'}>{row.l}</span>
-                      <span class="font-mono text-ink/50">{row.v}%</span>
+                      <span class="font-mono text-muted">{row.v}%</span>
                     </div>
                     <div class="h-3 bg-white rounded">
                       <div class="h-3 rounded" style={`width:${row.v}%; background-color:${row.c}`}></div>
@@ -291,7 +292,7 @@ import { claims } from '../data/claims';
                     <div class="flex-1 h-3 bg-white rounded relative">
                       <div class={`h-3 rounded ${row.tone === 'warn' ? 'bg-amber-400' : 'bg-accent'}`} style={`width:${row.w}%`}></div>
                     </div>
-                    <div class={`w-12 text-[10px] text-right font-bold ${row.tone === 'warn' ? 'text-amber-600' : 'text-ink/60'}`}>{row.v}</div>
+                    <div class={`w-12 text-[10px] text-right font-bold ${row.tone === 'warn' ? 'text-amber-600' : 'text-muted'}`}>{row.v}</div>
                   </div>
                 ))}
               </div>
@@ -341,16 +342,16 @@ import { claims } from '../data/claims';
             <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
-          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-muted-onDark font-mono">
             app.mesvantage.example / metrology / report / CMM-EXAMPLE-11
           </div>
         </div>
         <div class="bg-[#F8F9FB] p-6">
           <div class="flex justify-between items-start mb-5">
             <div>
-              <div class="text-[10px] uppercase tracking-wider text-ink/50 font-semibold">CMM Report</div>
+              <div class="text-[10px] uppercase tracking-wider text-muted font-semibold">CMM Report</div>
               <h3 class="text-xl font-bold text-navy">CMM-EXAMPLE-11 · CMM — example report</h3>
-              <p class="text-xs text-ink/60 mt-0.5">Part PT-EXAMPLE-A rev D · Op 020 · 18 features · auto-parsed in 1.2s</p>
+              <p class="text-xs text-muted mt-0.5">Part PT-EXAMPLE-A rev D · Op 020 · 18 features · auto-parsed in 1.2s</p>
             </div>
             <div class="flex gap-2">
               <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">● 18/18 in tolerance</span>
@@ -360,7 +361,7 @@ import { claims } from '../data/claims';
 
           <div class="bg-white border border-border rounded-lg overflow-hidden">
             <table class="w-full text-xs">
-              <thead class="bg-surface text-ink/50">
+              <thead class="bg-surface text-muted">
                 <tr>
                   <th class="px-4 py-2 text-left font-semibold">Feature</th>
                   <th class="text-left font-semibold">Type</th>
@@ -388,7 +389,7 @@ import { claims } from '../data/claims';
                     <td class="text-right font-mono text-ink/70">{r.n}</td>
                     <td class="text-right font-mono text-ink/70">{r.a}</td>
                     <td class={`text-right font-mono font-semibold ${r.tone === 'warn' ? 'text-amber-600' : 'text-ink/70'}`}>{r.d}</td>
-                    <td class="text-right font-mono text-ink/50">{r.tol}</td>
+                    <td class="text-right font-mono text-muted">{r.tol}</td>
                     <td class="pl-3 py-1">
                       <div class="flex items-center gap-2">
                         <div class="w-16 h-1.5 bg-surface rounded relative">
@@ -405,8 +406,8 @@ import { claims } from '../data/claims';
             </table>
           </div>
 
-          <div class="mt-3 flex justify-between items-center text-[11px] text-ink/50">
-            <span>Auto-linked to DHR · SN-EXAMPLE-0001 · Lot LT-EXAMPLE-018</span>
+          <div class="mt-3 flex justify-between items-center text-[11px] text-muted">
+            <span>Auto-linked to the batch record</span>
             <span class="font-mono">Parsed automatically and written to the batch record</span>
           </div>
         </div>
@@ -453,7 +454,7 @@ import { claims } from '../data/claims';
             <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
-          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-muted-onDark font-mono">
             app.mesvantage.example / training / skills-matrix
           </div>
         </div>
@@ -461,7 +462,7 @@ import { claims } from '../data/claims';
           <div class="flex justify-between items-start mb-4">
             <div>
               <h3 class="text-lg font-bold text-navy">Skills Matrix · Cell 01–04</h3>
-              <p class="text-xs text-ink/50 mt-0.5">Operators × part programs · synced from the training system</p>
+              <p class="text-xs text-muted mt-0.5">Operators × part programs · synced from the training system</p>
             </div>
             <div class="flex gap-2">
               <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-[10px] font-semibold">● Certified</span>
@@ -473,7 +474,7 @@ import { claims } from '../data/claims';
           <div class="overflow-x-auto">
             <table class="w-full text-xs">
               <thead>
-                <tr class="text-[10px] text-ink/50">
+                <tr class="text-[10px] text-muted">
                   <th class="text-left px-3 py-2 font-semibold">Operator</th>
                   {['PT-EXAMPLE-A', 'PT-EXAMPLE-B', 'PT-EXAMPLE-C', 'PT-EXAMPLE-D', 'PT-EXAMPLE-E', 'PT-EXAMPLE-F', 'PT-EXAMPLE-G', 'CMM Ops'].map(p => (
                     <th class="text-center font-mono font-semibold">{p}</th>
@@ -565,14 +566,14 @@ import { claims } from '../data/claims';
             <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
             <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
           </div>
-          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-white/40 font-mono">
+          <div class="flex-1 bg-white/10 rounded px-3 py-1 text-xs text-muted-onDark font-mono">
             app.mesvantage.example / ceo
           </div>
         </div>
         <div class="bg-[#0F2D52] p-6 text-white">
           <div class="flex justify-between items-start mb-5">
             <div>
-              <div class="text-[10px] uppercase tracking-wider text-accent font-bold">Executive Intelligence</div>
+              <div class="text-[10px] uppercase tracking-wider text-accent-onDark font-bold">Executive Intelligence</div>
               <h3 class="text-2xl font-extrabold mt-1">Operations Pulse · May 2026</h3>
             </div>
             <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-semibold">● All systems live</span>
@@ -586,7 +587,7 @@ import { claims } from '../data/claims';
               { l: 'NCR rate', v: '0.42%', s: '−0.08pp MoM', t: 'ok' },
             ].map(k => (
               <div class="bg-white/5 border border-white/10 rounded-lg p-3">
-                <div class="text-[9px] uppercase tracking-wider text-white/50 font-semibold">{k.l}</div>
+                <div class="text-[9px] uppercase tracking-wider text-muted-onDark font-semibold">{k.l}</div>
                 <div class="text-2xl font-extrabold mt-1 text-white">{k.v}</div>
                 <div class="text-[10px] text-green-400 mt-0.5 font-semibold">{k.s}</div>
               </div>
@@ -613,7 +614,7 @@ import { claims } from '../data/claims';
             <!-- AI insight feed -->
             <div class="bg-white/5 border border-white/10 rounded-lg p-3">
               <div class="text-[11px] font-bold text-white mb-2 flex items-center gap-1">
-                <span class="text-accent">✦</span> AI insights
+                <span class="text-accent-onDark">✦</span> AI insights
               </div>
               <div class="space-y-2 text-[10px]">
                 <div class="border-l-2 border-accent pl-2">

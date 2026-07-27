@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const updated = '27 July 2026';
+---
+
+<BaseLayout
+  title="Privacy"
+  description="What MESvantage collects when you visit this website, who processes it, and how to reach us about it."
+>
+  <section class="bg-navy text-white py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <span class="text-xs font-bold tracking-widest text-accent-onDark uppercase">Privacy</span>
+      <h1 class="mt-2 text-3xl md:text-4xl font-extrabold leading-tight">
+        What this website collects, and what it doesn't.
+      </h1>
+      <p class="mt-5 text-muted-onDark">Last updated {updated}.</p>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto space-y-10 text-ink/80 leading-relaxed">
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">The short version</h2>
+        <p>
+          This website sets no cookies. It runs no advertising or profiling. It has no forms —
+          the product overview downloads directly, and the only way to contact us is to send an
+          email, which means you decide what we hold about you.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Who the controller is</h2>
+        <p>
+          MESvantage Limited, a company registered in Ireland, is the data controller for this
+          website. Reach us at
+          <a href="mailto:hello@mesvantage.com" class="text-accent font-semibold hover:text-accent-dark">hello@mesvantage.com</a>.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Analytics</h2>
+        <p>
+          We use Plausible Analytics to count page views. Plausible is EU-owned and EU-hosted,
+          sets no cookies, and creates no persistent identifier for you. It does process your IP
+          address in order to derive a country and to de-duplicate visits within a day; the IP
+          address itself is not stored. Our lawful basis is legitimate interest in understanding
+          whether the site works. Because there is no non-essential cookie and no persistent
+          identifier, there is nothing here for you to consent to and no banner to dismiss.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Processors</h2>
+        <ul class="mt-3 space-y-2">
+          <li><span class="font-semibold text-navy">Vercel</span> — hosting and content delivery. Server logs including IP address, retained by Vercel for a short operational period.</li>
+          <li><span class="font-semibold text-navy">Plausible Analytics</span> — page-view analytics, EU-hosted, cookieless.</li>
+          <li><span class="font-semibold text-navy">Microsoft 365</span> — the mailbox behind hello@mesvantage.com.</li>
+        </ul>
+        <p class="mt-4">
+          Fonts are self-hosted on this domain. No request is made to Google, and there are no
+          embedded third-party frames. If you follow the optional link to our contact form, that
+          form is hosted by Google and their terms apply from the moment you open it — which is
+          why it is a link you choose rather than something loaded on your behalf.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">If you email us</h2>
+        <p>
+          We keep your message and address for as long as we are in contact and for a reasonable
+          period afterwards, so that we can pick the conversation back up. We do not add you to a
+          mailing list, because we do not have one.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Your rights</h2>
+        <p>
+          You can ask us for a copy of anything we hold about you, ask us to correct or erase it,
+          or object to our processing it. Email us and we will respond. If you are not satisfied,
+          you can complain to the Irish Data Protection Commission at
+          <a href="https://www.dataprotection.ie" rel="noopener noreferrer" target="_blank" class="text-accent font-semibold hover:text-accent-dark">dataprotection.ie</a>.
+        </p>
+      </div>
+
+      <div class="border-t border-border pt-8">
+        <h2 class="text-xl font-bold text-navy mb-3">What this page does not cover</h2>
+        <p>
+          This notice is about the website only. The MESvantage product processes manufacturing
+          data on behalf of a customer under a separate data processing agreement. If you are
+          evaluating the product, ask us for that agreement and the subprocessor list — and see
+          our <a href="/evidence" class="text-accent font-semibold hover:text-accent-dark">evidence page</a>
+          for which of those documents exist today and which we are still writing.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

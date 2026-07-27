@@ -1,4 +1,5 @@
 ---
+import '@fontsource-variable/inter';
 import { claims } from '../data/claims';
 // 2-page A4 product overview — designed to be rendered to PDF
 // Generate: chromium --headless --no-sandbox --print-to-pdf=public/mesvantage-product-overview.pdf --no-pdf-header-footer http://localhost:4321/brochure
@@ -72,8 +73,8 @@ import { claims } from '../data/claims';
   <div class="header">
     <div class="logo">MES<span>vantage</span></div>
     <div class="badges">
-      <span class="badge">FDA 21 CFR Part 11</span>
-      <span class="badge">ISO 13485</span>
+      <span class="badge">Designed against 21 CFR Part 11</span>
+      <span class="badge">Built in an ISO 13485 plant</span>
       <span class="badge">Orthopaedic implants</span>
     </div>
   </div>
@@ -96,7 +97,7 @@ import { claims } from '../data/claims';
     <div class="stat-card" data-evidence="module-count">
       <div class="stat-num">{claims['module-count'].value}</div>
       <div class="stat-label">Modules</div>
-      <div class="stat-context">Across seven domains</div>
+      <div class="stat-context">Six domains, as sold</div>
     </div>
     <div class="stat-card" data-evidence="validation-tests">
       <div class="stat-num">{claims['validation-tests'].value}</div>
@@ -110,7 +111,7 @@ import { claims } from '../data/claims';
     </div>
   </div>
 
-  <div class="section-title">Platform modules — seven domains</div>
+  <div class="section-title">Platform modules — six domains</div>
   <div class="modules">
     <div class="module-card">
       <div class="module-num">Domain 01</div>

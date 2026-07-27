@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Evidence from '../components/Evidence.astro';
 import { claims } from '../data/claims';
 ---
 
@@ -26,7 +27,7 @@ import { claims } from '../data/claims';
           The FDA's electronic records and electronic signatures regulation requires that any software used in regulated manufacturing maintains trustworthy, reliable, and generally equivalent records to paper.
         </p>
         <p class="mt-3 text-ink/70 leading-relaxed">
-          In March 2026 we completed an IQ/OQ/PQ exercise for MESvantage at our founding customer's site: <span data-evidence="validation-tests" data-token={claims['validation-tests'].token}>{claims['validation-tests'].value}</span> test cases executed and passed, against a requirements traceability matrix in which <span data-evidence="validation-rtm" data-token={claims['validation-rtm'].token}>{claims['validation-rtm'].value}</span> requirements were traced. Protocols, scripts, the matrix and executed reports are available for review under NDA and are reusable as the starting point for your own validation. This is a point-in-time qualification of that configuration — our change-control statement sets out how each release is assessed and regression-tested.
+          In March 2026 we completed an IQ/OQ/PQ exercise for MESvantage at our founding customer's site: <Evidence claim="validation-tests" variant="inline" /> test cases executed and passed, against a requirements traceability matrix in which <Evidence claim="validation-rtm" variant="inline" /> requirements were traced. We are assembling that package — protocols, scripts, the traceability matrix and the executed reports — for release under NDA. Until it is assembled we will not pretend otherwise; the current status of each artefact is on our evidence page. This is a point-in-time qualification of that configuration — our change-control statement sets out how each release is assessed and regression-tested.
         </p>
       </div>
       <ul class="md:col-span-3 grid sm:grid-cols-2 gap-3 content-start">

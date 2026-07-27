@@ -24,14 +24,14 @@ const tokenCopy: Record<string, string> = {
 >
   <section class="bg-navy text-white py-20 px-6">
     <div class="max-w-4xl mx-auto">
-      <span class="text-xs font-bold tracking-widest text-accent uppercase">Evidence</span>
+      <span class="text-xs font-bold tracking-widest text-accent-onDark uppercase">Evidence</span>
       <h1 class="mt-2 text-3xl md:text-5xl font-extrabold leading-tight">
         Every number on this site, and where it comes from.
       </h1>
       <p class="mt-6 text-white/70 text-lg leading-relaxed max-w-2xl">
-        We publish this because we got it wrong. An earlier version of this site carried four
+        We publish this because we got it wrong. An earlier version of this site carried a band of
         outcome claims that were never measured, one of which — a validation budget of zero — was
-        simply false. They are listed below, retired, with the reasoning intact.
+        simply false. Every one of them is listed below, retired, with the reasoning intact.
       </p>
       <p class="mt-4 text-white/70 leading-relaxed max-w-2xl">
         A number now reaches a page only through this register, and the build fails if one does
@@ -57,10 +57,10 @@ const tokenCopy: Record<string, string> = {
             </div>
             <p class="mt-3 text-ink/80 leading-relaxed">{c.statement}</p>
             <dl class="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
-              <div><dt class="text-ink/60 inline">Source: </dt><dd class="inline text-ink/80">{c.source}</dd></div>
-              {c.method && <div><dt class="text-ink/60 inline">Method: </dt><dd class="inline text-ink/80">{c.method}</dd></div>}
+              <div><dt class="text-muted inline">Source: </dt><dd class="inline text-ink/80">{c.source}</dd></div>
+              {c.method && <div><dt class="text-muted inline">Method: </dt><dd class="inline text-ink/80">{c.method}</dd></div>}
               {c.verifiedOn && (
-                <div><dt class="text-ink/60 inline">Verified: </dt><dd class="inline text-ink/80">{c.verifiedOn} by {c.verifiedBy}</dd></div>
+                <div><dt class="text-muted inline">Verified: </dt><dd class="inline text-ink/80">{c.verifiedOn} by {c.verifiedBy}</dd></div>
               )}
             </dl>
             {c.caveat && (
@@ -91,7 +91,7 @@ const tokenCopy: Record<string, string> = {
               </span>
             </div>
             <p class="mt-3 text-ink/80 leading-relaxed">{c.statement}</p>
-            <p class="mt-3 text-sm"><span class="text-ink/60">Source: </span><span class="text-ink/80">{c.source}</span></p>
+            <p class="mt-3 text-sm"><span class="text-muted">Source: </span><span class="text-ink/80">{c.source}</span></p>
             {c.caveat && <p class="mt-2 text-sm text-ink/70 border-l-2 border-amber-300 pl-3">{c.caveat}</p>}
           </article>
         ))}
@@ -110,8 +110,8 @@ const tokenCopy: Record<string, string> = {
         {retired.map((c) => (
           <article data-retired data-evidence={c.id} data-token={c.token} class="border border-border rounded-xl p-6">
             <div class="flex flex-wrap items-baseline gap-3">
-              <span class="text-xl font-bold text-ink/50 line-through tabular-nums">{c.value}</span>
-              <span class="text-sm font-semibold text-ink/60 line-through">{c.label}</span>
+              <span class="text-xl font-bold text-muted line-through tabular-nums">{c.value}</span>
+              <span class="text-sm font-semibold text-muted line-through">{c.label}</span>
               <span class="ml-auto text-[10px] font-bold tracking-wider uppercase bg-ink/10 text-ink/70 px-2 py-1 rounded">
                 Retired
               </span>

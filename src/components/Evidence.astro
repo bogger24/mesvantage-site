@@ -41,7 +41,7 @@ const pending = claim.status === 'needs-evidence';
       <div class="text-xs uppercase tracking-wider text-ink/70 mt-1 font-semibold">
         {displayLabel}
       </div>
-      {claim.context && <div class="text-xs text-ink/60 mt-1">{claim.context}</div>}
+      {claim.context && <div class="text-xs text-muted mt-1">{claim.context}</div>}
       {pending && (
         <a
           href="/evidence"
@@ -53,7 +53,13 @@ const pending = claim.status === 'needs-evidence';
     </div>
   ) : (
     <span data-evidence={claim.id} data-token={claim.token} class="font-semibold tabular-nums">
-      {claim.value}
+      {claim.value}{pending && (
+        <a
+          href="/evidence"
+          title="Evidence for this figure has not been produced yet"
+          class="ml-0.5 align-super text-[0.6em] font-bold text-amber-800 no-underline hover:underline"
+        >†</a>
+      )}
     </span>
   )
 }
