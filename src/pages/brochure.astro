@@ -1,4 +1,5 @@
 ---
+import { claims } from '../data/claims';
 // 2-page A4 product overview — designed to be rendered to PDF
 // Generate: chromium --headless --no-sandbox --print-to-pdf=public/mesvantage-product-overview.pdf --no-pdf-header-footer http://localhost:4321/brochure
 ---
@@ -191,7 +192,7 @@
     </div>
   </div>
 
-  <div class="section-title">Implementation timeline — 90 days to live</div>
+  <div class="section-title">Implementation timeline — first signed traveller in <span data-evidence="time-to-live" data-token={claims["time-to-live"].token}>{claims["time-to-live"].value}</span></div>
   <div class="timeline">
     <div class="t-week">Weeks 1–4</div>
     <div class="t-body">Environment provisioned. Data migration from ERP (M1, SAP, Plex, Infor). Quality module configured. Staff onboarding begins.</div>

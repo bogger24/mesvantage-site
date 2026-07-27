@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Evidence from '../components/Evidence.astro';
+import { claims } from '../data/claims';
 
 const tiers = [
   {
     name: 'Essential',
-    price: '€32,000',
+    claim: 'price-essential' as const,
     highlight: false,
     modules: [
       'Quality (FAI, FPY, DHR, Incoming Inspection)',
@@ -19,7 +21,7 @@ const tiers = [
   },
   {
     name: 'Professional',
-    price: '€58,000',
+    claim: 'price-professional' as const,
     highlight: true,
     modules: [
       'Everything in Essential',
@@ -34,7 +36,7 @@ const tiers = [
   },
   {
     name: 'Enterprise',
-    price: '€95,000',
+    claim: 'price-enterprise' as const,
     highlight: false,
     modules: [
       'Everything in Professional',
@@ -73,7 +75,9 @@ const tiers = [
           )}
           <div>
             <h2 class="text-xl font-bold text-navy">{tier.name}</h2>
-            <p class="mt-2 text-3xl font-extrabold text-navy">{tier.price}<span class="text-base font-normal text-ink/50">/yr</span></p>
+            <p class="mt-2 text-3xl font-extrabold text-navy">
+              <span data-evidence={tier.claim} data-token={claims[tier.claim].token} class="tabular-nums">{claims[tier.claim].value}</span><span class="text-base font-normal text-ink/60">/yr</span>
+            </p>
             <p class="mt-1 text-sm text-ink/50">Contact us for a tailored quote</p>
           </div>
           <ul class="flex flex-col gap-2 flex-1">
@@ -101,7 +105,7 @@ const tiers = [
       <h3 class="text-lg font-bold text-navy mb-2">One-time implementation fee</h3>
       <p class="text-ink/70 text-sm leading-relaxed">
         Covers deployment, data migration, staff training, and the validation documentation package (IQ/OQ/PQ).
-        Typically €12,000–€35,000 depending on site size. Quoted per engagement.
+        Typically <Evidence claim="implementation-fee" variant="inline" /> depending on site size. Quoted per engagement.
       </p>
       <p class="mt-4 text-xs text-ink/40">
         Infrastructure included · Per-site licensing · Multi-site discounts available

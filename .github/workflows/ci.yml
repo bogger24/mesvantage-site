@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build and claims check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # `npm run build` runs astro build and then scripts/check-claims.mjs.
+      # The claims check fails the build on an unattributed statistic, on banned vocabulary,
+      # or on a page that marks illustrations without disclosing that they are illustrations.
+      # It is in the build script rather than a separate step on purpose: it must be impossible
+      # to produce a deployable dist/ that has not been checked.
+      - run: npm run build
+
+      - name: Assert no JavaScript ships to marketing routes
+        run: |
+          # The site was carrying 147KB of React on all six pages to open one dialog.
+          # If an island reappears, it should be a deliberate decision, not a surprise.
+          if ls dist/_astro/*.js >/dev/null 2>&1; then
+            echo "::error::JavaScript bundles appeared in dist/_astro. If this is intended, update this check."
+            ls -la dist/_astro/*.js
+            exit 1
+          fi
+          echo "✓ no JS bundles"
+
+      - name: Assert no fabricated record artefacts
+        run: |
+          # Invented operator names, serials and hashes were removed on 2026-07-27.
+          # This stops them coming back by copy-paste.
+          if grep -rqE "0x[0-9A-F]{4}…|SN-A4729|NCR-1147|Smith K\.|Walsh F\.|Lynch J\." dist/; then
+            echo "::error::Fabricated identifiers or invented operator names found in the build."
+            grep -rnE "0x[0-9A-F]{4}…|SN-A4729|NCR-1147|Smith K\.|Walsh F\.|Lynch J\." dist/ | head
+            exit 1
+          fi
+          echo "✓ no fabricated identifiers"
+
+      - name: Assert the confidential-labelled brochure is not indexable
+        run: |
+          if ! grep -q 'name="robots" content="noindex' dist/brochure/index.html; then
+            echo "::error::/brochure is missing its noindex tag."
+            exit 1
+          fi
+          if grep -q '/brochure' dist/sitemap.xml; then
+            echo "::error::/brochure appears in the sitemap."
+            exit 1
+          fi
+          echo "✓ brochure excluded from indexing"

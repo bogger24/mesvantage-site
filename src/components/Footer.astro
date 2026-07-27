@@ -3,27 +3,39 @@ const links = [
   { label: 'Product', href: '/product' },
   { label: 'Compliance', href: '/compliance' },
   { label: 'Pricing', href: '/pricing' },
+  { label: 'Evidence', href: '/evidence' },
   { label: 'About', href: '/about' },
 ];
 ---
 
-<footer class="bg-navy text-white/70 mt-24">
+<footer class="bg-navy text-white/80 mt-24">
   <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between gap-8">
-    <div>
+    <div class="max-w-sm">
       <p class="text-white font-bold text-lg tracking-tight">MESvantage</p>
-      <p class="text-sm mt-1">The manufacturing intelligence platform for regulated industry.</p>
+      <p class="text-sm mt-1">
+        The manufacturing execution and intelligence system for orthopaedic implant manufacturers.
+      </p>
+      <p class="text-sm mt-4">
+        <a href="/evidence" class="underline underline-offset-2 hover:text-white transition-colors">
+          Every number on this site has a source.
+        </a>
+      </p>
     </div>
 
-    <nav aria-label="Footer" class="flex flex-wrap gap-6">
+    <nav aria-label="Footer" class="flex flex-wrap gap-6 h-fit">
       {links.map(link => (
-        <a href={link.href} class="text-sm hover:text-white transition-colors">{link.label}</a>
+        <a href={link.href} class="text-sm py-2 hover:text-white transition-colors">{link.label}</a>
       ))}
     </nav>
   </div>
 
   <div class="border-t border-white/10">
-    <div class="max-w-6xl mx-auto px-6 py-4 text-xs text-white/40">
-      © {new Date().getFullYear()} MESvantage Limited. All rights reserved.
+    <div class="max-w-6xl mx-auto px-6 py-4 text-xs text-white/60">
+      © {new Date().getFullYear()} MESvantage Limited, registered in Ireland.
+      <span class="text-white/40">
+        Company registration number and registered office to be added — see /evidence for what is
+        outstanding.
+      </span>
     </div>
   </div>
 </footer>
