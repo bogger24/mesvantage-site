@@ -77,6 +77,8 @@ const CASES = [
   ['iso number', page('<p>Certified under ISO 13485 at the site.</p>'), false],
   ['clause number', page('<p>See ISO 13485 clause 4.1.6 for the obligation.</p>'), false],
   ['copyright year', page('<p>© 2026 MESvantage Limited.</p>'), false],
+  ['git sha in a caption', page('<p>Screenshot captured from build 2c09d37d.</p>'), false],
+  ['git sha with day-like pair', page('<p>Captured from build a17d90b3.</p>'), false],
   ['third party', page('<p>Your data never trains a third party’s model.</p>'), false],
   ['third-party hyphenated', page('<p>There are no embedded third-party frames.</p>'), false],
   ['attributed statistic', page('<div data-evidence="module-count"><p>74 modules</p></div>'), false],

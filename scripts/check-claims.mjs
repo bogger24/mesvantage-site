@@ -111,6 +111,11 @@ const NON_CLAIM_TOKENS = [
   /\b(?:19|20)\d{2}\b/g,             // years
   /\b24\/7\b/g,
   /\bwoff2?\b/gi,
+  // Git SHAs. A capture caption cites the build it came from, and a SHA like "2c09d37d"
+  // contains "7d", which the unit patterns read as "7 days". It fires on roughly half of all
+  // SHAs, so it looked like an intermittent failure until the caption text was read.
+  /\b(?:build|commit|sha)\s+[0-9a-f]{7,40}\b/gi,
+  /\b[0-9a-f]{7,40}\b(?=\s*(?:\.|,|<|$))/g,
 ];
 
 function maskNonClaims(text) {
