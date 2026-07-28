@@ -16,7 +16,7 @@ import { claims } from '../data/claims';
     <div class="max-w-6xl mx-auto relative">
       <p class="eyebrow text-accent-onDark tick-on-dark">The platform</p>
       <h1 class="mt-1 text-display-md md:text-display-lg text-white max-w-3xl text-balance">
-        <Evidence claim="module-count" variant="inline" /> modules. One platform.
+        <Evidence onDark claim="module-count" variant="inline" /> modules. One platform.
       </h1>
       <p class="mt-6 text-lg text-white/70 max-w-2xl leading-relaxed">
         Six domains covering the full medical-device manufacturing lifecycle — from incoming
@@ -36,7 +36,7 @@ import { claims } from '../data/claims';
       ].map(d => (
         <a
           href={`#${d.id}`}
-          class="bg-navy-deep hover:bg-white/5 px-3 py-3 font-mono text-[11px] font-semibold uppercase tracking-eyebrow text-center text-muted-onDark hover:text-white transition-colors"
+          class="bg-navy-deep hover:bg-white/5/5 px-3 py-3 font-mono text-[11px] font-semibold uppercase tracking-eyebrow text-center text-muted-onDark hover:text-white transition-colors"
         >
           {d.label}
         </a>
@@ -45,13 +45,13 @@ import { claims } from '../data/claims';
   </section>
 
   <!-- ====================== QUALITY ====================== -->
-  <section id="quality" class="py-24 px-6 bg-white border-b border-rule">
+  <section id="quality" class="py-24 px-6 bg-navy-lift border-b border-rule-onDark">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
         <div>
-          <span class="eyebrow text-accent tick">Domain 01 · Quality</span>
-          <h2 class="mt-2 text-display-sm md:text-display-md text-navy leading-tight">Quality, end to end. ISO 13485 by design.</h2>
-          <p class="mt-4 text-ink/70 leading-relaxed">
+          <span class="eyebrow text-accent-onDark tick-on-dark">Domain 01 · Quality</span>
+          <h2 class="mt-2 text-display-sm md:text-display-md text-white leading-tight">Quality, end to end. ISO 13485 by design.</h2>
+          <p class="mt-4 text-muted-onDark leading-relaxed">
             A complete quality management suite covering incoming goods, in-process inspection, FAI, SPC, NCR/CAPA workflows, and OEM-facing customer portals. Every record is electronically signed and version-locked under 21 CFR Part 11.
           </p>
         </div>
@@ -70,27 +70,27 @@ import { claims } from '../data/claims';
             'Out-of-tolerance alerting',
             'Root-cause analysis tooling',
           ].map(m => (
-            <li class="flex items-start gap-2 text-ink/80">
-              <span class="text-accent font-bold mt-0.5">✓</span>{m}
+            <li class="flex items-start gap-2 text-white/80">
+              <span class="text-accent-onDark font-bold mt-0.5">✓</span>{m}
             </li>
           ))}
         </ul>
       </div>
 
       <!-- Mockup: Quality dashboard with SPC chart -->
-      <ProductScreenshot image="inspections-desktop.png" caption="Inspection queue — incoming, in-process and final, against the plan" />
+      <ProductScreenshot image="inspections-desktop.png" caption="Inspection queue — incoming, in-process and final, against the plan" tone="dark" />
 
     </div>
   </section>
 
   <!-- ====================== PRODUCTION ====================== -->
-  <section id="production" class="py-24 px-6 bg-surface border-b border-rule">
+  <section id="production" class="py-24 px-6 bg-navy-lift border-b border-rule-onDark">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
         <div>
-          <span class="eyebrow text-accent tick">Domain 02 · Production</span>
-          <h2 class="mt-2 text-display-sm md:text-display-md text-navy leading-tight">Real-time floor intelligence. No manual entry.</h2>
-          <p class="mt-4 text-ink/70 leading-relaxed">
+          <span class="eyebrow text-accent-onDark tick-on-dark">Domain 02 · Production</span>
+          <h2 class="mt-2 text-display-sm md:text-display-md text-white leading-tight">Real-time floor intelligence. No manual entry.</h2>
+          <p class="mt-4 text-muted-onDark leading-relaxed">
             Live OEE direct from machine telemetry. Closed-loop scheduling that absorbs unplanned downtime in real time. In-process documentation that operators actually use because it's on the work order, not on the shared drive.
           </p>
         </div>
@@ -109,27 +109,27 @@ import { claims } from '../data/claims';
             'Cell load balancing',
             'Live escalation routing',
           ].map(m => (
-            <li class="flex items-start gap-2 text-ink/80">
-              <span class="text-accent font-bold mt-0.5">✓</span>{m}
+            <li class="flex items-start gap-2 text-white/80">
+              <span class="text-accent-onDark font-bold mt-0.5">✓</span>{m}
             </li>
           ))}
         </ul>
       </div>
 
       <!-- Mockup: Production schedule + OEE waterfall -->
-      <ProductScreenshot image="ipd-executions-desktop.png" caption="In-process documentation — forced sequence, stage locking, and every result recorded against the plan" />
+      <ProductScreenshot image="ipd-executions-desktop.png" caption="In-process documentation — forced sequence, stage locking, and every result recorded against the plan" tone="dark" />
 
     </div>
   </section>
 
   <!-- ====================== METROLOGY ====================== -->
-  <section id="metrology" class="py-24 px-6 bg-white border-b border-rule">
+  <section id="metrology" class="py-24 px-6 bg-navy-lift border-b border-rule-onDark">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
         <div>
-          <span class="eyebrow text-accent tick">Domain 03 · Metrology</span>
-          <h2 class="mt-2 text-display-sm md:text-display-md text-navy leading-tight">CMM data, parsed automatically.</h2>
-          <p class="mt-4 text-ink/70 leading-relaxed">
+          <span class="eyebrow text-accent-onDark tick-on-dark">Domain 03 · Metrology</span>
+          <h2 class="mt-2 text-display-sm md:text-display-md text-white leading-tight">CMM data, parsed automatically.</h2>
+          <p class="mt-4 text-muted-onDark leading-relaxed">
             AI-powered ingestion for Renishaw, Hexagon, and Zeiss output. The platform reads the report, extracts every feature, links it back to the part drawing tolerance, flags out-of-tolerance, and writes the result to the DHR — without an inspector touching a keyboard.
           </p>
         </div>
@@ -146,27 +146,27 @@ import { claims } from '../data/claims';
             'Drift detection over lots',
             'Auto-link to part revision',
           ].map(m => (
-            <li class="flex items-start gap-2 text-ink/80">
-              <span class="text-accent font-bold mt-0.5">✓</span>{m}
+            <li class="flex items-start gap-2 text-white/80">
+              <span class="text-accent-onDark font-bold mt-0.5">✓</span>{m}
             </li>
           ))}
         </ul>
       </div>
 
       <!-- Mockup: CMM report parsed -->
-      <ProductScreenshot image="spc-desktop.png" caption="Statistical process control — characteristic-level, with control limits" />
+      <ProductScreenshot image="spc-desktop.png" caption="Statistical process control — characteristic-level, with control limits" tone="dark" />
 
     </div>
   </section>
 
   <!-- ====================== TRAINING ====================== -->
-  <section id="training" class="py-24 px-6 bg-surface border-b border-rule">
+  <section id="training" class="py-24 px-6 bg-navy-lift border-b border-rule-onDark">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
         <div>
-          <span class="eyebrow text-accent tick">Domain 04 · Training</span>
-          <h2 class="mt-2 text-display-sm md:text-display-md text-navy leading-tight">Training enforced at the point of work.</h2>
-          <p class="mt-4 text-ink/70 leading-relaxed">
+          <span class="eyebrow text-accent-onDark tick-on-dark">Domain 04 · Training</span>
+          <h2 class="mt-2 text-display-sm md:text-display-md text-white leading-tight">Training enforced at the point of work.</h2>
+          <p class="mt-4 text-muted-onDark leading-relaxed">
             Operators only see operations they're trained for. Trainer/trainee workflows are built into the work order, not bolted on as a checklist. Cert expiry triggers automatic graduation review.
           </p>
         </div>
@@ -183,8 +183,8 @@ import { claims } from '../data/claims';
             'Re-training trigger rules',
             'Audit-ready training history',
           ].map(m => (
-            <li class="flex items-start gap-2 text-ink/80">
-              <span class="text-accent font-bold mt-0.5">✓</span>{m}
+            <li class="flex items-start gap-2 text-white/80">
+              <span class="text-accent-onDark font-bold mt-0.5">✓</span>{m}
             </li>
           ))}
         </ul>
@@ -196,13 +196,13 @@ import { claims } from '../data/claims';
   </section>
 
   <!-- ====================== INTELLIGENCE ====================== -->
-  <section id="intelligence" class="py-24 px-6 bg-white border-b border-rule">
+  <section id="intelligence" class="py-24 px-6 bg-navy-lift border-b border-rule-onDark">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
         <div>
-          <span class="eyebrow text-accent tick">Domain 05 · Intelligence</span>
-          <h2 class="mt-2 text-display-sm md:text-display-md text-navy leading-tight">From shop floor to CEO. One pane of glass.</h2>
-          <p class="mt-4 text-ink/70 leading-relaxed">
+          <span class="eyebrow text-accent-onDark tick-on-dark">Domain 05 · Intelligence</span>
+          <h2 class="mt-2 text-display-sm md:text-display-md text-white leading-tight">From shop floor to CEO. One pane of glass.</h2>
+          <p class="mt-4 text-muted-onDark leading-relaxed">
             Live executive intelligence aggregated across operations, finance, supply chain, and quality. An assistant grounded in your own records: it answers using retrieval over your MESvantage data and links to the source record behind each statement. It cannot approve, sign, disposition or release anything.
           </p>
         </div>
@@ -221,8 +221,8 @@ import { claims } from '../data/claims';
             'Energy ECM live data',
             'Anomaly detection (auto)',
           ].map(m => (
-            <li class="flex items-start gap-2 text-ink/80">
-              <span class="text-accent font-bold mt-0.5">✓</span>{m}
+            <li class="flex items-start gap-2 text-white/80">
+              <span class="text-accent-onDark font-bold mt-0.5">✓</span>{m}
             </li>
           ))}
         </ul>
@@ -234,13 +234,13 @@ import { claims } from '../data/claims';
   </section>
 
   <!-- ====================== PLATFORM ====================== -->
-  <section id="platform" class="py-24 px-6 bg-surface">
+  <section id="platform" class="py-24 px-6 bg-navy-lift">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-start mb-12">
         <div>
-          <span class="eyebrow text-accent tick">Domain 06 · Platform</span>
-          <h2 class="mt-2 text-display-sm md:text-display-md text-navy leading-tight">Compliance-grade foundations.</h2>
-          <p class="mt-4 text-ink/70 leading-relaxed">
+          <span class="eyebrow text-accent-onDark tick-on-dark">Domain 06 · Platform</span>
+          <h2 class="mt-2 text-display-sm md:text-display-md text-white leading-tight">Compliance-grade foundations.</h2>
+          <p class="mt-4 text-muted-onDark leading-relaxed">
             Every record signed, hashed and audit-trailed. Every action role-gated. Every customer in
             their own isolated deployment. The platform is the object of validation — we supply the
             evidence that lets your team qualify it in your environment.
@@ -261,8 +261,8 @@ import { claims } from '../data/claims';
             'OneDrive document linking',
             'Infrastructure provisioned from code',
           ].map(m => (
-            <li class="flex items-start gap-2 text-ink/80">
-              <span class="text-accent font-bold mt-0.5">✓</span>{m}
+            <li class="flex items-start gap-2 text-white/80">
+              <span class="text-accent-onDark font-bold mt-0.5">✓</span>{m}
             </li>
           ))}
         </ul>
@@ -284,16 +284,16 @@ import { claims } from '../data/claims';
       */}
 
 
-      <div class="bg-surface border border-rule rounded-md p-8 md:p-10">
-        <h3 class="text-xl font-bold text-navy">How we evidence Part 11, rather than illustrate it</h3>
-        <p class="mt-3 text-ink/70 leading-relaxed max-w-3xl">
+      <div class="bg-navy-lift border border-rule-onDark rounded-md p-8 md:p-10">
+        <h3 class="text-xl font-bold text-white">How we evidence Part 11, rather than illustrate it</h3>
+        <p class="mt-3 text-muted-onDark leading-relaxed max-w-3xl">
           Audit trail and electronic signature controls are implemented against 21 CFR Part 11
           §11.10, §11.50 and §11.70. We publish the control map — each control, the mechanism that
           implements it, and the evidence artefact that demonstrates it — rather than a picture of
           a record. Our current control matrix, including open items, is available for review
           under NDA.
         </p>
-        <a href="/compliance" class="inline-flex items-center gap-1 mt-5 min-h-[24px] text-sm font-semibold text-accent hover:text-accent-dark transition-colors">
+        <a href="/compliance" class="inline-flex items-center gap-1 mt-5 min-h-[24px] text-sm font-semibold text-accent-onDark hover:text-white transition-colors">
           See the compliance detail
           <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
         </a>
@@ -313,10 +313,10 @@ import { claims } from '../data/claims';
   </section>
 
 
-  <section class="bg-white border-t border-rule">
+  <section class="bg-navy-lift border-t border-rule-onDark">
     <div class="max-w-6xl mx-auto px-6 py-8">
-      <p class="text-sm text-ink/70 leading-relaxed">
-        <span class="font-semibold text-navy">About the interface images on this page.</span>
+      <p class="text-sm text-muted-onDark leading-relaxed">
+        <span class="font-semibold text-white">About the interface images on this page.</span>
         They are screenshots of MESvantage running against a demonstration dataset — the real
         application, not illustrations of it. Ardara Orthopaedics is a fictional manufacturer and
         every record shown is seeded demonstration data, so no part, person or customer on this

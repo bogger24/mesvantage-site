@@ -56,10 +56,10 @@ const tiers = [
   title="Pricing"
   description="MESvantage pricing — Essential, Professional, and Enterprise tiers for medical device CDMOs."
 >
-  <section class="py-16 px-6 border-b border-rule">
+  <section class="py-16 px-6 border-b border-rule-onDark">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl font-extrabold text-navy">Simple, site-based pricing</h1>
-      <p class="mt-4 text-lg text-ink/70 max-w-2xl mx-auto">
+      <h1 class="text-4xl font-extrabold text-white">Simple, site-based pricing</h1>
+      <p class="mt-4 text-lg text-muted-onDark max-w-2xl mx-auto">
         Per-site annual subscription. No per-user fees. No hidden implementation surprises.
         Infrastructure is included.
       </p>
@@ -69,28 +69,28 @@ const tiers = [
   <section class="py-16 px-6">
     <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 items-start">
       {tiers.map(tier => (
-        <div class={`rounded-md border p-8 flex flex-col gap-6 ${tier.highlight ? 'border-accent ring-2 ring-accent bg-white' : 'border-rule bg-white'}`}>
+        <div class={`rounded-md border p-8 flex flex-col gap-6 ${tier.highlight ? 'border-accent ring-2 ring-accent bg-navy-lift' : 'border-rule-onDark bg-navy-lift'}`}>
           {tier.highlight && (
-            <span class="eyebrow text-accent tick">Most popular</span>
+            <span class="eyebrow text-accent-onDark tick-on-dark">Most popular</span>
           )}
           <div>
-            <h2 class="text-xl font-bold text-navy">{tier.name}</h2>
-            <p class="mt-2 text-3xl font-extrabold text-navy">
-              <span data-evidence={tier.claim} data-token={claims[tier.claim].token} class="tabular-nums">{claims[tier.claim].value}</span><span class="text-base font-normal text-muted">/yr</span>
+            <h2 class="text-xl font-bold text-white">{tier.name}</h2>
+            <p class="mt-2 text-3xl font-extrabold text-white">
+              <span data-evidence={tier.claim} data-token={claims[tier.claim].token} class="tabular-nums">{claims[tier.claim].value}</span><span class="text-base font-normal text-muted-onDark">/yr</span>
             </p>
-            <p class="mt-1 text-sm text-muted">Contact us for a tailored quote</p>
+            <p class="mt-1 text-sm text-muted-onDark">Contact us for a tailored quote</p>
           </div>
           <ul class="flex flex-col gap-2 flex-1">
             {tier.modules.map(mod => (
-              <li class="flex items-start gap-2 text-sm text-ink/80">
-                <span class="text-accent font-bold mt-0.5">✓</span>
+              <li class="flex items-start gap-2 text-sm text-white/80">
+                <span class="text-accent-onDark font-bold mt-0.5">✓</span>
                 {mod}
               </li>
             ))}
           </ul>
           <a
             href="/about#contact"
-            class={`text-center font-semibold px-6 py-3 rounded-md transition-colors ${tier.highlight ? 'bg-accent hover:bg-accent-dark text-white' : 'border border-accent text-accent hover:bg-accent/5'}`}
+            class={`text-center font-semibold px-6 py-3 rounded-md transition-colors ${tier.highlight ? 'bg-accent hover:bg-accent-dark text-white' : 'border border-accent text-accent-onDark hover:bg-accent/5'}`}
           >
             Get a quote
           </a>
@@ -100,14 +100,14 @@ const tiers = [
   </section>
 
   <!-- Implementation fee note -->
-  <section class="py-8 px-6 border-t border-rule">
+  <section class="py-8 px-6 border-t border-rule-onDark">
     <div class="max-w-3xl mx-auto text-center">
-      <h3 class="text-lg font-bold text-navy mb-2">One-time implementation fee</h3>
-      <p class="text-ink/70 text-sm leading-relaxed">
+      <h3 class="text-lg font-bold text-white mb-2">One-time implementation fee</h3>
+      <p class="text-muted-onDark text-sm leading-relaxed">
         Covers deployment, data migration, staff training, and the validation documentation package (IQ/OQ/PQ).
-        Typically <Evidence claim="implementation-fee" variant="inline" /> depending on site size. Quoted per engagement.
+        Typically <Evidence onDark claim="implementation-fee" variant="inline" /> depending on site size. Quoted per engagement.
       </p>
-      <p class="mt-4 text-xs text-muted-soft">
+      <p class="mt-4 text-xs text-muted-onDark">
         Infrastructure included · Per-site licensing · Multi-site discounts available
       </p>
     </div>

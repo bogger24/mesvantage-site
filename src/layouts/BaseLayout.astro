@@ -64,10 +64,13 @@ const organisation = {
     <meta name="twitter:title" content={`${title} | MESvantage`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="theme-color" content="#0F2D52" />
+    <meta name="theme-color" content="#061426" />
     <title>{title} | MESvantage</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script type="application/ld+json" set:html={JSON.stringify(organisation)} />
+    {/* Head, not deferred: the js flag must land on <html> before first paint or every
+        .reveal element flashes. See public/motion.js. */}
+    <script src="/motion.js" is:inline></script>
     <script defer data-domain="mesvantage.com" src="https://plausible.io/js/script.js"></script>
   </head>
   <body>

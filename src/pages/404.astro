@@ -39,17 +39,17 @@ const destinations = [
 
   <section class="py-16 px-6">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-sm font-bold uppercase tracking-widest text-muted">Where you probably meant to go</h2>
+      <h2 class="text-sm font-bold uppercase tracking-widest text-muted-onDark">Where you probably meant to go</h2>
       <ul class="mt-6 grid sm:grid-cols-2 gap-4">
         {
           destinations.map((d) => (
             <li>
               <a
                 href={d.href}
-                class="block border border-ink/10 rounded-lg p-5 bg-white hover:border-accent transition-colors"
+                class="block border border-rule-onDark rounded-lg p-5 bg-navy-lift hover:border-accent-onDark transition-colors"
               >
-                <span class="font-bold text-navy">{d.label}</span>
-                <span class="block text-sm text-muted mt-1">{d.blurb}</span>
+                <span class="font-bold text-white">{d.label}</span>
+                <span class="block text-sm text-muted-onDark mt-1">{d.blurb}</span>
               </a>
             </li>
           ))

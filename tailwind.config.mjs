@@ -11,6 +11,10 @@ export default {
           // colour; this reads as an instrument. Dark sections are the product, light
           // sections are the argument.
           deep: '#061426',
+          // A slightly lifted surface for panels and alternating sections on the continuous
+          // dark canvas. Depth on this site comes from surface shifts and hairlines, never
+          // from a jump to white.
+          lift: '#0A1B30',
         },
         // Context-bound accent. The previous single value (#1A7FBF) failed WCAG AA against
         // every background it was used on: 4.35:1 with white on the primary CTA, 3.18:1 as
@@ -52,6 +56,10 @@ export default {
       fontSize: {
         // Display sizes carry negative tracking and a tight paired line-height. Most of what
         // makes type feel considered rather than default is in these two numbers.
+        'display-hero': [
+          'clamp(2.75rem, 6.5vw, 5.5rem)',
+          { lineHeight: '1.0', letterSpacing: '-0.04em', fontWeight: '800' },
+        ],
         'display-xl': ['4.25rem', { lineHeight: '1.02', letterSpacing: '-0.035em', fontWeight: '800' }],
         'display-lg': ['3.25rem', { lineHeight: '1.05', letterSpacing: '-0.03em', fontWeight: '800' }],
         'display-md': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-0.025em', fontWeight: '800' }],

@@ -22,12 +22,12 @@ import { claims } from '../data/claims';
     actually carries, set in mono between two hairlines. It states what the product is faster
     than the paragraph above it does.
   */}
-  <section class="bg-navy-deep text-white pt-20 px-6 relative overflow-x-clip">
+  <section class="bg-navy-deep text-white pt-16 md:pt-24 px-6 relative overflow-x-clip noise">
     <div class="absolute inset-0 opacity-[0.06] pointer-events-none grid-overlay grid-overlay-fade"></div>
     <div class="max-w-6xl mx-auto relative">
       <p class="eyebrow text-accent-onDark tick-on-dark">Orthopaedic implant manufacturing</p>
 
-      <h1 class="mt-1 text-display-md md:text-display-xl max-w-5xl text-balance">
+      <h1 class="mt-1 text-display-hero max-w-5xl text-balance">
         Every implant. Every operation. Every signature. One record.
       </h1>
 
@@ -39,17 +39,14 @@ import { claims } from '../data/claims';
           system. Audit preparation stops being an archaeology project.
         </p>
         <div class="md:col-span-4 md:col-start-9 flex flex-col gap-3">
-          <a
-            href="/mesvantage-product-overview.pdf"
-            class="bg-accent hover:bg-accent-dark text-white font-semibold px-7 py-3.5 rounded-md transition-colors text-center"
-          >
-            Download the product overview
+          <a href="/mesvantage-product-overview.pdf" class="btn-mono bg-accent hover:bg-accent-dark text-white">
+            Download the overview <span aria-hidden="true">↓</span>
           </a>
           <a
             href="/about#contact"
-            class="border border-white/25 hover:border-white/70 hover:bg-white/5 text-white font-semibold px-7 py-3.5 rounded-md transition-colors text-center"
+            class="btn-mono border border-white/25 hover:border-white/70 hover:bg-white/5 text-white"
           >
-            Talk to the founder
+            Talk to the founder <span aria-hidden="true">→</span>
           </a>
         </div>
       </div>
@@ -80,11 +77,57 @@ import { claims } from '../data/claims';
       </p>
 
       {/*
+        The ticker: the working vocabulary of the plant, drifting past in mono. Content rule —
+        words and acronyms only, never a number, so nothing here can assert a claim and the
+        ratchet has nothing to inspect. The second track is a duplicate for the loop and is
+        hidden from assistive technology.
+      */}
+      <div class="ticker font-mono text-[11px] font-semibold uppercase tracking-eyebrow text-muted-onDark border-y border-rule-onDark py-3 mb-12" aria-label="Module vocabulary">
+          <ul class="ticker-track list-none m-0 p-0 flex">
+            <li class="flex items-center gap-10"><span>Quality</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Production</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Metrology</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Training</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Intelligence</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Platform</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>DHR</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>FAI</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>SPC</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>NC</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>CAPA</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>OEE</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Genealogy</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>E-signatures</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Audit trail</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Lot release</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+          </ul>
+          <ul class="ticker-track list-none m-0 p-0 flex" aria-hidden="true">
+            <li class="flex items-center gap-10"><span>Quality</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Production</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Metrology</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Training</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Intelligence</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Platform</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>DHR</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>FAI</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>SPC</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>NC</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>CAPA</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>OEE</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Genealogy</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>E-signatures</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Audit trail</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+            <li class="flex items-center gap-10"><span>Lot release</span><span aria-hidden="true" class="w-1 h-1 rounded-full bg-accent-onDark/60"></span></li>
+          </ul>
+      </div>
+
+      {/*
         The product, in the hero, in a window frame whose title bar carries the real route and
         build from the capture manifest. It bleeds into the section below — the page opens with
         the argument and lands on the evidence.
       */}
-      <div class="glow-panel relative z-10 -mb-20 md:-mb-36">
+      <div class="glow-panel hud relative z-10 -mb-20 md:-mb-36">
+        <div class="hud-corners"></div>
         <ProductScreenshot
           image="inspections-desktop.png"
           caption="Inspection queue — incoming, in-process and final, against the plan"
@@ -106,10 +149,10 @@ import { claims } from '../data/claims';
     A ruled list with mono indices does the same job with less ink and reads as a findings
     list, which is what it is.
   */}
-  <section class="pt-40 md:pt-64 pb-20 px-6 bg-white border-b border-rule">
+  <section class="pt-40 md:pt-64 pb-20 px-6 bg-navy-lift border-b border-rule-onDark">
     <div class="max-w-6xl mx-auto">
-      <SpecHeader index="01" label="Does this sound familiar?" meta="Findings, floor-level" />
-      <h2 class="text-display-sm md:text-display-md text-navy max-w-2xl text-balance">
+      <SpecHeader index="01" label="Does this sound familiar?" meta="Findings, floor-level" onDark />
+      <h2 class="text-display-sm md:text-display-md text-white max-w-2xl text-balance">
         The problems every CDMO lives with.
       </h2>
 
@@ -128,13 +171,13 @@ import { claims } from '../data/claims';
             body: 'FAIs, NCs, CAPAs, incoming inspection results — scattered across SharePoint folders, email threads, and institutional knowledge that leaves when people leave.',
           },
         ].map((row, i) => (
-          <li class="ruled last:border-b last:border-rule">
+          <li class="ruled-on-dark last:border-b last:border-rule-onDark">
             <div class="grid md:grid-cols-12 gap-x-8 gap-y-2 py-7">
               <span class="index-num md:col-span-1 pt-1">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <h3 class="md:col-span-4 text-lg font-bold text-navy leading-snug">{row.title}</h3>
-              <p class="md:col-span-7 text-ink/75 leading-relaxed">{row.body}</p>
+              <h3 class="md:col-span-4 text-lg font-bold text-white leading-snug">{row.title}</h3>
+              <p class="md:col-span-7 text-muted-onDark leading-relaxed">{row.body}</p>
             </div>
           </li>
         ))}
@@ -191,18 +234,18 @@ import { claims } from '../data/claims';
   </section>
 
   <!-- Architecture / How it works -->
-  <section id="how-it-works" class="py-24 px-6 bg-surface">
+  <section id="how-it-works" class="py-24 px-6 bg-navy-deep">
     <div class="max-w-6xl mx-auto">
-      <SpecHeader index="02" label="How it works" meta="Inputs · core · outputs" />
+      <SpecHeader index="02" label="How it works" meta="Inputs · core · outputs" onDark />
       <div class="mb-14 max-w-3xl">
-        <h2 class="text-display-sm md:text-display-md text-navy text-balance">One platform, every system on your floor.</h2>
-        <p class="mt-4 text-muted max-w-2xl leading-relaxed">
+        <h2 class="text-display-sm md:text-display-md text-white text-balance">One platform, every system on your floor.</h2>
+        <p class="mt-4 text-muted-onDark max-w-2xl leading-relaxed">
           MESvantage sits at the centre of your manufacturing stack — ingesting data from ERP, quality, machines and metrology, and turning it into validated records, real-time intelligence, and customer-ready outputs.
         </p>
       </div>
 
       <!-- Architecture diagram (SVG, animated) -->
-      <div class="bg-white border border-border rounded-2xl p-6 md:p-10 shadow-sm">
+      <div class="bg-white border border-rule-strong rounded-lg p-6 md:p-10 shadow-2xl">
         <svg viewBox="0 0 1100 520" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MESvantage architecture diagram">
           <defs>
             <linearGradient id="centerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -301,7 +344,7 @@ import { claims } from '../data/claims';
         </svg>
       </div>
 
-      <p class="text-sm text-muted mt-6 max-w-2xl leading-relaxed">
+      <p class="text-sm text-muted-onDark mt-6 max-w-2xl leading-relaxed">
         Each customer runs in a dedicated deployment: separate compute, database and storage. Isolation is not a regulatory requirement, but it keeps your audit scope simple and your data unambiguously yours.
       </p>
     </div>
@@ -318,10 +361,10 @@ import { claims } from '../data/claims';
   -->
 
   <!-- The gap we fill -->
-  <section class="py-20 px-6 bg-white">
+  <section class="py-20 px-6 bg-navy-lift">
     <div class="max-w-6xl mx-auto">
-      <SpecHeader index="03" label="Why this one" />
-      <h2 class="text-display-sm md:text-display-md text-navy max-w-2xl text-balance">
+      <SpecHeader index="03" label="Why this one" onDark />
+      <h2 class="text-display-sm md:text-display-md text-white max-w-2xl text-balance">
         The gap nobody else fills.
       </h2>
       <ul class="mt-12 list-none">
@@ -339,11 +382,11 @@ import { claims } from '../data/claims';
             body: 'Running daily in an orthopaedic plant that is FDA-registered and ISO 13485-certified — the plant’s credentials, not ours. Every feature in the validated scope has run on a real production floor — not a lab, not a pilot, not a demo environment.',
           },
         ].map((card, i) => (
-          <li class="ruled last:border-b last:border-rule">
+          <li class="ruled-on-dark last:border-b last:border-rule-onDark">
             <div class="grid md:grid-cols-12 gap-x-8 gap-y-2 py-7">
               <span class="index-num md:col-span-1 pt-1">{String(i + 1).padStart(2, '0')}</span>
-              <h3 class="md:col-span-4 text-lg font-bold text-navy leading-snug">{card.title}</h3>
-              <p class="md:col-span-7 text-ink/75 leading-relaxed">{card.body}</p>
+              <h3 class="md:col-span-4 text-lg font-bold text-white leading-snug">{card.title}</h3>
+              <p class="md:col-span-7 text-muted-onDark leading-relaxed">{card.body}</p>
             </div>
           </li>
         ))}
@@ -361,20 +404,20 @@ import { claims } from '../data/claims';
 
     Left-aligned, opened by a hairline, attributed in mono like a signature line on a record.
   */}
-  <section class="py-20 px-6 bg-surface border-b border-rule">
+  <section class="py-20 px-6 bg-navy-deep border-b border-rule-onDark">
     <div class="max-w-6xl mx-auto">
-      <SpecHeader index="04" label="Why it exists" meta="Related-party, disclosed" />
+      <SpecHeader index="04" label="Why it exists" meta="Related-party, disclosed" onDark />
     </div>
     <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-x-10 gap-y-8">
       <div class="md:col-span-3">
-        <p class="mt-4 font-mono text-sm font-semibold text-navy">Patrick Byrnes</p>
-        <p class="mt-1 text-sm text-muted leading-snug">
+        <p class="mt-4 font-mono text-sm font-semibold text-white">Patrick Byrnes</p>
+        <p class="mt-1 text-sm text-muted-onDark leading-snug">
           CEO, Croom Medical<br />Founder, MESvantage
         </p>
       </div>
 
       <div class="md:col-span-9">
-        <blockquote class="text-xl md:text-2xl text-navy leading-[1.45] tracking-[-0.01em]">
+        <blockquote class="text-xl md:text-2xl text-white leading-[1.45] tracking-[-0.01em]">
           We spent two years looking for an MES that understood a knee. Everything we found was a
           QMS pretending to be an MES, a platform we would have had to build ourselves, or a
           two-year programme priced for a company ten times our size. So we built it, we validated
@@ -382,8 +425,8 @@ import { claims } from '../data/claims';
           demonstration of it. The same one.
         </blockquote>
 
-        <p class="mt-10 pt-6 border-t border-rule text-sm text-ink/75 leading-relaxed max-w-3xl">
-          <span class="font-semibold text-navy">A disclosure, because you would find it anyway.</span>
+        <p class="mt-10 pt-6 border-t border-rule-onDark text-sm text-muted-onDark leading-relaxed max-w-3xl">
+          <span class="font-semibold text-white">A disclosure, because you would find it anyway.</span>
           MESvantage Limited and Croom Medical share a founder and chief executive. Croom is our
           only customer to date, so this is a related-party reference and we describe it as one.
           What is not related-party is the record: the system has been in scope for external audits
@@ -396,15 +439,15 @@ import { claims } from '../data/claims';
 
   <!-- Mockup scene: Operations dashboard (HTML/CSS, MESvantage-branded, fake data) -->
   <!-- Mockup scene: Machine Intelligence -->
-  <section class="py-24 px-6 bg-surface">
+  <section class="py-24 px-6 bg-navy-lift">
     <div class="max-w-6xl mx-auto">
-      <SpecHeader index="05" label="Condition monitoring" meta="OPC-UA · MTConnect · Modbus" />
+      <SpecHeader index="05" label="Condition monitoring" meta="OPC-UA · MTConnect · Modbus" onDark />
       <div class="grid md:grid-cols-12 gap-x-12 gap-y-6 mb-0">
         <div class="md:col-span-5">
-          <h2 class="mt-1 text-display-sm text-navy text-balance">
+          <h2 class="mt-1 text-display-sm text-white text-balance">
             Every connected machine, every shift, on one screen.
           </h2>
-          <p class="mt-4 text-ink/70 leading-relaxed">
+          <p class="mt-4 text-muted-onDark leading-relaxed">
             Live ingestion from OPC-UA, MTConnect and Modbus. Machine state, utilisation and downtime reasons
             are captured as they happen and surfaced per cell, per work centre and across the fleet — with
             threshold and trend alerting on the signals your maintenance team already watches.
@@ -419,7 +462,7 @@ import { claims } from '../data/claims';
             'Maintenance work orders drafted for a person to approve',
             'Before we quote, we survey your machines and tell you which can be read on day one',
           ].map(item => (
-            <li class="ruled last:border-b last:border-rule py-3 text-ink/80 leading-relaxed">
+            <li class="ruled-on-dark last:border-b last:border-rule-onDark py-3 text-white/80 leading-relaxed">
               {item}
             </li>
           ))}
@@ -432,15 +475,15 @@ import { claims } from '../data/claims';
   </section>
 
   <!-- Mockup scene: AI Assistant -->
-  <section class="py-24 px-6 bg-white">
+  <section class="py-24 px-6 bg-navy-deep">
     <div class="max-w-6xl mx-auto">
-      <SpecHeader index="06" label="Intelligence, governed" meta="Read and draft · never release" />
+      <SpecHeader index="06" label="Intelligence, governed" meta="Read and draft · never release" onDark />
       <div class="grid md:grid-cols-12 gap-x-12 gap-y-6">
         <div class="md:col-span-5">
-          <h2 class="mt-1 text-display-sm text-navy text-balance">
+          <h2 class="mt-1 text-display-sm text-white text-balance">
             People sign. The system proves.
           </h2>
-          <p class="mt-4 text-ink/70 leading-relaxed">
+          <p class="mt-4 text-muted-onDark leading-relaxed">
             An assistant grounded in your own records. It answers using retrieval over your MESvantage data
             and links to the source record behind each statement. It is a read-and-draft tool: it cannot
             approve, sign, disposition or release anything.
@@ -455,7 +498,7 @@ import { claims } from '../data/claims';
             'Barred in software from releasing product, dispositioning parts or closing a quality record',
             'Every response is written to the audit trail with its question, sources and model version',
           ].map(item => (
-            <li class="ruled last:border-b last:border-rule py-3 text-ink/80 leading-relaxed">
+            <li class="ruled-on-dark last:border-b last:border-rule-onDark py-3 text-white/80 leading-relaxed">
               {item}
             </li>
           ))}
@@ -467,13 +510,14 @@ import { claims } from '../data/claims';
         <ProductScreenshot
           image="spc-desktop.png"
           caption="Statistical process control — characteristic-level, with control limits"
+          tone="dark"
         />
       </div>
     </div>
   </section>
 
   <!-- Mockup scene: Genealogy & DHR -->
-  <section class="py-24 px-6 bg-navy text-white">
+  <section class="py-24 px-6 bg-navy text-white border-y border-rule-onDark">
     <div class="max-w-6xl mx-auto">
       <SpecHeader index="07" label="Genealogy & DHR" meta="Raw stock to dispatch" onDark />
       <div class="grid md:grid-cols-12 gap-x-12 gap-y-6">
@@ -514,21 +558,21 @@ import { claims } from '../data/claims';
   </section>
 
   <!-- Module highlights -->
-  <section class="py-24 px-6 bg-white border-b border-border">
+  <section class="py-24 px-6 bg-navy-lift border-b border-rule-onDark">
     <div class="max-w-6xl mx-auto">
-      <SpecHeader index="08" label="The platform" meta="Six domains, labelled live or not" />
+      <SpecHeader index="08" label="The platform" meta="Six domains, labelled live or not" onDark />
       <div class="grid md:grid-cols-12 gap-x-10 gap-y-4 mb-14">
         <div class="md:col-span-5">
-          <h2 class="mt-1 text-display-sm md:text-display-md text-navy text-balance">
+          <h2 class="mt-1 text-display-sm md:text-display-md text-white text-balance">
             <Evidence claim="module-count" variant="inline" /> modules. Six domains.
           </h2>
         </div>
-        <p class="md:col-span-7 md:pt-10 text-muted leading-relaxed">
+        <p class="md:col-span-7 md:pt-10 text-muted-onDark leading-relaxed">
           Every module was written for regulated contract manufacturing, not retrofitted from a
           generic platform. Each one carries a label saying whether it is live in production today.
         </p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-rule">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-rule-onDark">
         {[
           {
             domain: 'Quality', num: '01',
@@ -561,15 +605,15 @@ import { claims } from '../data/claims';
             outcome: 'Mobile PWA, digital signage, audit trail, e-signatures, and role-based access — the regulated infrastructure that makes the rest possible.',
           },
         ].map(m => (
-          <div class="border-r border-b border-rule p-7 hover:bg-surface transition-colors">
+          <div class="border-r border-b border-rule-onDark p-7 hover:bg-white/5 transition-colors">
             <div class="flex items-baseline gap-3">
               <span class="index-num">{m.num}</span>
-              <h3 class="text-base font-bold text-navy leading-tight">{m.domain}</h3>
+              <h3 class="text-base font-bold text-white leading-tight">{m.domain}</h3>
             </div>
-            <p class="mt-4 text-ink/75 leading-relaxed text-sm">{m.outcome}</p>
+            <p class="mt-4 text-muted-onDark leading-relaxed text-sm">{m.outcome}</p>
             <a
               href={`/product#${m.domain.toLowerCase()}`}
-              class="inline-flex items-center gap-1 mt-5 min-h-[24px] font-mono text-[11px] font-semibold uppercase tracking-eyebrow text-accent hover:text-accent-dark transition-colors"
+              class="inline-flex items-center gap-1 mt-5 min-h-[24px] font-mono text-[11px] font-semibold uppercase tracking-eyebrow text-accent-onDark hover:text-white transition-colors"
             >
               See modules
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
@@ -578,7 +622,7 @@ import { claims } from '../data/claims';
         ))}
       </div>
       <div class="mt-10">
-        <a href="/product" class="inline-flex items-center min-h-[24px] font-mono text-[11px] font-semibold uppercase tracking-eyebrow text-accent hover:text-accent-dark transition-colors">
+        <a href="/product" class="inline-flex items-center min-h-[24px] font-mono text-[11px] font-semibold uppercase tracking-eyebrow text-accent-onDark hover:text-white transition-colors">
           View all modules →
         </a>
       </div>
@@ -586,7 +630,7 @@ import { claims } from '../data/claims';
   </section>
 
   <!-- Closing CTA -->
-  <section class="py-24 px-6 bg-navy-deep relative overflow-hidden">
+  <section class="py-24 px-6 bg-navy-deep relative overflow-hidden noise">
     <div class="absolute inset-0 opacity-[0.05] pointer-events-none grid-overlay"></div>
     <div class="max-w-6xl mx-auto relative grid md:grid-cols-12 gap-x-10 gap-y-8 items-end">
       <div class="md:col-span-7">
@@ -600,27 +644,24 @@ import { claims } from '../data/claims';
         </p>
       </div>
       <div class="md:col-span-5 flex flex-col gap-3">
-        <a
-          href="/mesvantage-product-overview.pdf"
-          class="bg-accent hover:bg-accent-dark text-white font-semibold px-7 py-3.5 rounded-md transition-colors text-center"
-        >
-          Download the product overview
+        <a href="/mesvantage-product-overview.pdf" class="btn-mono bg-accent hover:bg-accent-dark text-white">
+          Download the overview <span aria-hidden="true">↓</span>
         </a>
         <a
           href="/about#contact"
-          class="border border-white/25 hover:border-white/70 hover:bg-white/5 text-white font-semibold px-7 py-3.5 rounded-md transition-colors text-center"
+          class="btn-mono border border-white/25 hover:border-white/70 hover:bg-white/5 text-white"
         >
-          Or talk to the founder
+          Or talk to the founder <span aria-hidden="true">→</span>
         </a>
       </div>
     </div>
   </section>
 
 
-  <section class="bg-white border-t border-border">
+  <section class="bg-navy-deep border-t border-rule-onDark">
     <div class="max-w-6xl mx-auto px-6 py-8">
-      <p class="text-sm text-ink/70 leading-relaxed">
-        <span class="font-semibold text-navy">About the interface images on this page.</span>
+      <p class="text-sm text-muted-onDark leading-relaxed">
+        <span class="font-semibold text-white">About the interface images on this page.</span>
         They are screenshots of MESvantage running against a demonstration dataset — the real
         application, not illustrations of it. Ardara Orthopaedics is a fictional manufacturer and
         every record shown is seeded demonstration data, so no part, person or customer on this

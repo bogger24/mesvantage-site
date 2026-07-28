@@ -40,31 +40,31 @@ const tokenCopy: Record<string, string> = {
     </div>
   </section>
 
-  <section class="py-16 px-6 bg-white">
+  <section class="py-16 px-6 bg-navy-lift">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-navy">Verified</h2>
-      <p class="mt-2 text-ink/70">The evidence artefact exists and has been checked.</p>
+      <h2 class="text-2xl font-bold text-white">Verified</h2>
+      <p class="mt-2 text-muted-onDark">The evidence artefact exists and has been checked.</p>
 
       <div class="mt-8 space-y-6">
         {verified.map((c) => (
-          <article data-evidence={c.id} data-token={c.token} class="border border-rule rounded-md p-6 bg-surface">
+          <article data-evidence={c.id} data-token={c.token} class="border border-rule-onDark rounded-md p-6 bg-navy-lift">
             <div class="flex flex-wrap items-baseline gap-3">
-              <span class="text-2xl font-extrabold text-navy tabular-nums">{c.value}</span>
-              <span class="text-sm font-semibold text-ink/80">{c.label}</span>
-              <span class="ml-auto text-[10px] font-bold tracking-wider uppercase bg-accent/10 text-accent px-2 py-1 rounded">
+              <span class="text-2xl font-extrabold text-white tabular-nums">{c.value}</span>
+              <span class="text-sm font-semibold text-white/80">{c.label}</span>
+              <span class="ml-auto text-[10px] font-bold tracking-wider uppercase bg-accent/10 text-accent-onDark px-2 py-1 rounded">
                 {tokenCopy[c.token]}
               </span>
             </div>
-            <p class="mt-3 text-ink/80 leading-relaxed">{c.statement}</p>
+            <p class="mt-3 text-white/80 leading-relaxed">{c.statement}</p>
             <dl class="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
-              <div><dt class="text-muted inline">Source: </dt><dd class="inline text-ink/80">{c.source}</dd></div>
-              {c.method && <div><dt class="text-muted inline">Method: </dt><dd class="inline text-ink/80">{c.method}</dd></div>}
+              <div><dt class="text-muted-onDark inline">Source: </dt><dd class="inline text-white/80">{c.source}</dd></div>
+              {c.method && <div><dt class="text-muted-onDark inline">Method: </dt><dd class="inline text-white/80">{c.method}</dd></div>}
               {c.verifiedOn && (
-                <div><dt class="text-muted inline">Verified: </dt><dd class="inline text-ink/80">{c.verifiedOn} by {c.verifiedBy}</dd></div>
+                <div><dt class="text-muted-onDark inline">Verified: </dt><dd class="inline text-white/80">{c.verifiedOn} by {c.verifiedBy}</dd></div>
               )}
             </dl>
             {c.caveat && (
-              <p class="mt-3 text-sm text-ink/70 border-l-2 border-rule pl-3">{c.caveat}</p>
+              <p class="mt-3 text-sm text-muted-onDark border-l-2 border-rule-onDark pl-3">{c.caveat}</p>
             )}
           </article>
         ))}
@@ -72,51 +72,51 @@ const tokenCopy: Record<string, string> = {
     </div>
   </section>
 
-  <section class="py-16 px-6 bg-surface border-y border-rule">
+  <section class="py-16 px-6 bg-navy-lift border-y border-rule-onDark">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-navy">Evidence still to be produced</h2>
-      <p class="mt-2 text-ink/70 max-w-2xl">
+      <h2 class="text-2xl font-bold text-white">Evidence still to be produced</h2>
+      <p class="mt-2 text-muted-onDark max-w-2xl">
         We believe each of these is true and we have hedged the wording accordingly, but the
         artefact that would let you check it does not exist yet. Listing them here is the point.
       </p>
 
       <div class="mt-8 space-y-6">
         {pending.map((c) => (
-          <article data-evidence={c.id} data-token={c.token} class="border border-amber-300 bg-amber-50/60 rounded-md p-6">
+          <article data-evidence={c.id} data-token={c.token} class="border border-amber-300/50 bg-amber-400/10 rounded-md p-6">
             <div class="flex flex-wrap items-baseline gap-3">
-              <span class="text-2xl font-extrabold text-navy tabular-nums">{c.value}</span>
-              <span class="text-sm font-semibold text-ink/80">{c.label}</span>
-              <span class="ml-auto text-[10px] font-bold tracking-wider uppercase bg-amber-200 text-amber-900 px-2 py-1 rounded">
+              <span class="text-2xl font-extrabold text-white tabular-nums">{c.value}</span>
+              <span class="text-sm font-semibold text-white/80">{c.label}</span>
+              <span class="ml-auto text-[10px] font-bold tracking-wider uppercase bg-amber-300/20 text-amber-200 px-2 py-1 rounded">
                 Evidence pending
               </span>
             </div>
-            <p class="mt-3 text-ink/80 leading-relaxed">{c.statement}</p>
-            <p class="mt-3 text-sm"><span class="text-muted">Source: </span><span class="text-ink/80">{c.source}</span></p>
-            {c.caveat && <p class="mt-2 text-sm text-ink/70 border-l-2 border-amber-300 pl-3">{c.caveat}</p>}
+            <p class="mt-3 text-white/80 leading-relaxed">{c.statement}</p>
+            <p class="mt-3 text-sm"><span class="text-muted-onDark">Source: </span><span class="text-white/80">{c.source}</span></p>
+            {c.caveat && <p class="mt-2 text-sm text-muted-onDark border-l-2 border-amber-300 pl-3">{c.caveat}</p>}
           </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="py-16 px-6 bg-white">
+  <section class="py-16 px-6 bg-navy-lift">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-navy">Retired claims</h2>
-      <p class="mt-2 text-ink/70 max-w-2xl">
+      <h2 class="text-2xl font-bold text-white">Retired claims</h2>
+      <p class="mt-2 text-muted-onDark max-w-2xl">
         Published previously, removed, and kept here so the reasoning outlives the cleanup.
       </p>
 
       <div class="mt-8 space-y-6">
         {retired.map((c) => (
-          <article data-retired data-evidence={c.id} data-token={c.token} class="border border-rule rounded-md p-6">
+          <article data-retired data-evidence={c.id} data-token={c.token} class="border border-rule-onDark rounded-md p-6">
             <div class="flex flex-wrap items-baseline gap-3">
-              <span class="text-xl font-bold text-muted line-through tabular-nums">{c.value}</span>
-              <span class="text-sm font-semibold text-muted line-through">{c.label}</span>
-              <span class="ml-auto text-[10px] font-bold tracking-wider uppercase bg-ink/10 text-ink/70 px-2 py-1 rounded">
+              <span class="text-xl font-bold text-muted-onDark line-through tabular-nums">{c.value}</span>
+              <span class="text-sm font-semibold text-muted-onDark line-through">{c.label}</span>
+              <span class="ml-auto text-[10px] font-bold tracking-wider uppercase bg-white/10 text-muted-onDark px-2 py-1 rounded">
                 Retired
               </span>
             </div>
-            <p class="mt-3 text-ink/80 leading-relaxed">{c.retiredReason}</p>
+            <p class="mt-3 text-white/80 leading-relaxed">{c.retiredReason}</p>
           </article>
         ))}
       </div>

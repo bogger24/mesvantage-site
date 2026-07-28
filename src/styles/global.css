@@ -6,7 +6,10 @@
 @tailwind utilities;
 
 body {
-  @apply bg-surface text-ink font-sans;
+  /* The whole marketing surface lives on one near-black canvas. Pages that need a reading
+     surface lift a panel from it; nothing jumps to white. (The brochure is print and does
+     not use this layout.) */
+  @apply bg-navy-deep text-white/85 font-sans;
 }
 
 /* The codebase previously ran nine concurrent infinite SVG animations with no guard at all. */
@@ -139,7 +142,9 @@ body {
 /* Index numerals down the left of a ruled list — 01, 02, 03. These replace the
    pastel icon chips, which carried no information and looked bought-in. */
 .index-num {
-  @apply font-mono text-[11px] font-semibold tabular-nums text-muted;
+  /* muted-onDark, because the whole marketing surface now lives on the dark canvas. The
+     light-era value (#52596B) measured 2.47:1 on a lifted panel — axe caught all six. */
+  @apply font-mono text-[11px] font-semibold tabular-nums text-muted-onDark;
 }
 
 /* Tick rule: a short accent stroke used to open a section, in place of a
@@ -249,4 +254,136 @@ body {
   @apply h-px flex-1;
   background: currentColor;
   opacity: 0.22;
+}
+
+/* =========================================================================
+   The dark world.
+
+   One continuous near-black canvas across the whole marketing surface.
+   Depth comes from surface lifts, hairlines, grain and light — never from a
+   jump to a white section. The genre is industrial-cinematic: the site is a
+   control room, and everything luminous in it is either the product or a
+   number that can be defended.
+   ========================================================================= */
+
+/* Film grain, generated in-file: a data-URI SVG turbulence tile at very low
+   opacity. Kills the "flat vector void" feel of large dark areas. */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+/* -------------------------------------------------------------------------
+   HUD brackets — four corner marks around a framed object. The measurement-
+   overlay motif: the page looks at the product the way a CMM looks at a part.
+   Pure CSS, decorative, and only ever wrapped around truthful content.
+   ------------------------------------------------------------------------- */
+.hud {
+  position: relative;
+}
+.hud::before,
+.hud::after,
+.hud > .hud-corners::before,
+.hud > .hud-corners::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(77, 163, 251, 0.55);
+  pointer-events: none;
+  z-index: 2;
+}
+.hud::before {
+  top: -7px;
+  left: -7px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.hud::after {
+  top: -7px;
+  right: -7px;
+  border-left: 0;
+  border-bottom: 0;
+}
+.hud > .hud-corners::before {
+  bottom: -7px;
+  left: -7px;
+  border-right: 0;
+  border-top: 0;
+}
+.hud > .hud-corners::after {
+  bottom: -7px;
+  right: -7px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* -------------------------------------------------------------------------
+   The ticker — a slow marquee of mono words between two hairlines. Content
+   rule: words and acronyms only, never a number, so the claims ratchet has
+   nothing to inspect and nothing can be asserted by decoration.
+   ------------------------------------------------------------------------- */
+.ticker {
+  overflow: hidden;
+  display: flex;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+.ticker-track {
+  display: flex;
+  flex: none;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+  align-items: center;
+  animation: ticker-scroll 46s linear infinite;
+}
+@keyframes ticker-scroll {
+  to {
+    transform: translateX(-100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Scroll reveals. The `js` class is added by /motion.js (an external file,
+   because the CSP allows no inline script). Without JS every element is
+   simply visible; with reduced motion nothing moves. Progressive enhancement
+   in the only direction that is safe.
+   ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  html.js .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+  html.js .reveal-late.in {
+    transition-delay: 0.12s;
+  }
+}
+
+/* Header for the dark world: translucent canvas with blur and a hairline. */
+.site-header {
+  background: rgba(6, 20, 38, 0.82);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #14304f;
+}
+
+/* Mono-uppercase control language for primary actions. */
+.btn-mono {
+  @apply inline-flex items-center justify-center gap-2 font-mono text-[12px] font-semibold uppercase tracking-eyebrow px-6 py-3.5 rounded-md transition-colors text-center;
 }

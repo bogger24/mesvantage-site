@@ -8,30 +8,30 @@ import { claims } from '../data/claims';
   title="Compliance"
   description="How MESvantage satisfies FDA 21 CFR Part 11, ISO 13485, and why siloed SaaS is a compliance feature."
 >
-  <section class="py-16 px-6 border-b border-rule">
+  <section class="py-16 px-6 border-b border-rule-onDark">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl font-extrabold text-navy">Compliance by design</h1>
-      <p class="mt-4 text-lg text-ink/70 max-w-2xl mx-auto">
+      <h1 class="text-4xl font-extrabold text-white">Compliance by design</h1>
+      <p class="mt-4 text-lg text-muted-onDark max-w-2xl mx-auto">
         Compliance isn't a checkbox. It's the architecture. Every design decision in MESvantage was made with ISO 13485 and FDA 21 CFR Part 11 in mind from the first line of code.
       </p>
     </div>
   </section>
 
   <!-- FDA 21 CFR Part 11 -->
-  <section class="py-16 px-6 border-b border-rule">
+  <section class="py-16 px-6 border-b border-rule-onDark">
     <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-10">
       <div class="md:col-span-2">
-        <span class="eyebrow text-accent tick">FDA</span>
-        <h2 class="mt-2 text-2xl font-bold text-navy">21 CFR Part 11</h2>
-        <p class="mt-3 text-ink/70 leading-relaxed">
+        <span class="eyebrow text-accent-onDark tick-on-dark">FDA</span>
+        <h2 class="mt-2 text-2xl font-bold text-white">21 CFR Part 11</h2>
+        <p class="mt-3 text-muted-onDark leading-relaxed">
           The FDA's electronic records and electronic signatures regulation requires that any software used in regulated manufacturing maintains trustworthy, reliable, and generally equivalent records to paper.
         </p>
-        <p class="mt-3 text-ink/70 leading-relaxed">
-          In March 2026 we completed an IQ/OQ/PQ exercise for MESvantage at our founding customer's site: <Evidence claim="validation-tests" variant="inline" /> test cases executed and passed, against a requirements traceability matrix in which <Evidence claim="validation-rtm" variant="inline" /> requirements were traced. We are assembling that package — protocols, scripts, the traceability matrix and the executed reports — for release under NDA. Until it is assembled we will not pretend otherwise; the current status of each artefact is on our evidence page. This is a point-in-time qualification of that configuration. We operate a release
+        <p class="mt-3 text-muted-onDark leading-relaxed">
+          In March 2026 we completed an IQ/OQ/PQ exercise for MESvantage at our founding customer's site: <Evidence onDark claim="validation-tests" variant="inline" /> test cases executed and passed, against a requirements traceability matrix in which <Evidence onDark claim="validation-rtm" variant="inline" /> requirements were traced. We are assembling that package — protocols, scripts, the traceability matrix and the executed reports — for release under NDA. Until it is assembled we will not pretend otherwise; the current status of each artefact is on our evidence page. This is a point-in-time qualification of that configuration. We operate a release
           classification and per-release GxP impact assessment that determines what gets
           regression-tested, but we have not yet published that statement — so until we do, treat
           our answer on it as unverified. That, and everything else we do not have, is set out on
-          <a href="/limits" class="text-accent font-semibold hover:text-accent-dark">what we don't do yet</a>.
+          <a href="/limits" class="text-accent-onDark font-semibold hover:text-white">what we don't do yet</a>.
         </p>
       </div>
       <ul class="md:col-span-3 grid sm:grid-cols-2 gap-3 content-start">
@@ -45,8 +45,8 @@ import { claims } from '../data/claims';
           'Sequence of events with operator identification',
           'Validation documentation package (IQ/OQ/PQ)',
         ].map(item => (
-          <li class="flex items-start gap-2 text-sm text-ink/80">
-            <span class="text-accent font-bold mt-0.5">✓</span>
+          <li class="flex items-start gap-2 text-sm text-white/80">
+            <span class="text-accent-onDark font-bold mt-0.5">✓</span>
             {item}
           </li>
         ))}
@@ -55,12 +55,12 @@ import { claims } from '../data/claims';
   </section>
 
   <!-- ISO 13485 -->
-  <section class="py-16 px-6 border-b border-rule">
+  <section class="py-16 px-6 border-b border-rule-onDark">
     <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-10">
       <div class="md:col-span-2">
-        <span class="eyebrow text-accent tick">Quality</span>
-        <h2 class="mt-2 text-2xl font-bold text-navy">ISO 13485</h2>
-        <p class="mt-3 text-ink/70 leading-relaxed">
+        <span class="eyebrow text-accent-onDark tick-on-dark">Quality</span>
+        <h2 class="mt-2 text-2xl font-bold text-white">ISO 13485</h2>
+        <p class="mt-3 text-muted-onDark leading-relaxed">
           ISO 13485 is the quality management standard for medical device manufacturers. MESvantage's quality module directly supports the traceability, DHR, and process control requirements auditors look for.
         </p>
       </div>
@@ -75,8 +75,8 @@ import { claims } from '../data/claims';
           'Training records linked to operator access',
           'Process control with SPC alerting',
         ].map(item => (
-          <li class="flex items-start gap-2 text-sm text-ink/80">
-            <span class="text-accent font-bold mt-0.5">✓</span>
+          <li class="flex items-start gap-2 text-sm text-white/80">
+            <span class="text-accent-onDark font-bold mt-0.5">✓</span>
             {item}
           </li>
         ))}
@@ -88,15 +88,15 @@ import { claims } from '../data/claims';
   <section class="py-16 px-6">
     <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-10">
       <div class="md:col-span-2">
-        <span class="eyebrow text-accent tick">Architecture</span>
-        <h2 class="mt-2 text-2xl font-bold text-navy">Siloed SaaS</h2>
-        <p class="mt-3 text-ink/70 leading-relaxed">
+        <span class="eyebrow text-accent-onDark tick-on-dark">Architecture</span>
+        <h2 class="mt-2 text-2xl font-bold text-white">Siloed SaaS</h2>
+        <p class="mt-3 text-muted-onDark leading-relaxed">
           Each MESvantage customer receives a fully isolated deployment: their own compute, their own database, their own Redis cache, their own backups.
         </p>
-        <p class="mt-3 text-ink/70 leading-relaxed">
+        <p class="mt-3 text-muted-onDark leading-relaxed">
           Isolation is not a regulatory requirement, and we will not claim it is. It is a practical one: your environment can be inspected and evidenced without reference to any other customer's system, which keeps your audit scope simple and your data unambiguously yours.
         </p>
-        <p class="mt-3 text-sm font-semibold text-navy">Siloed SaaS is a compliance feature, not a technical compromise.</p>
+        <p class="mt-3 text-sm font-semibold text-white">Siloed SaaS is a compliance feature, not a technical compromise.</p>
       </div>
       <ul class="md:col-span-3 grid sm:grid-cols-2 gap-3 content-start">
         {[
@@ -109,8 +109,8 @@ import { claims } from '../data/claims';
           'No cross-customer data access (by design)',
           'Infrastructure provisioned from code',
         ].map(item => (
-          <li class="flex items-start gap-2 text-sm text-ink/80">
-            <span class="text-accent font-bold mt-0.5">✓</span>
+          <li class="flex items-start gap-2 text-sm text-white/80">
+            <span class="text-accent-onDark font-bold mt-0.5">✓</span>
             {item}
           </li>
         ))}
