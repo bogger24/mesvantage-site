@@ -56,12 +56,23 @@ const isDark = tone === 'dark';
 ---
 
 <figure class="not-prose" data-screenshot={entry.file}>
-  <div
-    class:list={[
-      'rounded-xl overflow-hidden border shadow-2xl',
-      isDark ? 'border-white/10' : 'border-border',
-    ]}
-  >
+  <div class:list={['app-frame', isDark ? 'app-frame--on-dark' : 'app-frame--on-light']}>
+    {/*
+      The title bar is truthful chrome: the route and build SHA come from the manifest entry
+      for this exact image, the same source the caption cites. aria-hidden because the caption
+      already states both for assistive technology.
+    */}
+    <div class="app-chrome" aria-hidden="true">
+      <span class="app-chrome-dot"></span>
+      <span class="app-chrome-dot"></span>
+      <span class="app-chrome-dot"></span>
+      <span class="ml-3 font-mono text-[11px] font-medium text-muted-onDark tracking-wide"
+        >{entry.route}</span
+      >
+      <span class="ml-auto font-mono text-[10px] uppercase tracking-eyebrow text-muted-onDark"
+        >build {manifest.buildSha}</span
+      >
+    </div>
     <Picture
       src={src}
       formats={['avif']}

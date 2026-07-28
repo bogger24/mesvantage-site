@@ -1,0 +1,28 @@
+---
+/**
+ * A technical-document section divider: `01 ───────────── THE PROBLEMS`.
+ *
+ * Mono, numbered, ruled — the running structure of an inspection report, applied to the page.
+ * It is presentational (the section's real name is its h2), so it is hidden from assistive
+ * technology rather than read out as a stray number and a duplicate label.
+ */
+interface Props {
+  index: string;
+  label: string;
+  /** Optional right-hand annotation, e.g. a route or a count. */
+  meta?: string;
+  onDark?: boolean;
+}
+
+const { index, label, meta, onDark = false } = Astro.props;
+---
+
+<div
+  class:list={['spec-header mb-12', onDark ? 'text-muted-onDark' : 'text-muted']}
+  aria-hidden="true"
+>
+  <span class={onDark ? 'text-accent-onDark' : 'text-accent'}>{index}</span>
+  <span>{label}</span>
+  <span class="spec-line"></span>
+  {meta && <span class="hidden sm:inline">{meta}</span>}
+</div>
