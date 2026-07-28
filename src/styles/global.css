@@ -120,7 +120,7 @@ body {
 .record-strip {
   @apply font-mono text-[10px] font-semibold uppercase tracking-eyebrow;
   @apply flex flex-wrap items-center gap-x-6 gap-y-2 py-3;
-  @apply border-y border-rule-onDark text-white/45;
+  @apply border-y border-rule-onDark text-muted-onDark;
 }
 
 .record-strip > * {
@@ -144,6 +144,11 @@ body {
 
 /* Tick rule: a short accent stroke used to open a section, in place of a
    centred coloured eyebrow floating in whitespace. */
+/* The host must be block-level for the stroke to sit above it — several eyebrows are spans. */
+.tick,
+.tick-on-dark {
+  @apply block;
+}
 .tick::before {
   content: '';
   @apply block w-8 h-px bg-accent mb-5;

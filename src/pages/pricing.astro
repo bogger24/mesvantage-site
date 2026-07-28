@@ -56,7 +56,7 @@ const tiers = [
   title="Pricing"
   description="MESvantage pricing — Essential, Professional, and Enterprise tiers for medical device CDMOs."
 >
-  <section class="py-16 px-6 border-b border-border">
+  <section class="py-16 px-6 border-b border-rule">
     <div class="max-w-4xl mx-auto text-center">
       <h1 class="text-4xl font-extrabold text-navy">Simple, site-based pricing</h1>
       <p class="mt-4 text-lg text-ink/70 max-w-2xl mx-auto">
@@ -69,9 +69,9 @@ const tiers = [
   <section class="py-16 px-6">
     <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 items-start">
       {tiers.map(tier => (
-        <div class={`rounded-xl border p-8 flex flex-col gap-6 ${tier.highlight ? 'border-accent ring-2 ring-accent bg-white' : 'border-border bg-white'}`}>
+        <div class={`rounded-md border p-8 flex flex-col gap-6 ${tier.highlight ? 'border-accent ring-2 ring-accent bg-white' : 'border-rule bg-white'}`}>
           {tier.highlight && (
-            <span class="text-xs font-bold tracking-widest text-accent uppercase">Most popular</span>
+            <span class="eyebrow text-accent tick">Most popular</span>
           )}
           <div>
             <h2 class="text-xl font-bold text-navy">{tier.name}</h2>
@@ -100,7 +100,7 @@ const tiers = [
   </section>
 
   <!-- Implementation fee note -->
-  <section class="py-8 px-6 border-t border-border">
+  <section class="py-8 px-6 border-t border-rule">
     <div class="max-w-3xl mx-auto text-center">
       <h3 class="text-lg font-bold text-navy mb-2">One-time implementation fee</h3>
       <p class="text-ink/70 text-sm leading-relaxed">
