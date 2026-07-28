@@ -1,8 +1,18 @@
 ---
+/**
+ * "What we don't do" sits in the primary navigation on purpose.
+ *
+ * It is the page most likely to win a technical evaluation and the one a competitor cannot
+ * copy without actually being honest, so burying it in the footer wastes it. A buyer who
+ * finds it in the nav rather than in due diligence reads it as confidence; the same page
+ * found later reads as something we hoped they would miss.
+ */
 const navLinks = [
   { label: 'Product', href: '/product' },
   { label: 'Compliance', href: '/compliance' },
   { label: 'Pricing', href: '/pricing' },
+  { label: 'Evidence', href: '/evidence' },
+  { label: "What we don't do", href: '/limits' },
   { label: 'About', href: '/about' },
 ];
 ---
@@ -14,7 +24,7 @@ const navLinks = [
     </a>
 
     <!-- Desktop nav -->
-    <nav aria-label="Primary" class="hidden md:flex items-center gap-8">
+    <nav aria-label="Primary" class="hidden lg:flex items-center gap-8">
       {navLinks.map(link => (
         <a
           href={link.href}
@@ -32,7 +42,7 @@ const navLinks = [
       </a>
 
       <!-- Mobile menu toggle (visible on small screens only) -->
-      <details class="md:hidden relative">
+      <details class="lg:hidden relative">
         <summary class="list-none cursor-pointer p-2 rounded-md hover:bg-surface transition-colors" aria-label="Open menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
