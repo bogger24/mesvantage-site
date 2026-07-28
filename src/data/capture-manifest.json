@@ -1,6 +1,6 @@
 {
-  "capturedAt": "2026-07-28T10:57:16.101Z",
-  "buildSha": "d8382653",
+  "capturedAt": "2026-07-28T11:32:41.530Z",
+  "buildSha": "2c09d37d",
   "dataset": "Ardara Orthopaedics \u2014 fictional manufacturer, seeded demonstration data",
   "disclosure": "Screenshot of MESvantage running against a demonstration dataset. Ardara Orthopaedics is a fictional manufacturer; no record shown relates to any real customer, part or person.",
   "images": [
@@ -16,6 +16,14 @@
       "file": "work-orders-desktop.png",
       "route": "/work-orders",
       "title": "Work orders",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "file": "assistant-desktop.png",
+      "route": "/assistant",
+      "title": "The assistant, grounded in your own records",
       "viewport": "desktop",
       "width": 1600,
       "height": 1000

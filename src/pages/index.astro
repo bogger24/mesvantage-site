@@ -351,78 +351,8 @@ import { claims } from '../data/claims';
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <!-- Browser mockup (dark) -->
-        <div data-illustration aria-hidden="true" class="rounded-xl overflow-hidden shadow-2xl border border-border order-2 md:order-1">
-          <div class="bg-[#0a0f1a] px-4 py-2.5 flex items-center gap-3">
-            <div class="flex gap-1.5">
-              <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
-              <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
-              <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
-            </div>
-            <div class="flex-1 bg-white/5 rounded px-3 py-1 text-xs text-muted-onDark font-mono">
-              app.mesvantage.example / assistant
-            </div>
-          </div>
-          <div class="bg-[#0a0f1a] p-5 text-white" style="min-height: 460px;">
-            <!-- User question -->
-            <div class="flex justify-end mb-4">
-              <div class="bg-accent/20 border border-accent/40 rounded-2xl rounded-tr-sm px-4 py-2 max-w-[85%]">
-                <div class="text-[12px] text-white/90 leading-snug">Why did Cell 03 miss target this week?</div>
-              </div>
-            </div>
+        <ProductScreenshot image="assistant-desktop.png" caption="The assistant answers from your own records and links to the source behind each statement" />
 
-            <!-- Assistant response -->
-            <div class="flex gap-2 mb-3">
-              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-accent to-blue-700 flex items-center justify-center text-[10px] font-bold flex-shrink-0">M</div>
-              <div class="flex-1 space-y-3">
-                <div class="text-[11px] text-white/85 leading-relaxed">
-                  Cell 03 finished below target this week while the rest of the fleet met it. Three contributing factors, each linked to its source record:
-                </div>
-
-                <!-- Inline chart -->
-                <div class="bg-white/5 border border-white/10 rounded-lg p-3">
-                  <div class="text-[10px] text-muted-onDark mb-2 font-semibold">Cell 03 — Output vs. Target (this week)</div>
-                  <svg viewBox="0 0 280 60" class="w-full h-14">
-                    <line x1="0" y1="20" x2="280" y2="20" stroke="#1A7FBF" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
-                    <text x="0" y="16" fill="#1A7FBF" font-size="7" opacity="0.7">target</text>
-                    {[40, 38, 32, 45, 28, 42, 36].map((v, i) => (
-                      <rect x={i * 38 + 4} y={50 - v} width="28" height={v} fill={v < 35 ? '#FCD34D' : '#1A7FBF'} opacity="0.85" rx="1"/>
-                    ))}
-                    {['M','T','W','T','F','S','S'].map((d, i) => (
-                      <text x={i * 38 + 18} y="58" fill="#64748B" font-size="7" text-anchor="middle">{d}</text>
-                    ))}
-                  </svg>
-                </div>
-
-                <ol class="text-[11px] text-white/80 leading-relaxed space-y-1.5 list-decimal list-inside">
-                  <li><span class="font-semibold text-white">Tool change overrun</span> on Wednesday — an unscheduled stop was recorded against this cell.</li>
-                  <li><span class="font-semibold text-white">Setup time</span> on PT-EXAMPLE-A is running above its standard time. Linked NCR-EXAMPLE-01 is still open.</li>
-                  <li><span class="font-semibold text-white">Operator coverage</span> — three shifts ran short of a trained operator for this operation.</li>
-                </ol>
-
-                <div class="bg-white/5 border border-white/10 rounded-lg p-3">
-                  <div class="text-[10px] text-muted-onDark font-bold uppercase tracking-wide mb-1">Drafted for review</div>
-                  <div class="text-[11px] text-white/85 leading-snug">
-                    A recalibration work order has been drafted and a graduation review suggested.
-                    Neither takes effect until a qualified user reviews and signs.
-                  </div>
-                </div>
-
-                <!-- Sources pill -->
-                <div class="flex flex-wrap gap-1.5 pt-1">
-                  {['OEE telemetry', 'NCR-EXAMPLE-01', 'Standard times', 'Training records'].map(src => (
-                    <span class="text-[9px] bg-white/5 border border-white/10 text-white/60 px-2 py-0.5 rounded font-mono">{src}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <!-- Input -->
-            <div class="mt-5 bg-white/5 border border-white/10 rounded-full px-4 py-2 flex items-center gap-3">
-              <span class="text-muted-onDark text-[11px]">Ask anything about your floor…</span>
-              <span class="ml-auto text-[10px] text-muted-onDark font-mono">⌘ K</span>
-            </div>
-          </div>
-        </div>
 
         <!-- Copy -->
         <div class="order-1 md:order-2">
