@@ -10,7 +10,9 @@
     "check": "node scripts/check-claims.mjs dist",
     "typecheck": "astro check --minimumSeverity error",
     "pdf": "npm run build && node scripts/build-pdf.mjs",
-    "test:claims": "node scripts/check-claims.test.mjs"
+    "test:claims": "node scripts/check-claims.test.mjs",
+    "a11y": "node scripts/check-a11y.mjs dist",
+    "og": "node scripts/build-og-image.mjs"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
@@ -19,6 +21,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "axe-core": "^4.12.1",
+    "playwright": "^1.62.0",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.9.3"
   },
