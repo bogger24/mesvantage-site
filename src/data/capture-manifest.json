@@ -1,0 +1,96 @@
+{
+  "capturedAt": "2026-07-28T10:57:16.101Z",
+  "buildSha": "d8382653",
+  "dataset": "Ardara Orthopaedics \u2014 fictional manufacturer, seeded demonstration data",
+  "disclosure": "Screenshot of MESvantage running against a demonstration dataset. Ardara Orthopaedics is a fictional manufacturer; no record shown relates to any real customer, part or person.",
+  "images": [
+    {
+      "file": "site-board-desktop.png",
+      "route": "/site-priorities",
+      "title": "The floor, live",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "file": "work-orders-desktop.png",
+      "route": "/work-orders",
+      "title": "Work orders",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "file": "ipd-executions-desktop.png",
+      "route": "/ipd/executions",
+      "title": "In-process documentation",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "file": "inspections-desktop.png",
+      "route": "/inspections",
+      "title": "Inspections",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "file": "ncs-desktop.png",
+      "route": "/ncrs",
+      "title": "Non-conformances",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "file": "spc-desktop.png",
+      "route": "/spc",
+      "title": "Statistical process control",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "file": "genealogy-desktop.png",
+      "route": "/genealogy",
+      "title": "Lot genealogy",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "file": "dhrs-desktop.png",
+      "route": "/dhrs",
+      "title": "Device history records",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "file": "machine-intel-desktop.png",
+      "route": "/machine-intel",
+      "title": "Machine condition monitoring",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "file": "oee-desktop.png",
+      "route": "/oee",
+      "title": "OEE",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "file": "training-matrix-desktop.png",
+      "route": "/training/matrix",
+      "title": "Training matrix",
+      "viewport": "desktop",
+      "width": 1600,
+      "height": 1000
+    }
+  ]
+}

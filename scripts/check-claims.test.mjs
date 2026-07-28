@@ -64,6 +64,7 @@ const CASES = [
     true,
   ],
   ['undisclosed illustration', page('<div data-illustration><p>Cell 01</p></div>'), true],
+  ['undisclosed screenshot', page('<figure data-screenshot="a.png"><img alt="x"></figure>'), true],
   ['data-retired off the evidence page', page('<div data-retired><h2>MESvantage is fully compliant.</h2></div>'), true],
 
   // ---- banned vocabulary ---------------------------------------------------
@@ -81,6 +82,14 @@ const CASES = [
   ['attributed statistic', page('<div data-evidence="module-count"><p>74 modules</p></div>'), false],
   ['disclosed illustration', page('<div data-illustration><p>Cell 01 · 84%</p></div><p>Illustration rendered with synthetic data.</p>'), false],
   ['plain prose', page('<p>Every record signed, traceable and audit-ready.</p>'), false],
+  [
+    'disclosed screenshot',
+    page(
+      '<figure data-screenshot="a.png"><img alt="x"><figcaption>Ardara Orthopaedics is a ' +
+        'fictional manufacturer and every record shown is seeded demonstration data.</figcaption></figure>',
+    ),
+    false,
+  ],
 ];
 
 const root = mkdtempSync(join(tmpdir(), 'claims-test-'));

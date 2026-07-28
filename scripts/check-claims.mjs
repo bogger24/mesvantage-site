@@ -284,6 +284,15 @@ function textChunks(html) {
  */
 const DISCLOSURE = /illustration[s]?[\s\S]{0,120}?synthetic data/i;
 
+/**
+ * A real screenshot carries a different obligation from an illustration. It is genuinely the
+ * product, so it must not be labelled an illustration — but it is the product running against a
+ * seeded dataset, and that has to be said plainly next to the image. A screenshot travels: into
+ * a slide, a forwarded email, a customer's validation file. Whatever is not attached to it is
+ * lost, so a page-level footnote is not enough and the caption must carry it.
+ */
+const SCREENSHOT_DISCLOSURE = /fictional manufacturer[\s\S]{0,160}?(seeded|demonstration) data/i;
+
 let files;
 try {
   files = htmlFiles(root);
@@ -305,6 +314,17 @@ for (const file of files) {
       kind: 'undisclosed-illustration',
       detail:
         'page marks elements data-illustration but never tells the reader they are illustrations rendered with synthetic data',
+    });
+  }
+
+  const hasScreenshots = /data-screenshot\b/.test(visible);
+  if (hasScreenshots && !SCREENSHOT_DISCLOSURE.test(visible.replace(/<[^>]+>/g, ' '))) {
+    failures.push({
+      file: rel,
+      kind: 'undisclosed-screenshot',
+      detail:
+        'page renders a product screenshot without stating, next to it, that the manufacturer is ' +
+        'fictional and the records are seeded demonstration data',
     });
   }
 

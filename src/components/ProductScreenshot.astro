@@ -1,0 +1,88 @@
+---
+/**
+ * A real screenshot of the real application, with its provenance attached.
+ *
+ * This replaces the hand-built HTML mockups the site used to ship as "screenshots" — invented
+ * operator names, invented serial numbers, an invented Part 11 audit trail. Every image rendered
+ * here was captured by scripts/demo/capture-screenshots.mjs in the MES repo, against a seeded
+ * demonstration dataset, and is recorded in src/data/capture-manifest.json with its route, the
+ * build it came from and the moment it was taken.
+ *
+ * The caption is derived from the manifest rather than written by hand, so it cannot drift from
+ * the image it describes. The disclosure is not optional and not a footnote: it renders directly
+ * under the frame, because a screenshot travels — into a slide, a forwarded email, a validation
+ * file — and whatever is not attached to it is lost.
+ */
+import { Picture } from 'astro:assets';
+import manifest from '../data/capture-manifest.json';
+
+interface Props {
+  /** Manifest image key, e.g. "genealogy-desktop.png". */
+  image: string;
+  /** Optional caption override; defaults to the manifest title. */
+  caption?: string;
+  /** Render on a dark section. */
+  tone?: 'light' | 'dark';
+  /** Eager-load the first screenshot on a page; lazy for the rest. */
+  priority?: boolean;
+}
+
+const { image, caption, tone = 'light', priority = false } = Astro.props;
+
+const entry = manifest.images.find((i) => i.file === image);
+if (!entry) {
+  throw new Error(
+    `No manifest entry for "${image}". Screenshots must be captured by the pipeline and recorded ` +
+      'in capture-manifest.json — an image without provenance does not get published.',
+  );
+}
+
+// Vite needs a statically analysable glob; the manifest supplies the key.
+const sources = import.meta.glob<{ default: ImageMetadata }>('../assets/product/*.png', {
+  eager: true,
+});
+const src = sources[`../assets/product/${image}`]?.default;
+if (!src) {
+  throw new Error(`Manifest lists "${image}" but src/assets/product/${image} is missing.`);
+}
+
+const captured = new Date(manifest.capturedAt).toLocaleDateString('en-IE', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const isDark = tone === 'dark';
+---
+
+<figure class="not-prose" data-screenshot={entry.file}>
+  <div
+    class:list={[
+      'rounded-xl overflow-hidden border shadow-2xl',
+      isDark ? 'border-white/10' : 'border-border',
+    ]}
+  >
+    <Picture
+      src={src}
+      formats={['avif', 'webp']}
+      alt={`MESvantage — ${entry.title}. ${manifest.disclosure}`}
+      widths={[640, 1024, 1440, 1920]}
+      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1152px"
+      loading={priority ? 'eager' : 'lazy'}
+      decoding={priority ? 'sync' : 'async'}
+      class="w-full h-auto block"
+    />
+  </div>
+
+  <figcaption
+    class:list={['mt-4 text-sm leading-relaxed', isDark ? 'text-muted-onDark' : 'text-muted']}
+  >
+    <span class:list={['font-semibold', isDark ? 'text-white' : 'text-navy']}>
+      {caption ?? entry.title}.
+    </span>{' '}
+    Screenshot of MESvantage, captured {captured} from build <code class="font-mono text-xs"
+      >{manifest.buildSha}</code
+    >. Ardara Orthopaedics is a fictional manufacturer and every record shown is seeded
+    demonstration data — no part, person or customer here is real.
+  </figcaption>
+</figure>
