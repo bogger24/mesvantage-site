@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/check-claims.mjs dist",
+    "build": "astro build && node scripts/check-claims.mjs dist && node scripts/check-html.mjs dist && node scripts/check-company.mjs",
     "preview": "astro preview",
     "check": "node scripts/check-claims.mjs dist",
     "typecheck": "astro check --minimumSeverity error",

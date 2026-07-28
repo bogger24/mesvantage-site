@@ -64,3 +64,17 @@ body {
   line-height: 1;
   pointer-events: none;
 }
+
+/*
+ * The blueprint grid behind dark hero sections.
+ *
+ * This was three copies of the same inline `style` attribute. It is a class now so that
+ * `style-src` in the CSP can be `'self'` with no `unsafe-inline` — one decorative gradient
+ * was the only thing standing between the site and a clean policy.
+ */
+.grid-overlay {
+  background-image:
+    linear-gradient(white 1px, transparent 1px),
+    linear-gradient(90deg, white 1px, transparent 1px);
+  background-size: 48px 48px;
+}

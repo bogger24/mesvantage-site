@@ -1,38 +1,112 @@
 ---
-const links = [
+import { company, hasStatutoryDetails } from '../data/company';
+
+const product = [
   { label: 'Product', href: '/product' },
-  { label: 'Compliance', href: '/compliance' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Evidence', href: '/evidence' },
+  { label: 'Compliance', href: '/compliance' },
   { label: 'About', href: '/about' },
+];
+
+/**
+ * Evidence and Limits sit together and above the legal links, because they are the two pages
+ * that make the rest of the site checkable. A reader who finds them has found the argument.
+ */
+const proof = [
+  { label: 'Evidence register', href: '/evidence' },
+  { label: "What we don't do yet", href: '/limits' },
+];
+
+const legal = [
   { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
+  { label: 'Cookies', href: '/cookies' },
+  { label: 'Security', href: '/.well-known/security.txt' },
 ];
 ---
 
 <footer class="bg-navy text-white/80 mt-24">
-  <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between gap-8">
+  <div class="max-w-6xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
     <div class="max-w-sm">
       <p class="text-white font-bold text-lg tracking-tight">MESvantage</p>
       <p class="text-sm mt-1">
         The manufacturing execution and intelligence system for orthopaedic implant manufacturers.
       </p>
       <p class="text-sm mt-4">
-        <a href="/evidence" class="underline underline-offset-2 hover:text-white transition-colors">
-          Every number on this site is listed, with its source — or with what is still missing.
-        </a>
+        <a
+          href="mailto:hello@mesvantage.com"
+          class="underline underline-offset-2 hover:text-white transition-colors">{company.email}</a
+        >
       </p>
     </div>
 
-    <nav aria-label="Footer" class="flex flex-wrap gap-6 h-fit">
-      {links.map(link => (
-        <a href={link.href} class="text-sm py-2 hover:text-white transition-colors">{link.label}</a>
-      ))}
+    <nav aria-label="Product" class="text-sm">
+      <h2 class="text-white font-semibold text-xs uppercase tracking-widest">Product</h2>
+      <ul class="mt-3 space-y-1">
+        {
+          product.map((link) => (
+            <li>
+              <a href={link.href} class="inline-block py-1.5 hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <nav aria-label="Proof" class="text-sm">
+      <h2 class="text-white font-semibold text-xs uppercase tracking-widest">Check us</h2>
+      <ul class="mt-3 space-y-1">
+        {
+          proof.map((link) => (
+            <li>
+              <a href={link.href} class="inline-block py-1.5 hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <nav aria-label="Legal" class="text-sm">
+      <h2 class="text-white font-semibold text-xs uppercase tracking-widest">Legal</h2>
+      <ul class="mt-3 space-y-1">
+        {
+          legal.map((link) => (
+            <li>
+              <a href={link.href} class="inline-block py-1.5 hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </nav>
   </div>
 
   <div class="border-t border-white/10">
-    <div class="max-w-6xl mx-auto px-6 py-4 text-xs text-white/60">
-      © {new Date().getFullYear()} MESvantage Limited, registered in Ireland.
+    <div class="max-w-6xl mx-auto px-6 py-5 text-xs text-white/60 space-y-1">
+      <p>
+        © {new Date().getFullYear()} {company.legalName}, registered in {
+          company.placeOfRegistration
+        }.
+      </p>
+      {
+        hasStatutoryDetails && (
+          <p>
+            Registered number {company.registrationNumber}. Registered office:{' '}
+            {company.registeredOffice}.
+          </p>
+        )
+      }
+      <p class="pt-1">
+        This site sets no cookies. Every number on it is listed, with its source, on the{' '}
+        <a href="/evidence" class="underline underline-offset-2 hover:text-white transition-colors"
+          >evidence register</a
+        > — including the ones whose evidence we haven't produced yet.
+      </p>
     </div>
   </div>
 </footer>

@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const updated = '28 July 2026';
+
+/**
+ * This page exists to be checkable. The claim "we set no cookies" is worth nothing if a
+ * reader cannot verify it in ten seconds, so the page tells them exactly how — and the
+ * Playwright suite asserts the same thing on every route so it cannot quietly stop being true.
+ */
+---
+
+<BaseLayout
+  title="Cookies"
+  description="This website sets no cookies. Here is how to check that for yourself in ten seconds."
+>
+  <section class="bg-navy text-white py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <span class="text-xs font-bold tracking-widest text-accent-onDark uppercase">Cookies</span>
+      <h1 class="mt-2 text-3xl md:text-4xl font-extrabold leading-tight">
+        This website sets no cookies.
+      </h1>
+      <p class="mt-5 text-lg text-white/90 leading-relaxed">
+        Not analytics cookies, not advertising cookies, not "strictly necessary" cookies. There
+        is no banner because there is nothing to consent to, and no preference centre because
+        there is no preference to express.
+      </p>
+      <p class="mt-5 text-muted-onDark">Last updated {updated}.</p>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto space-y-10 text-ink/80 leading-relaxed">
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Check it yourself</h2>
+        <p>
+          Open your browser's developer tools on any page of this site, go to the console, and
+          type:
+        </p>
+        <pre
+          class="mt-4 bg-navy text-white/90 rounded-lg p-4 overflow-x-auto text-sm"><code>document.cookie</code></pre>
+        <p class="mt-4">
+          You should get an empty string. Our automated tests assert exactly that on every route,
+          so if it ever stops being true, the build breaks before you see it. If you find a
+          cookie here, that is a defect and we would like to hear about it.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Then how do you count visitors?</h2>
+        <p>
+          Plausible Analytics, which is EU-owned, EU-hosted and cookieless. It counts page views
+          without setting a cookie and without building a persistent identifier for you. It
+          processes your IP address in order to derive a country and to de-duplicate a visit
+          within a day, and does not store the address itself. There is no cross-site tracking,
+          no advertising network and no data sale. The
+          <a href="/privacy" class="text-accent font-semibold hover:text-accent-dark">privacy page</a>
+          has the detail, including the lawful basis.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Why we bothered</h2>
+        <p>
+          Under the ePrivacy Directive as implemented in Ireland, consent is required for storing
+          or accessing information on your device unless it is strictly necessary for a service
+          you asked for. The usual response is a banner. We took the other option: remove the
+          things that need consent. That meant self-hosting fonts rather than loading them from a
+          third-party CDN, choosing cookieless analytics, and not embedding third-party forms,
+          video players or chat widgets.
+        </p>
+        <p class="mt-4">
+          It is also a straightforward matter of respect. The first thing a website can do to a
+          visitor is ask them to negotiate before reading. We would rather not.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">What about the product?</h2>
+        <p>
+          The MESvantage application is a different matter and is not covered by this page. Like
+          any system with authenticated users, it uses a session cookie to keep you signed in —
+          which is strictly necessary for a service you explicitly requested, and therefore not
+          something you are asked to consent to. It sets no analytics or advertising cookies of
+          any kind. Data processing inside a customer environment is governed by the signed
+          agreement and its data processing addendum, not by this website's policies.
+        </p>
+      </div>
+
+      <div class="border-t border-ink/10 pt-8">
+        <p class="text-sm text-muted">
+          Questions to
+          <a href="mailto:hello@mesvantage.com" class="text-accent font-semibold hover:text-accent-dark"
+            >hello@mesvantage.com</a
+          >.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

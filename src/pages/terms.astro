@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const updated = '28 July 2026';
+
+/**
+ * Terms for the WEBSITE only. Nothing here is the software licence — that is a signed
+ * agreement, and saying so explicitly is the point of the first section. A prospect's legal
+ * team reading website terms that appear to govern the product is a real problem.
+ */
+---
+
+<BaseLayout
+  title="Website terms"
+  description="The terms that apply to this website. They are not the software agreement — that is signed separately."
+>
+  <section class="bg-navy text-white py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <span class="text-xs font-bold tracking-widest text-accent-onDark uppercase">Terms</span>
+      <h1 class="mt-2 text-3xl md:text-4xl font-extrabold leading-tight">
+        Terms for this website.
+      </h1>
+      <p class="mt-5 text-muted-onDark">Last updated {updated}.</p>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto space-y-10 text-ink/80 leading-relaxed">
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">These are not the software terms</h2>
+        <p>
+          This page governs your use of <span class="font-semibold text-navy">mesvantage.com</span>
+          and nothing else. Use of the MESvantage software is governed by a separate written
+          agreement signed by both parties, which covers licensing, service levels, data
+          ownership, data processing, validation support, change control and termination. If
+          anything on this website conflicts with that agreement, that agreement wins. Nothing
+          published here forms part of it and nothing here is an offer capable of acceptance.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Who we are</h2>
+        <p>
+          MESvantage Limited, a company registered in Ireland. Contact
+          <a href="mailto:hello@mesvantage.com" class="text-accent font-semibold hover:text-accent-dark"
+            >hello@mesvantage.com</a
+          >. Where our registered number and registered office are shown, they appear in the
+          footer of every page.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">What we intend the content to do</h2>
+        <p>
+          The purpose of this site is to let you evaluate whether MESvantage is worth a
+          conversation, and to let you check our claims rather than take them on trust. To that
+          end:
+        </p>
+        <ul class="mt-4 space-y-3 list-disc pl-5">
+          <li>
+            Every figure we publish is listed on the
+            <a href="/evidence" class="text-accent font-semibold hover:text-accent-dark">evidence register</a>
+            with its source, method and the date it was last verified — or with an explicit note
+            that the supporting artefact does not exist yet.
+          </li>
+          <li>
+            Screen images are captures of the real application running against a seeded
+            demonstration dataset for a fictional manufacturer. They are labelled as such, with
+            the route, the build and the capture date. They are not customer records.
+          </li>
+          <li>
+            Capabilities described as planned are labelled as planned, and the things we do not
+            have are listed on
+            <a href="/limits" class="text-accent font-semibold hover:text-accent-dark">a page of their own</a>.
+          </li>
+        </ul>
+        <p class="mt-4">
+          Where we describe outcomes, they are descriptions of what the software does, not
+          guarantees of the result you will get. Your results depend on your processes, your
+          data and your own validation.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Nothing here is regulatory advice</h2>
+        <p>
+          We write about ISO 13485, 21 CFR Part 11, the FDA QMSR and computer system validation
+          because our customers work under them. None of it is legal or regulatory advice, and
+          none of it changes your obligations. In particular, validating any software for its
+          intended use within your quality system is your responsibility as the manufacturer and
+          cannot be transferred to a supplier. We say this on the compliance page, on the limits
+          page and here, because it is the single most commonly oversold point in this market.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Intellectual property</h2>
+        <p>
+          The content, design and software behind this site belong to MESvantage Limited or its
+          licensors. You may read it, print it, and quote it for the purpose of evaluating or
+          discussing MESvantage, including internally and including in a written recommendation
+          against us. Please quote accurately and link back. You may not republish it as your
+          own or use it to train a model for a competing product.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Availability</h2>
+        <p>
+          We try to keep this site up and correct, and we will fix errors when we find them or
+          when you point them out. We do not promise the site will be uninterrupted, and we may
+          change or withdraw any page. Availability commitments for the software live in the
+          signed agreement, not here.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Liability</h2>
+        <p>
+          To the fullest extent permitted by law, we are not liable for loss arising from
+          reliance on this website's content. We do not exclude or limit liability for death or
+          personal injury caused by negligence, for fraud or fraudulent misrepresentation, or
+          for anything else that cannot lawfully be excluded — including any right you have as a
+          consumer under Irish or EU law.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Links out</h2>
+        <p>
+          Where we link to standards bodies, regulators or third-party sources, we do it so you
+          can check us. We do not control those sites and are not responsible for their content.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Governing law</h2>
+        <p>
+          These terms are governed by the laws of Ireland, and the courts of Ireland have
+          exclusive jurisdiction. If you are a consumer, this does not deprive you of the
+          protection of the mandatory law of the country in which you live.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-navy mb-3">Changes</h2>
+        <p>
+          If we change these terms we will change the date at the top. We do not keep a public
+          history of this page; we do keep one for the
+          <a href="/evidence" class="text-accent font-semibold hover:text-accent-dark">evidence register</a>,
+          which is the page where a change would actually matter to you.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

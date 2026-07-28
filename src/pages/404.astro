@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+/**
+ * There was no 404 page. Vercel's default is a black screen reading "404: NOT_FOUND" with a
+ * deployment ID — which is a poor first impression for someone who mistyped a URL from a
+ * printed leave-behind, and an actively bad one for someone following a link from an email
+ * we sent them.
+ */
+const destinations = [
+  { href: '/product', label: 'The product', blurb: 'What it is, in real screens.' },
+  { href: '/compliance', label: 'Compliance', blurb: 'Part 11, validation, and who owns what.' },
+  { href: '/limits', label: 'What we don’t do yet', blurb: 'The gaps, written by us.' },
+  { href: '/evidence', label: 'Evidence', blurb: 'Every number, with its source.' },
+  { href: '/pricing', label: 'Pricing', blurb: 'Published, on the page.' },
+  { href: '/about', label: 'About', blurb: 'Who is behind this.' },
+];
+---
+
+<BaseLayout title="Page not found" description="That page does not exist on mesvantage.com. Here are the pages people are usually looking for, including the product, the evidence register and our published limits." noindex={true}>
+  <section class="bg-navy text-white py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <span class="text-xs font-bold tracking-widest text-accent-onDark uppercase tabular-nums"
+        >Error 404</span
+      >
+      <h1 class="mt-2 text-3xl md:text-4xl font-extrabold leading-tight">
+        That page isn't here.
+      </h1>
+      <p class="mt-5 text-lg text-white/90 leading-relaxed">
+        Either it moved, or the link was wrong. If you followed a link from something we sent
+        you, that is our mistake and we would like to know —
+        <a
+          href="mailto:hello@mesvantage.com?subject=Broken%20link%20on%20mesvantage.com"
+          class="underline underline-offset-2 hover:text-white">tell us where it was</a
+        >.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-sm font-bold uppercase tracking-widest text-ink/60">Where you probably meant to go</h2>
+      <ul class="mt-6 grid sm:grid-cols-2 gap-4">
+        {
+          destinations.map((d) => (
+            <li>
+              <a
+                href={d.href}
+                class="block border border-ink/10 rounded-lg p-5 bg-white hover:border-accent transition-colors"
+              >
+                <span class="font-bold text-navy">{d.label}</span>
+                <span class="block text-sm text-muted mt-1">{d.blurb}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

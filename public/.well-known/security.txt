@@ -1,0 +1,26 @@
+# MESvantage — vulnerability disclosure
+#
+# We are a small company and we do not run a bug bounty. We do read this mailbox, we will
+# acknowledge you, and we will tell you what we did about it.
+
+Contact: mailto:security@mesvantage.com
+Expires: 2027-07-28T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://mesvantage.com/.well-known/security.txt
+Policy: https://mesvantage.com/limits
+
+# If you have found something in this website or in a MESvantage deployment, please tell us
+# before you tell anyone else. We ask for 90 days before public disclosure and will usually
+# need far less. We will not take legal action against anyone who reports a finding in good
+# faith, stays within their own or an authorised environment, and does not access, modify or
+# retain data belonging to anyone else.
+#
+# Two things worth knowing before you start:
+#
+#   1. MESvantage is deployed inside medical device manufacturing sites operating under
+#      ISO 13485 and FDA regulation. Do not test against a customer environment. If you
+#      believe you have found one, tell us and stop.
+#
+#   2. No independent penetration test has been carried out yet. We say so publicly at
+#      https://mesvantage.com/limits — so if you find something straightforward, you are
+#      probably the first person to look, and we would rather it was you than someone else.

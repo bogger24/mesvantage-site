@@ -53,8 +53,4 @@ const navLinks = [
   </div>
 </header>
 
-<script>
-  document.querySelectorAll('details nav a').forEach(a =>
-    a.addEventListener('click', () => (a.closest('details') as HTMLDetailsElement).removeAttribute('open'))
-  );
-</script>
+<script src="/nav.js" defer is:inline></script>
