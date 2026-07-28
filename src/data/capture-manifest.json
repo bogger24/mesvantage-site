@@ -1,6 +1,6 @@
 {
-  "capturedAt": "2026-07-28T11:32:41.530Z",
-  "buildSha": "2c09d37d",
+  "capturedAt": "2026-07-28T14:27:08.682Z",
+  "buildSha": "c5e2bd8e",
   "dataset": "Ardara Orthopaedics \u2014 fictional manufacturer, seeded demonstration data",
   "disclosure": "Screenshot of MESvantage running against a demonstration dataset. Ardara Orthopaedics is a fictional manufacturer; no record shown relates to any real customer, part or person.",
   "images": [
@@ -8,14 +8,6 @@
       "file": "site-board-desktop.png",
       "route": "/site-priorities",
       "title": "The floor, live",
-      "viewport": "desktop",
-      "width": 1600,
-      "height": 1000
-    },
-    {
-      "file": "work-orders-desktop.png",
-      "route": "/work-orders",
-      "title": "Work orders",
       "viewport": "desktop",
       "width": 1600,
       "height": 1000
