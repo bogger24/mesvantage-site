@@ -169,6 +169,36 @@ import { claims } from '../data/claims';
     </div>
   </section>
 
+  {/*
+    The product, once, above the fold-and-a-bit.
+
+    Four screenshots used to sit on this page. Three of them were empty states and one was
+    leaking a real customer's production data, so all four went. This is one of the three
+    captures that survived review, and the caption says only what the frame actually shows.
+  */}
+  <section class="py-20 px-6 bg-white border-b border-rule">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-12 gap-x-10 gap-y-4 mb-10">
+        <div class="md:col-span-5">
+          <p class="eyebrow text-accent tick">The product</p>
+          <h2 class="mt-1 text-display-sm md:text-display-md text-navy text-balance">
+            This is the actual application.
+          </h2>
+        </div>
+        <p class="md:col-span-7 md:pt-10 text-muted leading-relaxed">
+          Not a rendering of it and not a concept. Every screen on this site is a capture of
+          MESvantage running against a seeded demonstration dataset, with the route, the build it
+          came from and the capture date recorded underneath it.
+        </p>
+      </div>
+
+      <ProductScreenshot
+        image="inspections-desktop.png"
+        caption="Inspection queue — incoming, in-process and final, against the plan"
+      />
+    </div>
+  </section>
+
   <!-- Architecture / How it works -->
   <section id="how-it-works" class="py-24 px-6 bg-surface">
     <div class="max-w-6xl mx-auto">
