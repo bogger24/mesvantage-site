@@ -1,4 +1,5 @@
 @import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
 
 @tailwind base;
 @tailwind components;
@@ -77,4 +78,77 @@ body {
     linear-gradient(white 1px, transparent 1px),
     linear-gradient(90deg, white 1px, transparent 1px);
   background-size: 48px 48px;
+}
+
+/* =========================================================================
+   The instrument layer.
+
+   The site sells a system of record, and it was drawn as a generic SaaS
+   landing page: everything centred, six identical pale rounded cards with
+   pastel icon chips, and every number set in the same bold sans as the
+   headline above it — so the numbers read as adjectives rather than records.
+
+   These utilities are the correction. The organising idea is that MESvantage
+   should look like the inspection report it produces: hairline rules instead
+   of card borders, tabular monospaced figures for anything evidence-bearing,
+   and colour reserved so that a colour which is not navy or blue MEANS
+   something.
+   ========================================================================= */
+
+/* Eyebrow — the small mono label above a section heading. Mono, not sans,
+   because it is a field label, and field labels on this site are machine-set. */
+.eyebrow {
+  @apply font-mono text-[11px] font-semibold uppercase tracking-eyebrow;
+}
+
+/* Tabular figures. `tabular-nums` alone is not enough: the variable Inter face
+   still proportions the glyphs differently to the mono face, so a column of
+   numbers under it fails to align. Anything that is a record uses this. */
+.figure {
+  @apply font-mono tabular-nums;
+  font-variant-numeric: tabular-nums;
+}
+
+/* -------------------------------------------------------------------------
+   The Record Strip.
+
+   A monospaced hairline band of the fields a device history record actually
+   carries. It is the site's signature device: it says what the product is
+   faster than a sentence, works at any width, and is derived from the real
+   product rather than invented for the website.
+   ------------------------------------------------------------------------- */
+.record-strip {
+  @apply font-mono text-[10px] font-semibold uppercase tracking-eyebrow;
+  @apply flex flex-wrap items-center gap-x-6 gap-y-2 py-3;
+  @apply border-y border-rule-onDark text-white/45;
+}
+
+.record-strip > * {
+  @apply whitespace-nowrap;
+}
+
+/* A ruled row: the replacement for the three-card grid. Structure comes from
+   the rule between rows, not from a box drawn around each one. */
+.ruled {
+  @apply border-t border-rule;
+}
+.ruled-on-dark {
+  @apply border-t border-rule-onDark;
+}
+
+/* Index numerals down the left of a ruled list — 01, 02, 03. These replace the
+   pastel icon chips, which carried no information and looked bought-in. */
+.index-num {
+  @apply font-mono text-[11px] font-semibold tabular-nums text-muted;
+}
+
+/* Tick rule: a short accent stroke used to open a section, in place of a
+   centred coloured eyebrow floating in whitespace. */
+.tick::before {
+  content: '';
+  @apply block w-8 h-px bg-accent mb-5;
+}
+.tick-on-dark::before {
+  content: '';
+  @apply block w-8 h-px bg-accent-onDark mb-5;
 }

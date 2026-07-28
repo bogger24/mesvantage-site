@@ -10,67 +10,114 @@ import { claims } from '../data/claims';
   description="The manufacturing execution system for orthopaedic implant manufacturers — built inside a live knee-implant plant and validated there in production."
 >
 
-  <!-- Hero -->
-  <section class="bg-navy text-white pt-24 pb-20 px-6 overflow-hidden relative">
-    <div class="absolute inset-0 opacity-[0.04] pointer-events-none grid-overlay"></div>
-    <div class="max-w-5xl mx-auto text-center relative">
-      <div class="inline-flex items-center gap-2 bg-accent/15 border border-accent/30 rounded-full px-4 py-1.5 text-xs font-semibold text-accent-onDark tracking-wide uppercase mb-6">
-        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-        Orthopaedic implant manufacturing
-      </div>
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight">
-        Every implant. Every operation.<br class="hidden md:block" /> Every signature. One record.
+  {/*
+    Hero.
+
+    Left-aligned, on the near-black navy rather than the mid brand navy. Centred multi-line
+    body copy over a full-bleed coloured panel is the single strongest "landing page template"
+    signal there is, and this page had it three times over.
+
+    The Record Strip beneath is the signature device: the fields a device history record
+    actually carries, set in mono between two hairlines. It states what the product is faster
+    than the paragraph above it does.
+  */}
+  <section class="bg-navy-deep text-white pt-20 pb-0 px-6 overflow-hidden relative">
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none grid-overlay"></div>
+    <div class="max-w-6xl mx-auto relative">
+      <p class="eyebrow text-accent-onDark tick-on-dark">Orthopaedic implant manufacturing</p>
+
+      <h1 class="mt-1 text-display-md md:text-display-lg max-w-3xl text-balance">
+        Every implant. Every operation. Every signature. One record.
       </h1>
-      <p class="mt-7 text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+
+      <p class="mt-8 text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
         MESvantage is the manufacturing execution and intelligence system built inside a live
-        <Evidence claim="plant-volume" variant="inline" />-knee-a-year
-        orthopaedic plant in Ireland — and validated there, in production, under that site's
-        ISO 13485 quality system. Audit preparation stops being an archaeology project.
+        <Evidence claim="plant-volume" variant="inline" />-knee-a-year orthopaedic plant in
+        Ireland — and validated there, in production, under that site's ISO 13485 quality
+        system. Audit preparation stops being an archaeology project.
       </p>
-      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/mesvantage-product-overview.pdf"
-           class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-md transition-colors">
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-3">
+        <a
+          href="/mesvantage-product-overview.pdf"
+          class="bg-accent hover:bg-accent-dark text-white font-semibold px-7 py-3.5 rounded-md transition-colors text-center"
+        >
           Download the product overview
         </a>
-        <a href="/about#contact" class="border border-white/30 hover:border-white text-white font-semibold px-8 py-3.5 rounded-md transition-colors">
-          Book a Demo
+        <a
+          href="/about#contact"
+          class="border border-white/25 hover:border-white/70 hover:bg-white/5 text-white font-semibold px-7 py-3.5 rounded-md transition-colors text-center"
+        >
+          Talk to the founder
         </a>
       </div>
+
+      <ul class="record-strip mt-16 mb-0 list-none">
+        <li>Serial</li>
+        <li aria-hidden="true" class="text-white/20">—</li>
+        <li>Operation</li>
+        <li aria-hidden="true" class="text-white/20">—</li>
+        <li>Gauge</li>
+        <li aria-hidden="true" class="text-white/20">—</li>
+        <li>Result</li>
+        <li aria-hidden="true" class="text-white/20">—</li>
+        <li>Signed</li>
+        <li aria-hidden="true" class="text-white/20">—</li>
+        <li>Hash</li>
+        <li aria-hidden="true" class="text-white/20">—</li>
+        <li>UTC</li>
+      </ul>
+      <p class="text-sm text-muted-onDark py-5">
+        What the system writes for every operation, on every part. People sign; the system
+        proves.
+      </p>
     </div>
   </section>
 
-  <!-- Pain recognition -->
-  <section class="py-20 px-6 bg-white border-b border-border">
+  {/*
+    Pain recognition.
+
+    Was three pale rounded cards with pastel icon chips — the default SaaS card, which appeared
+    three separate times on this page. The icons carried no information: a generic document
+    glyph next to "audit prep is a three-week fire drill" tells the reader nothing they did not
+    get from the sentence.
+
+    A ruled list with mono indices does the same job with less ink and reads as a findings
+    list, which is what it is.
+  */}
+  <section class="py-20 px-6 bg-white border-b border-rule">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="text-xs font-bold tracking-widest text-accent uppercase">Does this sound familiar?</span>
-        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy">The problems every CDMO lives with.</h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
+      <p class="eyebrow text-accent tick">Does this sound familiar?</p>
+      <h2 class="mt-1 text-display-sm md:text-display-md text-navy max-w-2xl text-balance">
+        The problems every CDMO lives with.
+      </h2>
+
+      <ul class="mt-12 list-none">
         {[
           {
-            icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
-            title: 'Audit prep is a 3-week fire drill',
+            title: 'Audit prep is a three-week fire drill',
             body: 'Every FDA or notified body visit means weeks of pulling records, chasing paper travellers, and reconstructing device history from spreadsheets and shared drives.',
           },
           {
-            icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
             title: "You can't see your floor in real time",
             body: 'Machine status, OEE, active jobs, operator positions — none of it is visible until someone walks the floor or checks a whiteboard at shift handover.',
           },
           {
-            icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg>`,
             title: 'Your quality system is a shared drive',
-            body: 'FAIs, NCRs, CAPAs, incoming inspection results — scattered across SharePoint folders, email threads, and institutional knowledge that leaves when people leave.',
+            body: 'FAIs, NCs, CAPAs, incoming inspection results — scattered across SharePoint folders, email threads, and institutional knowledge that leaves when people leave.',
           },
-        ].map(card => (
-          <div class="bg-surface border border-border rounded-xl p-8">
-            <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-5" aria-hidden="true" set:html={card.icon} />
-            <h3 class="text-lg font-bold text-navy mb-3">{card.title}</h3>
-            <p class="text-ink/70 leading-relaxed text-sm">{card.body}</p>
-          </div>
+        ].map((row, i) => (
+          <li class="ruled last:border-b last:border-rule">
+            <div class="grid md:grid-cols-12 gap-x-8 gap-y-2 py-7">
+              <span class="index-num md:col-span-1 pt-1">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="md:col-span-4 text-lg font-bold text-navy leading-snug">{row.title}</h3>
+              <p class="md:col-span-7 text-ink/75 leading-relaxed">{row.body}</p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 
@@ -83,31 +130,52 @@ import { claims } from '../data/claims';
     cannot argue with a count. No percentage returns to this page until it has been measured,
     with a stated method, signed off by the person who measured it.
   */}
-  <section class="bg-navy/5 border-b border-border">
-    <div class="max-w-6xl mx-auto px-6 py-14">
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
-        <Evidence claim="plant-volume" />
-        <Evidence claim="module-count" />
-        <Evidence claim="validation-tests" />
-        <Evidence claim="validation-rtm" />
-        <Evidence claim="ortho-vendor-count" />
+  {/*
+    The readout. Set like an instrument panel: mono tabular figures, hairline-separated
+    columns, on the near-black navy so the numbers are the brightest thing in the section.
+
+    The previous version put three amber "EVIDENCE PENDING" blocks in a row of five figures,
+    which made our own uncertainty the loudest element on the page — honest, but shouting.
+    The dagger and the quiet line say the same thing and still link to /evidence.
+  */}
+  <section class="bg-navy-deep text-white">
+    <div class="max-w-6xl mx-auto px-6 py-16">
+      <div class="grid grid-cols-2 md:grid-cols-5 divide-y divide-rule-onDeep md:divide-y-0 md:divide-x md:divide-rule-onDeep">
+        <div class="pb-8 md:pb-0 md:pr-6"><Evidence claim="plant-volume" onDark /></div>
+        <div class="pb-8 md:pb-0 md:px-6"><Evidence claim="module-count" onDark /></div>
+        <div class="pt-8 md:pt-0 md:px-6"><Evidence claim="validation-tests" onDark /></div>
+        <div class="pt-8 md:pt-0 md:px-6"><Evidence claim="validation-rtm" onDark /></div>
+        <div class="pt-8 md:pt-0 md:pl-6 col-span-2 md:col-span-1">
+          <Evidence claim="ortho-vendor-count" onDark />
+        </div>
       </div>
-      <p data-evidence="ortho-vendor-count" class="text-center text-sm text-muted mt-8 max-w-3xl mx-auto">
-        On that last one: we looked across eighteen platforms and roughly three hundred sources in
-        July 2026 and could not find another MES vendor with a named orthopaedic implant machining
-        customer. <span class="font-semibold text-navy">If you can name one, tell us and we will publish it here.</span>
-        <a href="/evidence" class="block mt-3 font-semibold text-accent hover:text-accent-dark">Every number on this site, with its source →</a>
-      </p>
+
+      <div class="mt-14 pt-8 border-t border-rule-onDeep grid md:grid-cols-12 gap-x-8 gap-y-4">
+        <p class="eyebrow text-white/45 md:col-span-3">On that last one</p>
+        <p data-evidence="ortho-vendor-count" class="md:col-span-9 text-muted-onDark leading-relaxed">
+          We looked across eighteen platforms and roughly three hundred sources in July 2026 and
+          could not find another MES vendor with a named orthopaedic implant machining customer.
+          <span class="text-white font-semibold">
+            If you can name one, tell us and we will publish it here.
+          </span>
+          <a
+            href="/evidence"
+            class="block mt-4 font-semibold text-accent-onDark hover:text-white transition-colors"
+          >
+            Every number on this site, with its source →
+          </a>
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- Architecture / How it works -->
   <section id="how-it-works" class="py-24 px-6 bg-surface">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-14">
-        <span class="text-xs font-bold tracking-widest text-accent uppercase">How it works</span>
-        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy">One platform, every system on your floor.</h2>
-        <p class="mt-4 text-muted max-w-2xl mx-auto">
+      <div class="mb-14 max-w-3xl">
+        <p class="eyebrow text-accent tick">How it works</p>
+        <h2 class="mt-1 text-display-sm md:text-display-md text-navy text-balance">One platform, every system on your floor.</h2>
+        <p class="mt-4 text-muted max-w-2xl leading-relaxed">
           MESvantage sits at the centre of your manufacturing stack — ingesting data from ERP, quality, machines and metrology, and turning it into validated records, real-time intelligence, and customer-ready outputs.
         </p>
       </div>
@@ -231,10 +299,11 @@ import { claims } from '../data/claims';
   <!-- The gap we fill -->
   <section class="py-20 px-6 bg-white">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-navy text-center mb-12">
+      <p class="eyebrow text-accent tick">Why this one</p>
+      <h2 class="mt-1 text-display-sm md:text-display-md text-navy max-w-2xl text-balance">
         The gap nobody else fills.
       </h2>
-      <div class="grid md:grid-cols-3 gap-6">
+      <ul class="mt-12 list-none">
         {[
           {
             title: 'Purpose-built for CDMOs',
@@ -248,59 +317,72 @@ import { claims } from '../data/claims';
             title: 'Production-grade',
             body: 'Running daily in an orthopaedic plant that is FDA-registered and ISO 13485-certified — the plant’s credentials, not ours. Every feature in the validated scope has run on a real production floor — not a lab, not a pilot, not a demo environment.',
           },
-        ].map(card => (
-          <div class="bg-surface border border-border rounded-xl p-8">
-            <h3 class="text-lg font-bold text-navy mb-3">{card.title}</h3>
-            <p class="text-ink/70 leading-relaxed">{card.body}</p>
-          </div>
+        ].map((card, i) => (
+          <li class="ruled last:border-b last:border-rule">
+            <div class="grid md:grid-cols-12 gap-x-8 gap-y-2 py-7">
+              <span class="index-num md:col-span-1 pt-1">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="md:col-span-4 text-lg font-bold text-navy leading-snug">{card.title}</h3>
+              <p class="md:col-span-7 text-ink/75 leading-relaxed">{card.body}</p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 
-  <!-- Founder quote -->
-  <section class="py-20 px-6 bg-surface border-b border-border">
-    <div class="max-w-3xl mx-auto text-center">
-      <svg class="w-10 h-10 text-accent/40 mx-auto mb-6" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.657 1.343-3 3-3V8zm18 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.657 1.343-3 3-3V8z"/>
-      </svg>
-      <blockquote class="text-xl md:text-2xl font-medium text-navy leading-relaxed">
-        "We spent two years looking for an MES that understood a knee. Everything we found was a QMS
-        pretending to be an MES, a platform we would have had to build ourselves, or a two-year
-        programme priced for a company ten times our size. So we built it, we validated it, and we
-        ran our plant on it. This is that system — not a version of it, not a demonstration of it.
-        The same one."
-      </blockquote>
-      <div class="mt-8 flex items-center justify-center gap-4">
-        <div class="w-12 h-12 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold text-lg">PB</div>
-        <div class="text-left">
-          <div class="font-bold text-navy">Patrick Byrnes</div>
-          <div class="text-sm text-ink/70">CEO, Croom Medical · Founder, MESvantage</div>
-        </div>
+  {/*
+    Founder quote.
+
+    Was centred under a large decorative quotation-mark glyph, with the speaker's initials in a
+    grey circle — the stock testimonial block, which is the last treatment this particular
+    quote should have. It is a related-party reference and the page says so; dressing it as a
+    customer testimonial works against the disclosure sitting directly underneath it.
+
+    Left-aligned, opened by a hairline, attributed in mono like a signature line on a record.
+  */}
+  <section class="py-20 px-6 bg-surface border-b border-rule">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-x-10 gap-y-8">
+      <div class="md:col-span-3">
+        <p class="eyebrow text-accent tick">Why it exists</p>
+        <p class="mt-4 font-mono text-sm font-semibold text-navy">Patrick Byrnes</p>
+        <p class="mt-1 text-sm text-muted leading-snug">
+          CEO, Croom Medical<br />Founder, MESvantage
+        </p>
       </div>
-      <p class="mt-8 text-sm text-ink/70 leading-relaxed max-w-2xl mx-auto border-t border-border pt-6">
-        <span class="font-semibold text-navy">A disclosure, because you would find it anyway.</span>
-        MESvantage Limited and Croom Medical share a founder and chief executive. Croom is our only
-        customer to date, so this is a related-party reference and we describe it as one. What is not
-        related-party is the record: the system has been in scope for external audits of an
-        FDA-registered, ISO 13485-certified plant, and Croom's quality manager will take your call.
-      </p>
+
+      <div class="md:col-span-9">
+        <blockquote class="text-xl md:text-2xl text-navy leading-[1.45] tracking-[-0.01em]">
+          We spent two years looking for an MES that understood a knee. Everything we found was a
+          QMS pretending to be an MES, a platform we would have had to build ourselves, or a
+          two-year programme priced for a company ten times our size. So we built it, we validated
+          it, and we ran our plant on it. This is that system — not a version of it, not a
+          demonstration of it. The same one.
+        </blockquote>
+
+        <p class="mt-10 pt-6 border-t border-rule text-sm text-ink/75 leading-relaxed max-w-3xl">
+          <span class="font-semibold text-navy">A disclosure, because you would find it anyway.</span>
+          MESvantage Limited and Croom Medical share a founder and chief executive. Croom is our
+          only customer to date, so this is a related-party reference and we describe it as one.
+          What is not related-party is the record: the system has been in scope for external audits
+          of an FDA-registered, ISO 13485-certified plant, and Croom's quality manager will take
+          your call.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- Mockup scene: Operations dashboard (HTML/CSS, MESvantage-branded, fake data) -->
   <section class="py-24 px-6 bg-navy">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="text-xs font-bold tracking-widest text-accent-onDark uppercase">The platform</span>
-        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-white">Real-time intelligence. Without the Excel.</h2>
+      <div class="mb-12 max-w-3xl">
+        <p class="eyebrow text-accent-onDark tick-on-dark">The platform</p>
+        <h2 class="mt-1 text-display-sm md:text-display-md text-white text-balance">Real-time intelligence. Without the Excel.</h2>
         <p class="mt-4 text-white/60 max-w-2xl mx-auto">
           See your shop floor the way your CEO wants to see it: live, drillable, audit-ready.
         </p>
       </div>
 
       <!-- Browser chrome -->
-      <ProductScreenshot image="site-board-desktop.png" caption="The site board — what the floor is doing right now" tone="dark" />
 
 
       <p class="text-center text-xs text-muted-onDark mt-6 italic">
@@ -339,7 +421,6 @@ import { claims } from '../data/claims';
         </div>
 
         <!-- Browser mockup -->
-      <ProductScreenshot image="machine-intel-desktop.png" caption="Machine condition monitoring — state, utilisation and downtime reasons per cell" tone="light" />
 
       </div>
     </div>
@@ -350,7 +431,6 @@ import { claims } from '../data/claims';
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <!-- Browser mockup (dark) -->
-        <ProductScreenshot image="assistant-desktop.png" caption="The assistant answers from your own records and links to the source behind each statement" />
 
 
         <!-- Copy -->
@@ -385,30 +465,34 @@ import { claims } from '../data/claims';
   <!-- Mockup scene: Genealogy & DHR -->
   <section class="py-24 px-6 bg-navy text-white">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="text-xs font-bold tracking-widest text-accent-onDark uppercase">Genealogy & DHR</span>
-        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-white">Every part. Every operation. Every signature.</h2>
+      <div class="mb-12 max-w-3xl">
+        <p class="eyebrow text-accent-onDark tick-on-dark">Genealogy & DHR</p>
+        <h2 class="mt-1 text-display-sm md:text-display-md text-white text-balance">Every part. Every operation. Every signature.</h2>
         <p class="mt-4 text-white/60 max-w-2xl mx-auto">
           Trace a single serial number from raw stock to dispatch in two clicks — assembled as the part is made, rather than reconstructed afterwards.
         </p>
       </div>
 
       <!-- Browser mockup -->
-      <ProductScreenshot image="genealogy-desktop.png" caption="Lot genealogy — trace a lot back to its raw material, or forward to every product it touched" tone="dark" />
     </div>
   </section>
 
   <!-- Module highlights -->
   <section class="py-24 px-6 bg-white border-b border-border">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-14">
-        <span class="text-xs font-bold tracking-widest text-accent uppercase">The platform</span>
-        <h2 class="mt-2 text-3xl md:text-4xl font-bold text-navy"><Evidence claim="module-count" variant="inline" /> modules. Six domains.</h2>
-        <p class="mt-4 text-muted max-w-xl mx-auto">
-          Every module was written for regulated contract manufacturing, not retrofitted from a generic platform. Each one carries a label saying whether it is live in production today.
+      <div class="grid md:grid-cols-12 gap-x-10 gap-y-4 mb-14">
+        <div class="md:col-span-5">
+          <p class="eyebrow text-accent tick">The platform</p>
+          <h2 class="mt-1 text-display-sm md:text-display-md text-navy text-balance">
+            <Evidence claim="module-count" variant="inline" /> modules. Six domains.
+          </h2>
+        </div>
+        <p class="md:col-span-7 md:pt-10 text-muted leading-relaxed">
+          Every module was written for regulated contract manufacturing, not retrofitted from a
+          generic platform. Each one carries a label saying whether it is live in production today.
         </p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-rule">
         {[
           {
             domain: 'Quality', num: '01',
@@ -441,23 +525,24 @@ import { claims } from '../data/claims';
             outcome: 'Mobile PWA, digital signage, audit trail, e-signatures, and role-based access — the regulated infrastructure that makes the rest possible.',
           },
         ].map(m => (
-          <div class="bg-surface border border-border rounded-xl p-8 hover:border-accent/40 hover:shadow-sm transition-all">
-            <div class="flex items-center gap-3 mb-5">
-              <div class="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center flex-shrink-0" aria-hidden="true" set:html={m.icon} />
-              <div>
-                <div class="text-xs font-bold tracking-wider text-muted-soft uppercase">Domain {m.num}</div>
-                <div class="text-base font-bold text-navy leading-tight">{m.domain}</div>
-              </div>
+          <div class="border-r border-b border-rule p-7 hover:bg-surface transition-colors">
+            <div class="flex items-baseline gap-3">
+              <span class="index-num">{m.num}</span>
+              <h3 class="text-base font-bold text-navy leading-tight">{m.domain}</h3>
             </div>
-            <p class="text-ink/70 leading-relaxed text-sm">{m.outcome}</p>
-            <a href={`/product#${m.domain.toLowerCase()}`} class="inline-flex items-center gap-1 mt-4 min-h-[24px] text-xs font-semibold text-accent hover:text-accent-dark transition-colors">
-              See modules <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
+            <p class="mt-4 text-ink/75 leading-relaxed text-sm">{m.outcome}</p>
+            <a
+              href={`/product#${m.domain.toLowerCase()}`}
+              class="inline-flex items-center gap-1 mt-5 min-h-[24px] font-mono text-[11px] font-semibold uppercase tracking-eyebrow text-accent hover:text-accent-dark transition-colors"
+            >
+              See modules
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
             </a>
           </div>
         ))}
       </div>
-      <div class="mt-10 text-center">
-        <a href="/product" class="inline-flex items-center min-h-[24px] text-sm font-semibold text-accent hover:text-accent-dark transition-colors">
+      <div class="mt-10">
+        <a href="/product" class="inline-flex items-center min-h-[24px] font-mono text-[11px] font-semibold uppercase tracking-eyebrow text-accent hover:text-accent-dark transition-colors">
           View all modules →
         </a>
       </div>
@@ -465,23 +550,30 @@ import { claims } from '../data/claims';
   </section>
 
   <!-- Closing CTA -->
-  <section class="py-24 px-6 bg-navy relative overflow-hidden">
-    <div class="absolute inset-0 opacity-[0.04] pointer-events-none grid-overlay"></div>
-    <div class="max-w-3xl mx-auto text-center relative">
-      <span class="text-xs font-bold tracking-widest text-accent-onDark uppercase">Get started</span>
-      <h2 class="mt-3 text-3xl md:text-4xl font-bold text-white leading-tight">
-        See exactly what MESvantage<br class="hidden md:block" /> would look like in your plant.
-      </h2>
-      <p class="mt-5 text-white/60 text-lg max-w-xl mx-auto">
-        A two-page summary of every domain, our compliance position, and the implementation plan.
-        No form — it downloads straight away.
-      </p>
-      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/mesvantage-product-overview.pdf"
-           class="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-md transition-colors">
+  <section class="py-24 px-6 bg-navy-deep relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none grid-overlay"></div>
+    <div class="max-w-6xl mx-auto relative grid md:grid-cols-12 gap-x-10 gap-y-8 items-end">
+      <div class="md:col-span-7">
+        <p class="eyebrow text-accent-onDark tick-on-dark">Get started</p>
+        <h2 class="mt-1 text-display-sm md:text-display-md text-white text-balance">
+          See exactly what MESvantage would look like in your plant.
+        </h2>
+        <p class="mt-5 text-muted-onDark text-lg max-w-xl leading-relaxed">
+          A two-page summary of every domain, our compliance position, and the implementation
+          plan. No form — it downloads straight away.
+        </p>
+      </div>
+      <div class="md:col-span-5 flex flex-col gap-3">
+        <a
+          href="/mesvantage-product-overview.pdf"
+          class="bg-accent hover:bg-accent-dark text-white font-semibold px-7 py-3.5 rounded-md transition-colors text-center"
+        >
           Download the product overview
         </a>
-        <a href="/about#contact" class="border border-white/30 hover:border-white text-white font-semibold px-8 py-3.5 rounded-md transition-colors">
+        <a
+          href="/about#contact"
+          class="border border-white/25 hover:border-white/70 hover:bg-white/5 text-white font-semibold px-7 py-3.5 rounded-md transition-colors text-center"
+        >
           Or talk to the founder
         </a>
       </div>
