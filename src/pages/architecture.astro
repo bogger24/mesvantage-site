@@ -1,0 +1,448 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SpecHeader from '../components/SpecHeader.astro';
+import Evidence from '../components/Evidence.astro';
+
+/**
+ * How the modules fit together — the page a new customer needs before a demo.
+ *
+ * The module grid on /product answers "what is there". It does not answer the question every
+ * evaluator actually asks, which is "if I put a part into this system, what happens to it, and
+ * which parts of the system talk to which other parts". A list of seventy-odd features cannot
+ * answer that, and reading one leaves a prospect assuming they are buying seventy-odd things to
+ * integrate.
+ *
+ * So the spine of this page is one part's life, in order, with the domain that acts at each
+ * stage and the field it writes to the record. The directory underneath is secondary: each
+ * domain says what feeds it and what it feeds, so a reader can trace any module back to the
+ * flow rather than meeting it as an isolated capability.
+ *
+ * Every module named here is taken from the domain lists on /product. Nothing is invented, and
+ * no per-domain counts are printed — the claims ratchet correctly treats "N modules" as a
+ * statistic, and the only module count on this site lives in the register.
+ */
+
+interface Stage {
+  index: string;
+  stage: string;
+  domain: string;
+  what: string;
+  writes: string;
+  gate?: string;
+}
+
+/** The spine: what happens to a part, in order. */
+const LIFE: Stage[] = [
+  {
+    index: '01',
+    stage: 'Work order arrives',
+    domain: 'Platform',
+    what: 'The order, part, revision and routing come from your ERP. Nothing is re-keyed, and the MES does not become a second place where work is defined.',
+    writes: 'Order · part · revision · routing',
+  },
+  {
+    index: '02',
+    stage: 'Operator starts',
+    domain: 'Training',
+    what: 'Before the first operation can begin, the system checks that this operator is trained on this part and this operation, against your QMS.',
+    writes: 'Operator identity · training state at start',
+    gate: 'Blocks: an untrained operator cannot start the work',
+  },
+  {
+    index: '03',
+    stage: 'Work happens',
+    domain: 'Production',
+    what: 'The electronic traveller runs the operation sequence. Stages lock in order, so step seven cannot be signed before step six. Machine data arrives on its own.',
+    writes: 'Each operation · times · machine state · downtime reason',
+    gate: 'Blocks: a stage cannot be skipped or back-dated',
+  },
+  {
+    index: '04',
+    stage: 'Features are measured',
+    domain: 'Metrology',
+    what: 'CMM output is parsed and attached to the operation it belongs to, against the tolerances on that part revision — not filed in a folder for someone to find later.',
+    writes: 'Measured features · tolerance result · instrument used',
+  },
+  {
+    index: '05',
+    stage: 'Something is out of tolerance',
+    domain: 'Quality',
+    what: 'A nonconformance is raised against the exact lot and operation that produced it, and the affected material is held. The link back to the measurement is not typed in by hand — it is already there.',
+    writes: 'Nonconformance · hold · affected lots',
+    gate: 'Blocks: held material cannot move to the next operation',
+  },
+  {
+    index: '06',
+    stage: 'Someone decides',
+    domain: 'Quality',
+    what: 'Use, rework or scrap. The decision carries an electronic signature bound to the record it dispositions, and to the person who made it.',
+    writes: 'Disposition · justification · signature',
+    gate: 'Blocks: no disposition, no release',
+  },
+  {
+    index: '07',
+    stage: 'The record assembles itself',
+    domain: 'Quality',
+    what: 'The device history record is not written at the end. It has been accumulating since stage one — every operation, measurement, signature and deviation already sits on it.',
+    writes: 'The complete DHR',
+  },
+  {
+    index: '08',
+    stage: 'The lot ships',
+    domain: 'Quality',
+    what: 'Release checks the record is complete. Genealogy can then trace that serial back to raw material, or forward to every product it touched.',
+    writes: 'Release · genealogy links',
+  },
+  {
+    index: '09',
+    stage: 'Someone asks why',
+    domain: 'Intelligence',
+    what: 'Because every stage above wrote to one record, the questions that normally take a week — which cell, which shift, which supplier, how often — are queries rather than investigations.',
+    writes: 'Trends · alerts · the answer to the audit question',
+  },
+];
+
+interface Domain {
+  index: string;
+  name: string;
+  role: string;
+  fedBy: string;
+  feeds: string;
+  modules: string[];
+}
+
+/** Module names are taken verbatim from the domain lists on /product. */
+const DOMAINS: Domain[] = [
+  {
+    index: '01',
+    name: 'Quality',
+    role: 'Owns the record and the decisions made against it.',
+    fedBy: 'Metrology results · Production execution · Training state',
+    feeds: 'The DHR · customer portals · Intelligence',
+    modules: [
+      'First Article Inspection (FAI)',
+      'First Pass Yield (FPY) tracking',
+      'Statistical Process Control (SPC)',
+      'Device History Record (DHR)',
+      'Incoming Inspection workflow',
+      'Non-Conformance Reports (NCR)',
+      'Corrective Action (CAPA)',
+      'Customer Quality Portal',
+      'Hold & quarantine management',
+      'Quality KPI dashboards',
+      'Out-of-tolerance alerting',
+      'Root-cause analysis tooling',
+    ],
+  },
+  {
+    index: '02',
+    name: 'Production',
+    role: 'Runs the work and records what actually happened.',
+    fedBy: 'ERP work orders · machine telemetry · Training gate',
+    feeds: 'Quality records · Metrology triggers · Intelligence',
+    modules: [
+      'OEE — live per machine and fleet',
+      'Production scheduling (closed-loop)',
+      'In-Process Documentation (IPD)',
+      'Standard Times & variance analysis',
+      'Operator graduation & release',
+      'Work order execution tracking',
+      'Setup time tracking',
+      'Downtime root-cause coding',
+      'Shift handover briefings',
+      'Throughput vs. takt time',
+      'Cell load balancing',
+      'Live escalation routing',
+    ],
+  },
+  {
+    index: '03',
+    name: 'Metrology',
+    role: 'Turns measurement into a record entry, automatically.',
+    fedBy: 'CMM output · part revision tolerances · calibration state',
+    feeds: 'Quality nonconformances · SPC · the DHR',
+    modules: [
+      'CMM result ingestion (auto)',
+      'Renishaw / Hexagon / Zeiss support',
+      'AI feature-to-tolerance mapping',
+      'Calibration management',
+      'GD&T attribute parsing',
+      'Instrument type classification',
+      'Operator-readable PDF reports',
+      'Drift detection over lots',
+      'Auto-link to part revision',
+    ],
+  },
+  {
+    index: '04',
+    name: 'Training',
+    role: 'Decides who is allowed to touch the work.',
+    fedBy: 'Your QMS (Qualio) · operator scope by part and operation',
+    feeds: 'The gate at stage 02 · audit-ready history',
+    modules: [
+      'Training enforcement at WO start',
+      'Trainer/trainee context tracking',
+      'Operator scope by part / op',
+      'Qualio QMS bidirectional sync',
+      'Cert expiry alerts',
+      'Graduation workflow',
+      'Training gap analytics',
+      'Skills matrix by cell',
+      'Re-training trigger rules',
+      'Audit-ready training history',
+    ],
+  },
+  {
+    index: '05',
+    name: 'Intelligence',
+    role: 'Reads everything above. Changes none of it.',
+    fedBy: 'Every record written by the four domains above',
+    feeds: 'Dashboards · alerts · drafts a person reviews',
+    modules: [
+      'CEO Intelligence Dashboard',
+      'AI Executive Agent (LLM)',
+      'Energy & sustainability intel',
+      'Machine condition monitoring',
+      'Customer-facing portals',
+      'Ops intelligence stream',
+      'Continuous improvement tracker',
+      'Energy ECM live data',
+      'Anomaly detection (auto)',
+    ],
+  },
+  {
+    index: '06',
+    name: 'Platform',
+    role: 'The regulated floor everything else stands on.',
+    fedBy: 'Your ERP · your identity provider · your documents',
+    feeds: 'Every module above',
+    modules: [
+      'Audit trail against 21 CFR Part 11 §11.10',
+      'Electronic signatures against Part 11 Subpart C',
+      'Role-based access control',
+      'Microsoft Entra SSO',
+      'Mobile PWA (install-ready)',
+      'Digital factory floor signage',
+      'Dedicated deployment per customer',
+      'Backups with tested restores — last test date published',
+      'ERP integration (M1/SAP/Plex)',
+      'Power BI bidirectional',
+      'OneDrive document linking',
+      'Infrastructure provisioned from code',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="How the modules fit together"
+  description="A map of how the MESvantage modules interlink — one part's life from work order to release, and which domain acts at each stage."
+>
+  <!-- Hero -->
+  <section class="bg-navy-deep text-white pt-16 md:pt-24 px-6 relative overflow-x-clip noise">
+    <div class="absolute inset-0 opacity-[0.06] pointer-events-none grid-overlay grid-overlay-fade">
+    </div>
+    <div class="max-w-6xl mx-auto relative pb-20">
+      <p class="eyebrow text-accent-onDark tick-on-dark">Architecture</p>
+      <h1 class="mt-1 text-display-md md:text-display-lg max-w-4xl text-balance">
+        Not a suite of modules. One record, written by all of them.
+      </h1>
+      <p class="mt-8 text-lg md:text-xl text-white/70 max-w-3xl leading-relaxed">
+        Most manufacturing software is a set of applications that each keep their own copy of the
+        truth, and an integration project to reconcile them. MESvantage is the other shape: one
+        record per part, and <Evidence claim="module-count" variant="inline" /> modules that write
+        to it at different moments in that part's life.
+      </p>
+      <p class="mt-5 text-muted-onDark max-w-3xl leading-relaxed">
+        That distinction is the whole product, and it is easier to see as a sequence than as a
+        list. Below is what happens to one part, in order, and which part of the system acts at
+        each stage.
+      </p>
+    </div>
+  </section>
+
+  <!-- The spine -->
+  <section class="py-20 px-6 bg-navy-lift border-b border-rule-onDark">
+    <div class="max-w-6xl mx-auto">
+      <SpecHeader index="01" label="One part's life" meta="Work order to release" onDark />
+      <h2 class="text-display-sm md:text-display-md text-white max-w-3xl text-balance">
+        Every stage writes to the same record.
+      </h2>
+      <p class="mt-4 text-muted-onDark max-w-2xl leading-relaxed">
+        Nothing below is re-keyed from one system into another. Each stage adds to a record that
+        already exists, which is why the device history record is complete the moment the lot is
+        ready to ship rather than a fortnight afterwards.
+      </p>
+
+      <ol class="mt-14 list-none">
+        {
+          LIFE.map((s) => (
+            <li class="ruled-on-dark last:border-b last:border-rule-onDark">
+              <div class="grid md:grid-cols-12 gap-x-8 gap-y-3 py-8">
+                <div class="md:col-span-1">
+                  <span class="index-num">{s.index}</span>
+                </div>
+
+                <div class="md:col-span-4">
+                  <h3 class="text-lg font-bold text-white leading-snug">{s.stage}</h3>
+                  <p class="eyebrow mt-2 text-accent-onDark">{s.domain}</p>
+                </div>
+
+                <div class="md:col-span-7">
+                  <p class="text-muted-onDark leading-relaxed">{s.what}</p>
+
+                  <p class="mt-4 font-mono text-[11px] uppercase tracking-eyebrow text-muted-onDark">
+                    Writes to the record — <span class="text-white/70">{s.writes}</span>
+                  </p>
+
+                  {s.gate && (
+                    <p class="mt-2 inline-flex items-start gap-2 font-mono text-[11px] uppercase tracking-eyebrow text-amber-300/90">
+                      <span aria-hidden="true">■</span>
+                      {s.gate}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+
+      <p class="mt-10 text-sm text-muted-onDark max-w-3xl leading-relaxed">
+        The amber lines are the ones that matter to an auditor. They are enforced in software, not
+        by procedure — the system will not let the work continue, which is a different claim from
+        a policy saying it should not.
+      </p>
+    </div>
+  </section>
+
+  <!-- Directory -->
+  <section class="py-20 px-6 bg-navy-deep border-b border-rule-onDark">
+    <div class="max-w-6xl mx-auto">
+      <SpecHeader index="02" label="The directory" meta="Six domains · what feeds what" onDark />
+      <h2 class="text-display-sm md:text-display-md text-white max-w-3xl text-balance">
+        Where each module sits in that sequence.
+      </h2>
+      <p class="mt-4 text-muted-onDark max-w-2xl leading-relaxed">
+        Each domain lists what feeds it and what it feeds, so any module can be traced back to a
+        stage above rather than read as a standalone feature.
+      </p>
+
+      <div class="mt-14 space-y-px">
+        {
+          DOMAINS.map((d) => (
+            <div class="border border-rule-onDark bg-navy-lift p-7 md:p-9">
+              <div class="grid md:grid-cols-12 gap-x-10 gap-y-6">
+                <div class="md:col-span-4">
+                  <div class="flex items-baseline gap-3">
+                    <span class="index-num">{d.index}</span>
+                    <h3 class="text-xl font-bold text-white">{d.name}</h3>
+                  </div>
+                  <p class="mt-3 text-muted-onDark leading-relaxed">{d.role}</p>
+
+                  <dl class="mt-6 space-y-3">
+                    <div>
+                      <dt class="eyebrow text-muted-onDark">Fed by</dt>
+                      <dd class="mt-1 text-sm text-muted-onDark">{d.fedBy}</dd>
+                    </div>
+                    <div>
+                      <dt class="eyebrow text-muted-onDark">Feeds</dt>
+                      <dd class="mt-1 text-sm text-muted-onDark">{d.feeds}</dd>
+                    </div>
+                  </dl>
+                </div>
+
+                <div class="md:col-span-8">
+                  <p class="eyebrow text-muted-onDark mb-4">Modules</p>
+                  <ul class="grid sm:grid-cols-2 gap-x-8 list-none">
+                    {d.modules.map((m) => (
+                      <li class="ruled-on-dark py-2.5 text-sm text-white/80 leading-snug">{m}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="mt-8 text-sm text-muted-onDark max-w-3xl leading-relaxed">
+        This directory names the modules a customer meets in the first year. It is not the
+        complete register — the full list, with a label on each one saying whether it is live in
+        production today, is on <a
+          href="/product"
+          class="text-accent-onDark font-semibold hover:text-white transition-colors">the product page</a
+        >, and what we don't have yet is on <a
+          href="/limits"
+          class="text-accent-onDark font-semibold hover:text-white transition-colors">its own page</a
+        >.
+      </p>
+    </div>
+  </section>
+
+  <!-- The rule -->
+  <section class="py-20 px-6 bg-navy-lift border-b border-rule-onDark">
+    <div class="max-w-6xl mx-auto">
+      <SpecHeader index="03" label="The rule underneath" meta="Why the sequence holds" onDark />
+      <div class="grid md:grid-cols-12 gap-x-12 gap-y-8">
+        <div class="md:col-span-5">
+          <h2 class="text-display-sm text-white text-balance">
+            One record. One clock. One audit trail.
+          </h2>
+          <p class="mt-5 text-muted-onDark leading-relaxed">
+            Three rules make the sequence above hold together. They are worth asking any MES
+            vendor about, including this one.
+          </p>
+        </div>
+
+        <ul class="md:col-span-6 md:col-start-7 list-none self-center">
+          {
+            [
+              'A record is written once, at the moment the work happens — never reconstructed afterwards from someone’s notes.',
+              'Every entry carries who, what and when. Signatures are bound to the specific record they signed, not to a session.',
+              'The intelligence layer reads and drafts. It is barred in software from releasing product, dispositioning parts or closing a quality record.',
+              'Integrations are one-directional where they should be: your ERP defines work, the MES records execution, and neither silently overwrites the other.',
+              'Nothing in the sequence can be skipped by a person in a hurry — the gates are enforced by the system, and refusing work is the point of them.',
+            ].map((r) => (
+              <li class="ruled-on-dark last:border-b last:border-rule-onDark py-3.5 text-muted-onDark leading-relaxed">
+                {r}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 bg-navy-deep relative overflow-hidden noise">
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none grid-overlay"></div>
+    <div class="max-w-6xl mx-auto relative grid md:grid-cols-12 gap-x-10 gap-y-8 items-end">
+      <div class="md:col-span-7">
+        <p class="eyebrow text-accent-onDark tick-on-dark">Next</p>
+        <h2 class="mt-1 text-display-sm md:text-display-md text-white text-balance">
+          Bring us the hardest part you make.
+        </h2>
+        <p class="mt-5 text-muted-onDark text-lg max-w-xl leading-relaxed">
+          Send one drawing and one traveller. We will walk that part through the sequence above
+          using your own data model, and you can judge the fit against something real rather than
+          against a feature list.
+        </p>
+      </div>
+      <div class="md:col-span-5 flex flex-col gap-3">
+        <a
+          href="/mesvantage-product-overview.pdf"
+          class="btn-mono bg-accent hover:bg-accent-dark text-white"
+        >
+          Download the overview <span aria-hidden="true">↓</span>
+        </a>
+        <a
+          href="/about#contact"
+          class="btn-mono border border-white/25 hover:border-white/70 hover:bg-white/5 text-white"
+        >
+          Talk to the founder <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

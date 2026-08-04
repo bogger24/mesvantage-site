@@ -32,7 +32,7 @@ const DIST = resolve(process.argv[2] ?? 'dist');
 const PORT = Number(process.env.A11Y_PORT ?? 4599);
 
 const ROUTES = [
-  '/', '/product', '/pricing', '/compliance', '/evidence', '/limits',
+  '/', '/product', '/architecture', '/pricing', '/compliance', '/evidence', '/limits',
   '/about', '/privacy', '/terms', '/cookies', '/404',
 ];
 const VIEWPORTS = [
